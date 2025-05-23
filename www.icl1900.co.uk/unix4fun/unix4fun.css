@@ -1,0 +1,47 @@
+body {
+	background-color: #E0E0E0;
+}
+
+table.htbl th {
+	background: #C0C0C0;
+}
+
+nav {
+	background-color: #E0E0E0;
+	color: darkseagreen;
+}
+
+nav ul {
+	width: 13em;
+	margin: 10px;
+	padding: 0.5em;
+	background-color: #303728;
+	float: left;
+}
+
+nav li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav a {
+	display: block;
+	text-decoration: none;
+	background-color: #303728;
+	color: darkseagreen;
+	padding: 0.2em;
+	margin: 0.2em;
+	border-bottom: 1px dotted greenyellow;
+	-webkit-transition: background-color .25s ease-in;
+	transition: background-color .25s ease-in;
+}
+
+nav a:focus,
+nav a:hover,
+nav span {
+	color: #303728;
+	background-color: greenyellow;
+	-webkit-transition: background-color 0.01s;
+	transition: background-color 0.01s;
+}

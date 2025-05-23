@@ -1,0 +1,75 @@
+This is Info file bfd.info, produced by Makeinfo-1.55 from the input
+file ./bfd.texinfo.
+
+START-INFO-DIR-ENTRY
+* Bfd::                         The Binary File Descriptor library.
+END-INFO-DIR-ENTRY
+
+   This file documents the BFD library.
+
+   Copyright (C) 1991 Free Software Foundation, Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, subject to the
+terms of the GNU General Public License, which includes the provision
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+Indirect:
+bfd.info-1: 936
+bfd.info-2: 49201
+bfd.info-3: 98556
+bfd.info-4: 128303
+
+Tag Table:
+(Indirect)
+Node: Top936
+Node: Overview1199
+Node: History2249
+Node: How It Works3190
+Node: What BFD Version 2 Can Do4731
+Node: BFD information loss6045
+Node: Canonical format8568
+Node: BFD front end12929
+Node: Memory Usage24564
+Node: Initialization25808
+Node: Sections26485
+Node: Section Input26959
+Node: Section Output28316
+Node: typedef asection30675
+Node: section prototypes40175
+Node: Symbols45120
+Node: Reading Symbols46679
+Node: Writing Symbols47648
+Node: typedef asymbol49201
+Node: symbol handling functions53612
+Node: Archives56335
+Node: Formats60240
+Node: Relocations62527
+Node: typedef arelent63259
+Node: howto manager76690
+Node: Core Files85275
+Node: Targets86259
+Node: bfd_target88227
+Node: Architectures98556
+Node: Opening and Closing107499
+Node: Constructors110885
+Node: Internal114094
+Node: File Caching119404
+Node: BFD back end121969
+Node: What to Put Where122185
+Node: aout122321
+Node: coff128303
+Node: elf148772
+Node: Index149592
+
+End Tag Table

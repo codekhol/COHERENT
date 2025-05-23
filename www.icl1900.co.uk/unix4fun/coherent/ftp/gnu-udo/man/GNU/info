@@ -1,0 +1,198 @@
+
+
+
+info(1)                                                   info(1)
+
+
+NNAAMMEE
+       info - GNU's hypertext system
+
+SSYYNNOOPPSSIISS
+       iinnffoo [ ----ooppttiioonn--nnaammee ooppttiioonn--vvaalluuee ] mmeennuu--iitteemm......
+
+CCOOPPYYRRIIGGHHTT
+       Copyright (C) 1989, 1993 Free Software Foundation, Inc.
+
+DDEESSCCRRIIPPTTIIOONN
+       The  GNU  project has a hypertext system called _I_n_f_o which
+       allows the same source file to  be  either  printed  as  a
+       paper manual, or viewed using iinnffoo..  It is possible to use
+       the iinnffoo program from inside Emacs, or to use  the  stand-
+       alone  version  described  here.  This manual page gives a
+       brief summary of its capabilities.
+
+
+OOPPTTIIOONNSS
+       ----ddiirreeccttoorryy ddiirreeccttoorryy--ppaatthh
+              Add ddiirreeccttoorryy--ppaatthh to the list of  directory  paths
+              searched  when  iinnffoo needs to find a file.  You may
+              issue ----ddiirreeccttoorryy multiple  times.   Alternatively,
+              you  may  specify a value for the environment vari-
+              able IINNFFOOPPAATTHH;; if ----ddiirreeccttoorryy  is  not  given,  the
+              value  of  IINNFFOOPPAATTHH is used.  The value of IINNFFOOPPAATTHH
+              is a colon separated list of directory  names.   If
+              you  do  not supply either IINNFFOOPPAATTHH or ----ddiirreeccttoorryy--
+              ppaatthh,, iinnffoo uses a default path.
+
+       --ff ffiilleennaammee
+              Specify  a  particular  iinnffoo  file  to  visit.   By
+              default,  iinnffoo visits the file ddiirr;; if you use this
+              option, iinnffoo will start with ((FFIILLEENNAAMMEE))TToopp  as  the
+              first file and node.
+
+       --nn nnooddeennaammee
+              Specify  a  particular node to visit in the initial
+              file that iinnffoo loads.  This is especially useful in
+              conjunction  with  ----ffiillee..   You may specify ----nnooddee
+              multiple times.
+
+       --oo ffiillee
+              Direct output to ffiillee instead of starting an inter-
+              active iinnffoo session.
+
+       --hh     Produce  a  relatively  brief  description  of  the
+              available iinnffoo options.
+
+       ----vveerrssiioonn
+              Print the version information of iinnffoo and exit.
+
+       mmeennuu--iitteemm
+              iinnffoo treats its remaining arguments as the names of
+
+
+
+                        7th December 1990                       1
+
+
+
+
+
+info(1)                                                   info(1)
+
+
+              menu  items.   The first argument is a menu item in
+              the initial node visited, while the second argument
+              is  a  menu item in the first argument's node.  You
+              can easily move to the node of your choice by spec-
+              ifying  the  menu  names which describe the path to
+              that node.  For example,
+
+              iinnffoo eemmaaccss bbuuffffeerrss
+
+              first selects the  menu  item  eemmaaccss  in  the  node
+              ((ddiirr))TToopp,, and then selects the menu item bbuuffffeerrss in
+              the node ((eemmaaccss))TToopp..
+
+CCOOMMMMAANNDDSS
+       When in iinnffoo the following commands are available:
+
+       hh      Invoke the Info tutorial.
+
+       ??      Get a short summary of iinnffoo commands.
+
+       hh      Select the iinnffoo node from the main directory;  this
+              is much more complete than just using ??..
+
+       CCttrrll--gg Abort whatever you are doing.
+
+       CCttrrll--ll Redraw the screen.
+
+       Selecting other nodes:
+
+       nn      Move to the "next" node of this node.
+
+       pp      Move to the "previous" node of this node.
+
+       uu      Move to this node's "up" node.
+
+       mm      Pick  a menu item specified by name. Picking a menu
+              item causes another node to be selected. You do not
+              need to type a complete nodename; if you type a few
+              letters and then a space or tab iinnffoo will will  try
+              to fill in the rest of the nodename. If you ask for
+              further completion without typing any more  charac-
+              ters  you'll  be given a list of possibilities; you
+              can also get the list with ??..  If you  type  a  few
+              characters  and then hit return iinnffoo will try to do
+              a completion, and if it is ambigous use  the  first
+              possibility.
+
+       ff      Follow  a  cross  reference.  You are asked for the
+              name of the reference, using command completion  as
+              for mm..
+
+       ll      Move to the last node you were at.
+
+       Moving within a node:
+
+
+
+                        7th December 1990                       2
+
+
+
+
+
+info(1)                                                   info(1)
+
+
+       SSppaaccee  Scroll forward a page.
+
+       DDEELL    Scroll backward a page.
+
+       bb      Go to the beginning of this node.
+
+       Advanced commands:
+
+       qq      Quit iinnffoo..
+
+       11      Pick first item in node's menu.
+
+       22 ---- 55 Pick second ... fifth item in node's menu.
+
+       gg      Move  to node specified by name.    You may include
+              a filename as well, as ((FFIILLEENNAAMMEE))NNOODDEENNAAMMEE..
+
+       ss      Search through  this  iinnffoo  file  for  a  specified
+              string,  and  select  the  node  in  which the next
+              occurrence is found.
+
+       MM--xx pprriinntt--nnooddee
+              Pipe the contents of the current node  through  the
+              command     in     the     environment     variable
+              IINNFFOO__PPRRIINNTT__CCOOMMMMAANNDD..   If  the  variable  does   not
+              exist, the node is simply piped to llpprr..
+
+EENNVVIIRROONNMMEENNTT
+       IINNFFOOPPAATTHHSS
+              A colon-separated list of directories to search for
+              iinnffoo files.  Used if ----ddiirreeccttoorryy is not given.
+
+       IINNFFOO__PPRRIINNTT__CCOOMMMMAANNDD
+              The command used for printing.
+
+SSEEEE AALLSSOO
+       eemmaaccss(1)
+
+AAUUTTHHOORR
+              Brian Fox, Free Software Foundation
+              bfox@ai.mit.edu
+
+MMAANNUUAALL AAUUTTHHOORR
+              Robert Lupton; updated by Robert J. Chassell.
+              rhl@astro.princeton.edu; bob@gnu.ai.mit.edu
+
+
+
+
+
+
+
+
+
+
+
+
+                        7th December 1990                       3
+
+

@@ -1,0 +1,66 @@
+
+
+
+LOCATE(1L)                                             LOCATE(1L)
+
+
+NNAAMMEE
+       locate - list files in databases that match a pattern
+
+SSYYNNOOPPSSIISS
+       llooccaattee [-d path] [--database=path] pattern...
+
+DDEESSCCRRIIPPTTIIOONN
+       This manual page documents the GNU version of llooccaattee.  For
+       each given pattern, llooccaattee searches one or more  databases
+       of  file pathnames and displays the pathnames that contain
+       the pattern.  Patterns can contain shell-style metacharac-
+       ters: `*', `?', and `[]'.  The metacharacters do not treat
+       `/' or `.'  specially.  Patterns that contain  metacharac-
+       ters  should  be  quoted to protect them from expansion by
+       the shell.
+
+       If a pattern is a plain string -- it contains no metachar-
+       acters  --  llooccaattee  displays all pathnames in the database
+       that contain that string anywhere.  If a pattern does con-
+       tain metacharacters, it only displays pathnames that match
+       the pattern exactly.  As a result, patterns  that  contain
+       metacharacters  should  usually begin with a `*', and will
+       most often end with one as well.  The exceptions are  pat-
+       terns  that are intended to explicitly match the beginning
+       or end of a pathname.
+
+       The filename databases contain lists  of  the  files  that
+       were on the system whenever the database was last updated.
+       The pathname of the default database, the  frequency  with
+       which it is updated, and the directories for which it con-
+       tains entries are configurable by the  system  administra-
+       tor.
+
+       llooccaattee  supports  having  multiple filename databases; for
+       example, there could be one on each filesystem.   You  can
+       tell llooccaattee to use alternate filename databases instead of
+       the default  one  by  giving  a  colon-separated  list  of
+       database  pathnames  as  either  an  argument to the _-_d or
+       _-_-_d_a_t_a_b_a_s_e options or as  the  value  of  the  environment
+       variable  LLOOCCAATTEE__PPAATTHH.   The option overrides the environ-
+       ment variable if both are used.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                1
+
+

@@ -1,0 +1,264 @@
+
+
+
+OD(1L)                                                     OD(1L)
+
+
+NNAAMMEE
+       od - dump files in octal and other formats
+
+SSYYNNOOPPSSIISS
+       oodd  [-abcdfhiloxv]  [-s[bytes]] [-w[bytes]] [-A radix] [-j
+       bytes]   [-N   bytes]   [-t   type]   [--skip-bytes=bytes]
+       [--address-radix=radix]    [--read-bytes=bytes]    [--for-
+       mat=type]    [--output-duplicates]     [--strings[=bytes]]
+       [--width[=bytes]]   [--traditional]  [--help]  [--version]
+       [file...]
+
+DDEESSCCRRIIPPTTIIOONN
+       This manual page documents the  GNU  version  of  oodd.   oodd
+       writes  to  the  standard output the contents of the given
+       files, or of the standard input if the name `-' is  given.
+       Each  line  of  the  output  consists of the offset in the
+       input file in the leftmost column of each  line,  followed
+       by  one or more columns of data from the file, in a format
+       controlled by the options.  By default, oodd prints the file
+       offsets  in octal and the file data as two-byte octal num-
+       bers.
+
+
+   OOPPTTIIOONNSS
+       _-_A_, _-_-_a_d_d_r_e_s_s_-_r_a_d_i_x_=_r_a_d_i_x
+              Select the base in which file offsets are  printed.
+              _r_a_d_i_x can be one of the following:
+
+              d      decimal
+
+              o      octal
+
+              x      hexadecimal
+
+              n      none (do not print offsets)
+
+       The default is octal.
+
+       _-_j_, _-_-_s_k_i_p_-_b_y_t_e_s_=_b_y_t_e_s
+              Skip  _b_y_t_e_s input bytes before formatting and writ-
+              ing.  If bbyytteess begins with  `0x'  or  `0X',  it  is
+              interpreted in hexadecimal; otherwise, if it begins
+              with `0', in octal; otherwise, in decimal.  Append-
+              ing  `b' multiplies it by 512, `k' by 1024, and `m'
+              by 1048576.
+
+       _-_N_, _-_-_r_e_a_d_-_b_y_t_e_s_=_b_y_t_e_s
+              Only output up to _b_y_t_e_s bytes of each  input  file.
+              Any  prefixes and suffixes on bbyytteess are interpreted
+              as for the _-_j option.
+
+       _-_t_, _-_-_f_o_r_m_a_t_=_t_y_p_e
+              Select the format in which to output the file data.
+              _t_y_p_e  is  a string of one or more of the below type
+
+
+
+FSF                     GNU Text Utilities                      1
+
+
+
+
+
+OD(1L)                                                     OD(1L)
+
+
+              indicator characters.  If you include more than one
+              type indicator character in a single _t_y_p_e string or
+              use this option more than once, oodd writes one  copy
+              of  each  output  line using each of the data types
+              that you specified, in the order  that  you  speci-
+              fied.
+
+              a      named character
+
+              c      ASCII character or backslash escape
+
+              d      signed decimal
+
+              f      floating point
+
+              o      octal
+
+              u      unsigned decimal
+
+              x      hexadecimal
+
+       Except  for  types `a' and `c', you can specify the number
+       of bytes to use in interpreting each number in  the  given
+       data type by following the type indicator character with a
+       decimal integer.  Alternately, you can specify the size of
+       one  of  the C compiler's built-in data types by following
+       the type indicator character with  one  of  the  following
+       characters.  For integers (d, o, u, x):
+
+              C      char
+
+              S      short
+
+              I      int
+
+              L      long
+
+       For floating point (f):
+
+              F      float
+
+              D      double
+
+              L      long double
+
+       _-_v_, _-_-_o_u_t_p_u_t_-_d_u_p_l_i_c_a_t_e_s
+              Output  consecutive  lines  that are identical.  By
+              default, when two or more consecutive output  lines
+              would be equal, oodd outputs only the first line, and
+              puts just an asterisk  on  the  following  line  to
+              indicate that identical lines have been elided.
+
+       _-_s_, _-_-_s_t_r_i_n_g_s_[_=_b_y_t_e_s_]
+              Instead  of  the  normal output, output only string
+
+
+
+FSF                     GNU Text Utilities                      2
+
+
+
+
+
+OD(1L)                                                     OD(1L)
+
+
+              constants in the input, which are a run of at least
+              _b_y_t_e_s  ASCII  graphic  (or  formatting) characters,
+              terminated by a  NUL.   If  _b_y_t_e_s  is  omitted,  it
+              defaults to 3.
+
+       _-_w_, _-_-_w_i_d_t_h_[_=_b_y_t_e_s_]
+              The  number  of  input  bytes  to format per output
+              line.  It must be a multiple of  the  least  common
+              multiple of the sizes associated with the specified
+              output types.  If _b_y_t_e_s is omitted, it defaults  to
+              32.   If  this  option is not given, it defaults to
+              16.
+
+       _-_-_h_e_l_p Print a usage message and exit with a non-zero sta-
+              tus.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit.
+
+       The next several options map  the  old,  pre-POSIX  format
+       specification  options  to  the corresponding POSIX format
+       specs.  GNU oodd accepts any combination of  old-  and  new-
+       style options.  Format specification options accumulate.
+
+       _-_a     Output as named characters.  Equivalent to _-_t _a.
+
+       _-_b     Output as octal bytes.  Equivalent to _-_t _o_C.
+
+       _-_c     Output  as  ASCII  characters or backslash escapes.
+              Equivalent to _-_t _c.
+
+       _-_d     Output as unsigned decimal shorts.   Equivalent  to
+              _-_t _u_2.
+
+       _-_f     Output as floats.  Equivalent to _-_t _f_F.
+
+       _-_h     Output as hexadecimal shorts.  Equivalent to _-_t _x_2.
+
+       _-_i     Output as decimal shorts.  Equivalent to _-_t _d_2.
+
+       _-_l     Output as decimal longs.  Equivalent to _-_t _d_4.
+
+       _-_o     Output as octal shorts.  Equivalent to _-_t _o_2.
+
+       _-_x     Output as hexadecimal shorts.  Equivalent to _-_t _x_2.
+
+       _-_-_t_r_a_d_i_t_i_o_n_a_l
+              Recognize  the  pre-POSIX non-option arguments that
+              some older versions of od accepted.  The  following
+              syntax
+              oodd     --traditional     [file]    [[+]offset[.][b]
+              [[+]label[.][b]]]
+              can be  used  to  specify  at  most  one  file  and
+
+
+
+FSF                     GNU Text Utilities                      3
+
+
+
+
+
+OD(1L)                                                     OD(1L)
+
+
+              optional  arguments  specifying  an  offset  and  a
+              pseudo-start address, _l_a_b_e_l_.  By default, _o_f_f_s_e_t is
+              interpreted  as an octal number specifying how many
+              input bytes to skip before formatting and  writing.
+              The  optional  trailing  decimal  point  forces the
+              interpretation of _o_f_f_s_e_t as a decimal  number.   If
+              no  decimal is specified and the offset begins with
+              `0x' or `0x' it is  interpreted  as  a  hexadecimal
+              number.   If there is a trailing `b', the number of
+              bytes skipped will be  _o_f_f_s_e_t  multiplied  by  512.
+              The label argument is interpreted just like offset,
+              but it specifies an  initial  pseudo-address.   The
+              pseudo  addresses are displayed in parentheses fol-
+              lowing any normal address.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU Text Utilities                      4
+
+

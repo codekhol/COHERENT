@@ -1,0 +1,66 @@
+
+
+
+ZDIFF(1)                                                 ZDIFF(1)
+
+
+NNAAMMEE
+       zcmp, zdiff - compare compressed files
+
+SSYYNNOOPPSSIISS
+       zzccmmpp [ cmp_options ] file1 [ file2 ]
+       zzddiiffff [ diff_options ] file1 [ file2 ]
+
+DDEESSCCRRIIPPTTIIOONN
+       _Z_c_m_p and _z_d_i_f_f are used to invoke the _c_m_p or the _d_i_f_f pro-
+       gram on  compressed  files.   All  options  specified  are
+       passed  directly to _c_m_p or _d_i_f_f.  If only 1 file is speci-
+       fied, then the files compared  are  _f_i_l_e_1  and  an  uncom-
+       pressed  _f_i_l_e_1.gz.   If two files are specified, then they
+       are uncompressed if necessary and fed to _c_m_p or _d_i_f_f.  The
+       exit status from _c_m_p or _d_i_f_f is preserved.
+
+SSEEEE AALLSSOO
+       cmp(1),  diff(1),  zmore(1), zgrep(1), znew(1), zforce(1),
+       gzip(1), gzexe(1)
+
+BBUUGGSS
+       Messages from the _c_m_p or _d_i_f_f programs refer to  temporary
+       filenames instead of those specified.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                1
+
+

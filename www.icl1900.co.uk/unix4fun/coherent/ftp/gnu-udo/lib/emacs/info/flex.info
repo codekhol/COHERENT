@@ -1,0 +1,42 @@
+This is Info file flex.info, produced by Makeinfo-1.55 from the input
+file flex.texinfo.
+
+START-INFO-DIR-ENTRY
+
+* flex: (flex).
+		Fast lexical analyzer generator.
+
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+flex.info-1: 184
+flex.info-2: 50090
+
+Tag Table:
+(Indirect)
+Node: Top184
+Node: Introduction867
+Node: Text-Substitution1902
+Node: Counter2581
+Node: Toy3617
+Node: Files5287
+Node: Input Format6162
+Node: Patterns9114
+Node: Matching13525
+Node: Actions14760
+Node: Scanner22307
+Node: Start25770
+Node: Multiple Input31315
+Node: EOF34539
+Node: Misc36008
+Node: Parsers37161
+Node: Translation38053
+Node: Invoking39419
+Node: Performance50090
+Node: Incompatibilities58449
+Node: Diagnostics66572
+Node: Bugs68548
+Node: Acknowledgements70896
+
+End Tag Table

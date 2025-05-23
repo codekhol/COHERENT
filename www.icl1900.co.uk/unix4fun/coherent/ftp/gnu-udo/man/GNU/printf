@@ -1,0 +1,66 @@
+
+
+
+PRINTF(1L)                                             PRINTF(1L)
+
+
+NNAAMMEE
+       printf - format and print data
+
+SSYYNNOOPPSSIISS
+       pprriinnttff format [argument...]
+       pprriinnttff {--help,--version}
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU version of pprriinnttff.
+       pprriinnttff prints the _f_o_r_m_a_t string, interpreting  `%'  direc-
+       tives  and  `\'  escapes in the same way as the C `printf'
+       function.  The _f_o_r_m_a_t argument is re-used as many times as
+       necessary to convert all of the given arguments.
+
+       pprriinnttff interprets `\0ooo' as a an octal number (`ooo' is 0
+       to 3 digits) specifying a character to print, and  `\xhhh'
+       as  a hexadecimal number (`hhh' is 1 to 3 digits) specify-
+       ing a character to print.  It has  an  additional  escape,
+       `\c',  which  causes  pprriinnttff to produce no further output,
+       and an additional directive, `%b', which prints its  argu-
+       ment  string with `\' escapes interpreted the way they are
+       in the _f_o_r_m_a_t string.
+
+   OOPPTTIIOONNSS
+       When GNU pprriinnttff is invoked with exactly one argument,  the
+       following options are recognized:
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

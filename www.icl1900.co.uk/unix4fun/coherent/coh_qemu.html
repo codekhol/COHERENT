@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Running COHERENT on QEMU</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX, QEMU, vgalib, X11R5, Bellcore MGR">
+</head>
+
+<body>
+
+<div id="navigation">
+<nav>
+<ul>
+<li><a href="coh_qemu.html#intro">Introduction</a></li>
+<li><a href="index.html">Previous Page</a></li>
+</ul>
+</nav>
+</div>
+
+<div id="content">
+
+<a name="intro"></a>
+<p><b><font size="5">Introduction:</font></b></p>
+<br>
+<br>
+QEMU is a generic Open Source machine emulation and virtualization, for
+documentation and downloads see the
+<a href="https://www.qemu.org">QEMU project web site</a>.
+The software can be used on Linux, OSX, BSD, Solaris and Windows.
+An installation on Linux and OSX systems is trivial,
+just install the package <b>qemu</b> with the package management used
+on the system. For OSX systems it is suggested to use
+<a href="https://brew.sh">brew</a>
+for the installation. For Windows systems an installation package is
+provided, so that the software is easily installable as well.
+<br>
+<br>
+QEMU releases before 5.1 have a serious bug somewhere in
+the CPU/MMU emulation, as the following
+<a href="https://youtu.be/UKLVO5N31HI">video</a>
+shows, so do not use these.
+<br>
+<br>
+This virtualization will not run every COHERENT version, the floppy disk and
+harddisk emulations are not accurate enough, to run some of the systems.
+Also I've not installed COHERENT from scratch under QEMU, for 4.2
+I've converted the VMDK disk images produced with Virtualbox to an image
+format usable with QEMU. This can be done with the Virtualbox or QEMU
+tool:
+<br>
+<br>
+<code>
+VBoxManage clonemedium disk ~/VirtualBox\ VMs/COHERENT-4.2.10/disk1.vmdk ~/coherent/qemu-coherent-4.2.img --format RAW
+<br>
+qemu-img convert -f vmdk -O raw ~/VirtualBox\ VMs/COHERENT-4.2.10/disk1.vmdk ~/coherent/qemu-coherent-4.2.img
+</code>
+<p>
+After installing some additional software I got aware that QEMU doesn't
+like disk image files with the extension .dsk, it wants .img instead.
+So if you want to install anything from disk images rename the files.
+<p>
+For other version of COHERENT I'm using the disk images installed
+on PCem available
+<a href="https://www.autometer.de/unix4fun/coherent/ftp/vms/">here</a>.
+<br>
+<br>
+To run QEMU with these disk image I'm using the following shell scripts:
+<br>
+<br>
+COHERENT 3.2:
+<pre>
+<code>
+#!/bin/sh
+
+exec qemu-system-x86_64 -cpu 486 -M isapc -vga std -m 2 -rtc base=localtime \
+-drive format=raw,file=$HOME/coherent/qemu-coherent-3.2.img,index=0 \
+-drive format=raw,file=$HOME/coherent/transfer.img,index=1,if=floppy \
+-chardev socket,id=com1,port=4020,host=localhost,nodelay,server,nowait,telnet \
+-serial chardev:com1 \
+-chardev socket,id=com2,port=4021,host=localhost,nodelay,server,nowait \
+-serial chardev:com2 &
+</code>
+</pre>
+<br>
+COHERENT 4.2:
+<pre>
+<code>
+#!/bin/sh
+
+exec qemu-system-x86_64 -cpu 486 -M isapc -vga std -m 16 -rtc base=localtime \
+-drive format=raw,file=$HOME/coherent/qemu-coherent-4.2.img,index=0 \
+-drive format=raw,file=$HOME/coherent/transfer.img,index=1,if=floppy \
+-chardev socket,id=com1,port=4020,host=localhost,nodelay,server,nowait,telnet \
+-serial chardev:com1 \
+-chardev socket,id=com2,port=4021,host=localhost,nodelay,server,nowait \
+-serial chardev:com2 &
+</code>
+</pre>
+<br>
+The floppy disk image in drive B is DOS formatted for easy file transfer between
+the host system and the COHERENT system, on the hostside use <b>mtools</b>
+available for any system.
+For connecting a second harddisk to the systems add a line like
+the following to the scripts:
+<pre>
+<code>
+-drive format=raw,file=$HOME/coherent/workdisk.img,index=1 \
+</code>
+</pre>
+This doesn't work with version 3.2, but with 3.2.1 build from sources,
+the cause likely is the QEMU BIOS and the way the IDE disks are
+inquired by the device driver.
+<p>
+With configuration of the serial ports
+as TCP server ports we can telnet into the COHERENT system from the host.
+Also we can run communication programs like uucp over the TCP
+sockets, this is why com2 is configured for raw protocol and
+not telnet. I made a
+<a href="https://www.youtube.com/watch?v=kXQa5RBa8fs">video</a>
+where I use Kermit between a QEMU VM running COHERENT and a z80pack
+IMSAI 8080 VM running CP/M.
+<p>
+The PS/2 mouse port emulation provided by QEMU is not accurate, the system
+waits in the boot screen. With a mouse click into the console window the
+boot process continues because a mouse event is generated. Also generating
+a keyboard event with a non printable key works.
+<p>
+QEMU can display VGA console graphics with vgalib, here an example
+of the MWC logo:
+<p>
+<center>
+<img src="mwc-vga.png" alt="MWC logo VGA graphics" title="MWC logo VGA graphics"
+style="width:600px;height:400px;">
+</center>
+<p>
+QEMU also can run the monochrome MWC/RTR X11 server with 800x600 resolution
+and the PS/2 mouse works too:
+<p>
+<center>
+<img src="x11-qemu.png" alt="X11 QEMU" title="X11 QEMU"
+style="width:600px;height:400px;">
+</center>
+<p>
+By default QEMU provides a PS/2 mouse, but this of course
+requires support for the protocol in applications. For applications
+that only support a serial mouse a VM is created with the following
+script:
+<pre>
+<code>
+#!/bin/sh
+
+exec qemu-system-x86_64 -cpu 486 -M isapc -vga std -m 16 -rtc base=localtime \
+-drive format=raw,file=$HOME/coherent/qemu-coh4072-graphics.img,index=0 \
+-drive format=raw,file=$HOME/coherent/transfer.img,index=1,if=floppy \
+-chardev msmouse,id=com1 \
+-serial chardev:com1 \
+-chardev socket,id=com2,port=4021,host=localhost,nodelay,server,nowait,telnet \
+-serial chardev:com2 &
+</code>
+</pre>
+With a serial Microsoft mouse configuration it is possible
+to run Bellcore MGR for example:
+<p>
+<center>
+<img src="mgr-qemu.png" alt="MGR QEMU" title="MGR QEMU"
+style="width:600px;height:400px;">
+</center>
+<p>
+The <b>ps</b> output in column K shows the process sizes in KILObytes,
+on a 386 system with 2-4 MB memory one can comfortably run this GUI
+with multiple windows and get some work done.
+
+</dev>
+
+</body>
+</html>

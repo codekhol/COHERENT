@@ -1,0 +1,594 @@
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+NNAAMMEE
+       GDBM  -  The  GNU database manager.  Includes ddbbmm and nnddbbmm
+       compatability. (Version 1.7.3.)
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee <<ggddbbmm..hh>>
+
+       eexxtteerrnn ggddbbmm__eerrrroorr
+       ggddbbmm__eerrrrnnoo
+
+       eexxtteerrnn cchhaarr
+       **ggddbbmm__vveerrssiioonn
+
+       GGDDBBMM__FFIILLEE
+       ggddbbmm__ooppeenn ((nnaammee,, bblloocckk__ssiizzee,, rreeaadd__wwrriittee,, mmooddee,, ffaattaall__ffuunncc))
+       cchhaarr ** nnaammee;;
+       iinntt bblloocckk__ssiizzee,, rreeaadd__wwrriittee,, mmooddee;;
+       vvooiidd ((**ffaattaall__ffuunncc)) (());;
+
+       vvooiidd
+       ggddbbmm__cclloossee ((ddbbff))
+       GGDDBBMM__FFIILLEE ddbbff;;
+
+       iinntt
+       ggddbbmm__ssttoorree ((ddbbff,, kkeeyy,, ccoonntteenntt,, ffllaagg))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       ddaattuumm kkeeyy,, ccoonntteenntt;;
+       iinntt ffllaagg;;
+
+       ddaattuumm
+       ggddbbmm__ffeettcchh ((ddbbff,, kkeeyy))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       ddaattuumm kkeeyy;;
+
+       iinntt
+       ggddbbmm__ddeelleettee ((ddbbff,, kkeeyy))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       ddaattuumm kkeeyy;;
+
+       ddaattuumm
+       ggddbbmm__ffiirrssttkkeeyy ((ddbbff))
+       GGDDBBMM__FFIILLEE ddbbff;;
+
+       ddaattuumm
+       ggddbbmm__nneexxttkkeeyy ((ddbbff,, kkeeyy))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       ddaattuumm kkeeyy;;
+
+       iinntt
+       ggddbbmm__rreeoorrggaanniizzee ((ddbbff))
+       GGDDBBMM__FFIILLEE ddbbff;;
+
+       vvooiidd
+       ggddbbmm__ssyynncc ((ddbbff))
+
+
+
+                             5/19/94                            1
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+       GGDDBBMM__FFIILLEE ddbbff;;
+
+       iinntt
+       ggddbbmm__eexxiissttss ((ddbbff,, kkeeyy))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       ddaattuumm kkeeyy;;
+
+       cchhaarr **
+       ggddbbmm__ssttrreerrrroorr ((eerrrrnnoo))
+       ggddbbmm__eerrrroorr eerrrrnnoo;;
+
+       iinntt
+       ggddbbmm__sseettoopptt ((ddbbff,, ooppttiioonn,, vvaalluuee,, ssiizzee))
+       GGDDBBMM__FFIILLEE ddbbff;;
+       iinntt ooppttiioonn;;
+       iinntt **vvaalluuee;;
+       iinntt ssiizzee;;
+
+
+       DDBBMM CCoommppaattaabbiilliittyy rroouuttiinneess::
+
+       ##iinncclluuddee <<ddbbmm..hh>>
+
+       iinntt
+       ddbbmmiinniitt ((nnaammee))
+       cchhaarr **nnaammee;;
+
+       iinntt
+       ssttoorree ((kkeeyy,, ccoonntteenntt))
+       ddaattuumm kkeeyy,, ccoonntteenntt;;
+
+       ddaattuumm
+       ffeettcchh ((kkeeyy))
+       ddaattuumm kkeeyy;;
+
+       iinntt
+       ddeelleettee ((kkeeyy))
+       ddaattuumm kkeeyy;;
+
+       ddaattuumm
+       ffiirrssttkkeeyy (())
+
+       ddaattuumm
+       nneexxttkkeeyy ((kkeeyy))
+       ddaattuumm kkeeyy;;
+
+       iinntt
+       ddbbmmcclloossee (())
+
+
+       NNDDBBMM CCoommppaattaabbiilliittyy rroouuttiinneess::
+
+       ##iinncclluuddee <<nnddbbmm..hh>>
+
+
+
+
+                             5/19/94                            2
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+       DDBBMM
+       **ddbbmm__ooppeenn ((nnaammee,, ffllaaggss,, mmooddee))
+       cchhaarr **nnaammee;;
+       iinntt ffllaaggss,, mmooddee;;
+
+       vvooiidd
+       ddbbmm__cclloossee ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       ddaattuumm
+       ddbbmm__ffeettcchh ((ffiillee,, kkeeyy))
+       DDBBMM **ffiillee;;
+       ddaattuumm kkeeyy;;
+
+       iinntt
+       ddbbmm__ssttoorree ((ffiillee,, kkeeyy,, ccoonntteenntt,, ffllaaggss))
+       DDBBMM **ffiillee;;
+       ddaattuumm kkeeyy,, ccoonntteenntt;;
+       iinntt ffllaaggss;;
+
+       iinntt
+       ddbbmm__ddeelleettee ((ffiillee,, kkeeyy))
+       DDBBMM **ffiillee;;
+       ddaattuumm kkeeyy;;
+
+       ddaattuumm
+       ddbbmm__ffiirrssttkkeeyy ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       ddaattuumm
+       ddbbmm__nneexxttkkeeyy ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       iinntt
+       ddbbmm__eerrrroorr ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       iinntt
+       ddbbmm__cclleeaarreerrrr ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       iinntt
+       ddbbmm__ppaaggffnnoo ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       iinntt
+       ddbbmm__ddiirrffnnoo ((ffiillee))
+       DDBBMM **ffiillee;;
+
+       iinntt
+       ddbbmm__rrddoonnllyy ((ffiillee))
+       DDBBMM **ffiillee;;
+
+
+
+
+
+                             5/19/94                            3
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+DDEESSCCRRIIPPTTIIOONN
+       GNU  dbm  is a library of routines that manages data files
+       that contain key/data pairs.  The access provided is  that
+       of  storing,  retrieval,  and  deletion  by key and a non-
+       sorted traversal of all keys.  A process is allowed to use
+       multiple data files at the same time.
+
+       A  process  that  opens  a  gdbm  file  is designated as a
+       "reader" or a "writer".  Only one writer may open  a  gdbm
+       file  and  many  readers  may  open the file.  Readers and
+       writers can not open the gdbm file at the same  time.  The
+       procedure for opening a gdbm file is:
+
+         GDBM_FILE dbf;
+
+         dbf  =  gdbm_open  ( name, block_size, read_write, mode,
+       fatal_func )
+
+       _N_a_m_e is the name of the file (the complete name, gdbm does
+       not  append  any  characters to this name).  _B_l_o_c_k___s_i_z_e is
+       the size of a single transfer from disk  to  memory.  This
+       parameter  is  ignored unless the file is a new file.  The
+       minimum size is 512.  If it is less than 512, dbm will use
+       the  stat  block size for the file system.  _R_e_a_d___w_r_i_t_e can
+       have one of the following values:
+       GGDDBBMM__RREEAADDEERR reader
+       GGDDBBMM__WWRRIITTEERR writer
+       GGDDBBMM__WWRRCCRREEAATT writer - if database does  not  exist  create
+       new one
+       GGDDBBMM__NNEEWWDDBB  writer - create new database regardless if one
+       exists
+       For the last three (writers of the database) there  is  an
+       extra  value  that that can be added to _r_e_a_d___w_r_i_t_e by bit-
+       wise or, GGDDBBMM__FFAASSTT..  This requests  that  gdbm  write  the
+       database  with  no  disk file syncronization.  This allows
+       faster writes, but may produce an inconsistant database in
+       the event of abnormal termination of the writer.
+       _M_o_d_e  is  the  file mode (see cchhmmoodd((22)) and ooppeenn((22))) if the
+       file is created. _(_*_F_a_t_a_l___f_u_n_c_) _(_) is a function for dbm to
+       call  if  it  detects a fatal error. The only parameter of
+       this function is a string.  If the value of 0 is provided,
+       gdbm will use a default function.
+
+       The  return  value  _d_b_f is the pointer needed by all other
+       routines to access that gdbm file.  If the return  is  the
+       NULL  pointer,  ggddbbmm__ooppeenn  was not successful.  The errors
+       can be found in _g_d_b_m___e_r_r_n_o for gdbm errors  and  in  _e_r_r_n_o
+       for system errors.  (For error codes, see gdbmerrno.h.)
+
+       In all of the following calls, the parameter _d_b_f refers to
+       the pointer returned from ggddbbmm__ooppeenn.
+
+       It is important that every file  opened  is  also  closed.
+       This  is  needed  to update the reader/writer count on the
+
+
+
+                             5/19/94                            4
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+       file.  This is done by:
+
+         gdbm_close (dbf);
+
+
+       The database is used by 3  primary  routines.   The  first
+       stores data in the database.
+
+         ret = gdbm_store ( dbf, key, content, flag )
+
+       _D_b_f  is the pointer returned by ggddbbmm__ooppeenn.  _K_e_y is the key
+       data.  _C_o_n_t_e_n_t is the data to be associated with the  _k_e_y.
+       _F_l_a_g can have one of the following values:
+       GGDDBBMM__IINNSSEERRTT insert only, generate an error if key exists
+       GGDDBBMM__RREEPPLLAACCEE replace contents if key exists.
+
+       If  a  reader  calls  ggddbbmm__ssttoorree,, tthhee rreettuurrnn vvaalluuee wwiillll bbee
+       --11..   IIff  ccaalllleedd  wwiitthh  GGDDBBMM__IINNSSEERRTT  aanndd  _k_e_y  is  in  the
+       database,  the  return  value  will  be 1.  Otherwise, the
+       return value is 0.
+
+       _N_O_T_I_C_E_: _I_f _y_o_u _s_t_o_r_e _d_a_t_a _f_o_r _a _k_e_y _t_h_a_t _i_s _a_l_r_e_a_d_y _i_n _t_h_e
+       _d_a_t_a _b_a_s_e_, _g_d_b_m _r_e_p_l_a_c_e_s _t_h_e _o_l_d _d_a_t_a _w_i_t_h _t_h_e _n_e_w _d_a_t_a _i_f
+       _c_a_l_l_e_d _w_i_t_h _G_D_B_M___R_E_P_L_A_C_E_.  _Y_o_u _d_o _n_o_t _g_e_t _t_w_o  _d_a_t_a  _i_t_e_m_s
+       _f_o_r  _t_h_e  _s_a_m_e  _k_e_y  _a_n_d  _y_o_u  _d_o  _n_o_t  _g_e_t  _a_n _e_r_r_o_r _f_r_o_m
+       _g_d_b_m___s_t_o_r_e_.
+
+       _N_O_T_I_C_E_: _T_h_e _s_i_z_e _i_n _g_d_b_m _i_s _n_o_t  _r_e_s_t_r_i_c_t_e_d  _l_i_k_e  _d_b_m  _o_r
+       _n_d_b_m_.  _Y_o_u_r _d_a_t_a _c_a_n _b_e _a_s _l_a_r_g_e _a_s _y_o_u _w_a_n_t_.
+
+
+       To search for some data:
+
+         content = gdbm_fetch ( dbf, key )
+
+       _D_b_f  is the pointer returned by ggddbbmm__ooppeenn.  _K_e_y is the key
+       data.
+
+
+       If the _d_p_t_r element of the return value is NULL,  no  data
+       was found.  Otherwise the return value is a pointer to the
+       found data.  The storage space for  the  _d_p_t_r  element  is
+       allocated  using  mmaalllloocc((33CC)).  GGddbbmm _d_o_e_s _n_o_t _a_u_t_o_m_a_t_i_c_a_l_l_y
+       _f_r_e_e _t_h_i_s _d_a_t_a_.  _I_t _i_s _t_h_e _p_r_o_g_r_a_m_m_e_r_'_s _r_e_s_p_o_n_s_i_b_i_l_i_t_y  _t_o
+       _f_r_e_e _t_h_i_s _s_t_o_r_a_g_e _w_h_e_n _i_t _i_s _n_o _l_o_n_g_e_r _n_e_e_d_e_d_.
+
+
+       To search for some data, without retrieving it:
+
+         ret = gdbm_exists ( dbf, key )
+
+       _D_b_f  is the pointer returned by ggddbbmm__ooppeenn.  _K_e_y is the key
+       data to search for.
+
+
+
+
+                             5/19/94                            5
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+       If the _k_e_y is found within the database, the return  value
+       _r_e_t  will  be  true.   If nothing appropiate is found, _r_e_t
+       will be false.  This routine is useful  for  checking  for
+       the  existance  of a record, without performing the memory
+       allocation done by ggddbbmm__ffeettcchh.
+
+
+       To remove some data from the database:
+
+         ret = gdbm_delete ( dbf, key )
+
+       _D_b_f is the pointer returned by ggddbbmm__ooppeenn.  _K_e_y is the  key
+       data.
+
+       The  return  value is -1 if the item is not present or the
+       requester is a reader.  The return value is 0 if there was
+       a successful delete.
+
+
+       The next two routines allow for accessing all items in the
+       database.  This access is not key sequential,  but  it  is
+       guaranteed  to visit every key in the database once.  (The
+       order has to do with the hash values.)
+
+         key = gdbm_firstkey ( dbf )
+
+         nextkey = gdbm_nextkey ( dbf, key )
+
+       _D_b_f is the pointer returned by ggddbbmm__ooppeenn. _K_e_y is  the  key
+       data.
+
+       The  return  values  are  both of type ddaattuumm.  If the _d_p_t_r
+       element of the return value is NULL, there is no first key
+       or  next key.  Again notice that _d_p_t_r points to data allo-
+       cated by mmaalllloocc((33CC)) and ggddbbmm will not free it for you.
+
+       These functions were intended to  visit  the  database  in
+       read-only   algorithms,  for  instance,  to  validate  the
+       database or similar operations.
+
+       File `visiting' is based on a `hash  table'.   _g_d_b_m___d_e_l_e_t_e
+       re-arranges  the  hash  table to make sure that any colli-
+       sions in the table do not leave some  item  `un-findable'.
+       The  original  key  order  is  NOT  guaranteed  to  remain
+       unchanged in ALL instances.  It is possible that some  key
+       will  not  be visited if a loop like the following is exe-
+       cuted:
+
+          key = gdbm_firstkey ( dbf );
+          while ( key.dptr ) {
+             nextkey = gdbm_nextkey ( dbf, key );
+             if ( some condition ) {
+                gdbm_delete ( dbf, key );
+                free ( key.dptr );
+
+
+
+                             5/19/94                            6
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+             }
+             key = nextkey;
+          }
+
+
+       The following routine should be used very infrequently.
+
+         ret = gdbm_reorganize ( dbf )
+
+       If you have had a lot  of  deletions  and  would  like  to
+       shrink  the space used by the ggddbbmm file, this routine will
+       reorganize the database.  GGddbbmm will not shorten the length
+       of  a  ggddbbmm  file  except  by  using  this reorganization.
+       (Deleted file space will be reused.)
+
+
+       If you use the GGDDBBMM__FFAASSTT value in your ggddbbmm__ooppeenn call, the
+       following  routine  can  be  used  to  guarantee  that the
+       database is physically written to the disk file.
+
+         gdbm_sync ( dbf )
+
+       It will not return until  the  disk  file  state  is  syn-
+       cronized with the in-memory state of the database.
+
+
+       To  convert  a ggddbbmm error code into English text, use this
+       routine:
+
+         ret = gdbm_strerror ( errno )
+
+       Where eerrrrnnoo is of  type  ggddbbmm__eerrrroorr,  usually  the  global
+       variable ggddbbmm__eerrrrnnoo.  The appropiate phrase is returned.
+
+
+       GGddbbmm now supports the ability to set certain options on an
+       already open database.
+
+         ret = gdbm_setopt ( dbf, option, value, size )
+
+       Where ddbbff is the return value  from  a  previous  call  to
+       ggddbbmm__ooppeenn,  and ooppttiioonn specifies which option to set.  The
+       valid options are currently:
+
+         GDBM_CACHESIZE - Set the size of the internal bucket
+         cache.  This  option  may  only  be  set  once  on  each
+       GGDDBBMM__FFIILLEE
+         descriptor,  and  is  set  automatically to 100 upon the
+       first
+         access to the database.
+
+         GDBM_FASTMODE - Set ffaasstt mmooddee to either on or off.  This
+         allows ffaasstt mmooddee to be toggled on an already open and
+         active  database.  vvaalluuee  (see  below)  should be set to
+
+
+
+                             5/19/94                            7
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+       either
+         TRUE or FALSE.
+
+       vvaalluuee is the value to set ooppttiioonn to, specified as an inte-
+       ger  pointer.   ssiizzee is the size of the data pointed to by
+       vvaalluuee.  The return value will be -1  upon  failure,  or  0
+       upon  success.  The global variable ggddbbmm__eerrrrnnoo will be set
+       upon failure.
+
+       For instance, to set a database to  use  a  cache  of  10,
+       after opening it with ggddbbmm__ooppeenn, but prior to accessing it
+       in any way, the following code could be used:
+
+         int value = 10;
+
+         ret  =   gdbm_setopt(   dbf,   GDBM_CACHESIZE,   &value,
+       sizeof(int));
+
+
+       The following two external variables may be useful:
+
+       ggddbbmm__eerrrrnnoo  is the variable that contains more information
+       about gdbm errors.  (gdbm.h has  the  definitions  of  the
+       error  values  and defines gdbm_errno as an external vari-
+       able.)
+       ggddbbmm__vveerrssiioonn is the string containing the version informa-
+       tion.
+
+
+       There  are  a  few  more  things of interest.  First, ggddbbmm
+       files are not "sparse".  You can copy them with  the  UNIX
+       ccpp((11)) command and they will not expand in the copying pro-
+       cess.  Also, there is a compatibility mode  for  use  with
+       programs that already use UNIX ddbbmm.  In this compatibility
+       mode, no gdbm file pointer is required by the  programmer,
+       and  only  one file may be opened at a time.  All users in
+       compatibility mode are assumed to be writers.  If the ggddbbmm
+       file  is  a  read only, it will fail as a writer, but will
+       also try to open it as a reader.  All returned pointers in
+       datum  structures point to data that ggddbbmm WILL free.  They
+       should be treated as static pointers (as standard UNIX ddbbmm
+       does).
+
+
+
+LLIINNKKIINNGG
+       This  library is accessed by specifying _-_l_g_d_b_m as the last
+       parameter to the compile line, e.g.:
+
+            gcc -o prog prog.c -lgdbm
+
+
+
+
+
+
+
+                             5/19/94                            8
+
+
+
+
+
+GDBM(3)                                                   GDBM(3)
+
+
+BBUUGGSS
+SSEEEE AALLSSOO
+       dbm, ndbm
+
+
+AAUUTTHHOORR
+       by Philip A. Nelson.  Copyright (C)  1990   Free  Software
+       Foundation, Inc.
+
+       GDBM is free software; you can redistribute it and/or mod-
+       ify it under the terms of the GNU General  Public  License
+       as  published by the Free Software Foundation; either ver-
+       sion 1, or (at your option) any later version.
+
+       GDBM is distributed in the hope that it  will  be  useful,
+       but  WITHOUT  ANY  WARRANTY; without even the implied war-
+       ranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  PUR-
+       POSE.   See  the  GNU  General  Public  License  for  more
+       details.
+
+       You should have received a copy of the GNU General  Public
+       License  along  with  GDBM; see the file COPYING.  If not,
+       write to the Free Software Foundation, 675 Mass Ave,  Cam-
+       bridge, MA 02139, USA.
+
+       You may contact the author by:
+          e-mail:  phil@wwu.edu
+         us-mail:  Philip A. Nelson
+       Computer Science Department
+       Western Washington University
+       Bellingham, WA 98226
+
+       You may contact the current maintainer by:
+          e-mail:  downsj@CSOS.ORST.EDU
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             5/19/94                            9
+
+

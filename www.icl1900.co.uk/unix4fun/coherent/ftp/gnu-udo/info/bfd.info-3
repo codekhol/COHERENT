@@ -1,0 +1,841 @@
+This is Info file bfd.info, produced by Makeinfo-1.55 from the input
+file ./bfd.texinfo.
+
+START-INFO-DIR-ENTRY
+* Bfd::                         The Binary File Descriptor library.
+END-INFO-DIR-ENTRY
+
+   This file documents the BFD library.
+
+   Copyright (C) 1991 Free Software Foundation, Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, subject to the
+terms of the GNU General Public License, which includes the provision
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+File: bfd.info,  Node: Architectures,  Next: Opening and Closing,  Prev: Targets,  Up: BFD front end
+
+Architectures
+=============
+
+   BFD's idea of an architecture is implimented in `archures.c'. BFD
+keeps one atom in a BFD describing the architecture of the data
+attached to the BFD;  a pointer to a `bfd_arch_info_type'.  Pointers to
+structures can be requested independently of a bfd so that an
+architecture's information can be interrogated without access to an
+open bfd.  The arch information is provided by each architecture
+package.  The set of default architectures is selected by the #define
+`SELECT_ARCHITECTURES'.  This is normally set up in the
+`config/target.mt' file of your choice.  If the name is not defined,
+then all the architectures supported are included.  When BFD starts up,
+all the architectures are called with an initialize method.  It is up
+to the architecture back end to insert as many items into the list of
+architectures as it wants to; generally this would be one for each
+machine and one for the default case (an item with a machine field of
+0).
+bfd_architecture
+----------------
+
+*Description*
+This enum gives the object file's CPU architecture, in a global sense
+-- i.e., what processor family does it belong to?  There is another
+field, which indicates what processor within the family is in use.  The
+machine gives a number which distingushes different versions of the
+architecture, containing for example 2 and 3 for Intel i960 KA and i960
+KB, and 68020 and 68030 for Motorola 68020 and 68030.
+     enum bfd_architecture
+     {
+       bfd_arch_unknown,    /* File arch not known */
+       bfd_arch_obscure,    /* Arch known, not one of these */
+       bfd_arch_m68k,       /* Motorola 68xxx */
+       bfd_arch_vax,        /* DEC Vax */
+       bfd_arch_i960,       /* Intel 960 */
+          /* The order of the following is important.
+            lower number indicates a machine type that
+            only accepts a subset of the instructions
+            available to machines with higher numbers.
+            The exception is the "ca", which is
+            incompatible with all other machines except
+            "core". */
+     
+     #define bfd_mach_i960_core      1
+     #define bfd_mach_i960_ka_sa     2
+     #define bfd_mach_i960_kb_sb     3
+     #define bfd_mach_i960_mc        4
+     #define bfd_mach_i960_xa        5
+     #define bfd_mach_i960_ca        6
+     
+       bfd_arch_a29k,       /* AMD 29000 */
+       bfd_arch_sparc,      /* SPARC */
+       bfd_arch_mips,       /* MIPS Rxxxx */
+       bfd_arch_i386,       /* Intel 386 */
+       bfd_arch_we32k,      /* AT&T WE32xxx */
+       bfd_arch_tahoe,      /* CCI/Harris Tahoe */
+       bfd_arch_i860,       /* Intel 860 */
+       bfd_arch_romp,       /* IBM ROMP PC/RT */
+       bfd_arch_alliant,    /* Alliant */
+       bfd_arch_convex,     /* Convex */
+       bfd_arch_m88k,       /* Motorola 88xxx */
+       bfd_arch_pyramid,    /* Pyramid Technology */
+       bfd_arch_h8300,      /* Hitachi H8/300 */
+     #define bfd_mach_h8300   1
+     #define bfd_mach_h8300h  2
+       bfd_arch_rs6000,     /* IBM RS/6000 */
+       bfd_arch_hppa,       /* HP PA RISC */
+       bfd_arch_z8k,        /* Zilog Z8000 */
+     #define bfd_mach_z8001		1
+     #define bfd_mach_z8002		2
+       bfd_arch_h8500,      /* Hitachi H8/500 */
+       bfd_arch_sh,         /* Hitachi SH */
+       bfd_arch_alpha,      /* Dec Alpha */
+       bfd_arch_last
+       };
+
+bfd_arch_info
+-------------
+
+*Description*
+This structure contains information on architectures for use within BFD.
+
+     typedef struct bfd_arch_info
+     {
+       int bits_per_word;
+       int bits_per_address;
+       int bits_per_byte;
+       enum bfd_architecture arch;
+       long mach;
+       char *arch_name;
+       CONST  char *printable_name;
+       unsigned int section_align_power;
+       /* true if this is the default machine for the architecture */
+       boolean the_default;
+       CONST struct bfd_arch_info * (*compatible)
+     	PARAMS ((CONST struct bfd_arch_info *a,
+     	         CONST struct bfd_arch_info *b));
+     
+       boolean (*scan) PARAMS ((CONST struct bfd_arch_info *, CONST char *));
+        /* How to disassemble an instruction, producing a printable
+          representation on a specified stdio stream.  This isn't
+          defined for most processors at present, because of the size
+          of the additional tables it would drag in, and because gdb
+          wants to use a different interface.  */
+       unsigned int (*disassemble) PARAMS ((bfd_vma addr, CONST char *data,
+     				        PTR stream));
+     
+       struct bfd_arch_info *next;
+     } bfd_arch_info_type;
+
+`bfd_printable_name'
+....................
+
+*Synopsis*
+     CONST char *bfd_printable_name(bfd *abfd);
+   *Description*
+Return a printable string representing the architecture and machine
+from the pointer to the arch info structure
+`bfd_scan_arch'
+...............
+
+*Synopsis*
+     bfd_arch_info_type *bfd_scan_arch(CONST char *);
+   *Description*
+This routine is provided with a string and tries to work out if bfd
+supports any cpu which could be described with the name provided.  The
+routine returns a pointer to an arch_info structure if a machine is
+found, otherwise NULL.
+`bfd_arch_get_compatible'
+.........................
+
+*Synopsis*
+     CONST bfd_arch_info_type *bfd_arch_get_compatible(
+         CONST bfd *abfd,
+         CONST bfd *bbfd);
+   *Description*
+This routine is used to determine whether two BFDs' architectures and
+achine types are compatible.  It calculates the lowest common
+denominator between the two architectures and machine types implied by
+the BFDs and returns a pointer to an arch_info structure describing the
+compatible machine.
+`bfd_default_arch_struct'
+.........................
+
+*Description*
+The `bfd_default_arch_struct' is an item of `bfd_arch_info_type' which
+has been initialized to a fairly generic state.  A BFD starts life by
+pointing to this structure, until the correct back end has determined
+the real architecture of the file.
+     extern bfd_arch_info_type bfd_default_arch_struct;
+
+`bfd_set_arch_info'
+...................
+
+*Synopsis*
+     void bfd_set_arch_info(bfd *, bfd_arch_info_type *);
+
+`bfd_default_set_arch_mach'
+...........................
+
+   *Synopsis*
+     boolean bfd_default_set_arch_mach(bfd *abfd,
+         enum bfd_architecture arch,
+         unsigned long mach);
+   *Description*
+Set the architecture and machine type in a bfd. This finds the correct
+pointer to structure and inserts it into the arch_info pointer.
+`bfd_get_arch'
+..............
+
+*Synopsis*
+     enum bfd_architecture bfd_get_arch(bfd *abfd);
+   *Description*
+Returns the enumerated type which describes the supplied bfd's
+architecture
+`bfd_get_mach'
+..............
+
+*Synopsis*
+     unsigned long bfd_get_mach(bfd *abfd);
+   *Description*
+Returns the long type which describes the supplied bfd's machine
+`bfd_arch_bits_per_byte'
+........................
+
+*Synopsis*
+     unsigned int bfd_arch_bits_per_byte(bfd *abfd);
+   *Description*
+Returns the number of bits in one of the architectures bytes
+`bfd_arch_bits_per_address'
+...........................
+
+*Synopsis*
+     unsigned int bfd_arch_bits_per_address(bfd *abfd);
+   *Description*
+Returns the number of bits in one of the architectures addresses
+`bfd_arch_init'
+...............
+
+*Synopsis*
+     void  bfd_arch_init(void);
+   *Description*
+This routine initializes the architecture dispatch table by calling all
+installed architecture packages and getting them to poke around.
+`bfd_arch_linkin'
+.................
+
+*Synopsis*
+     void bfd_arch_linkin(bfd_arch_info_type *);
+   *Description*
+Link the provided arch info structure into the list
+`bfd_default_compatible'
+........................
+
+*Synopsis*
+     CONST bfd_arch_info_type *bfd_default_compatible
+        (CONST bfd_arch_info_type *a,
+         CONST bfd_arch_info_type *b);
+   *Description*
+The default function for testing for compatibility.
+`bfd_default_scan'
+..................
+
+*Synopsis*
+     boolean bfd_default_scan(CONST struct bfd_arch_info *, CONST char *);
+   *Description*
+The default function for working out whether this is an architecture
+hit and a machine hit.
+`bfd_get_arch_info'
+...................
+
+*Synopsis*
+     bfd_arch_info_type * bfd_get_arch_info(bfd *);
+
+`bfd_lookup_arch'
+.................
+
+   *Synopsis*
+     bfd_arch_info_type *bfd_lookup_arch
+        (enum bfd_architecture
+         arch,
+         long machine);
+   *Description*
+Look for the architecure info struct which matches the arguments given.
+A machine of 0 will match the machine/architecture structure which
+marks itself as the default.
+`bfd_printable_arch_mach'
+.........................
+
+*Synopsis*
+     CONST char * bfd_printable_arch_mach
+        (enum bfd_architecture arch, unsigned long machine);
+   *Description*
+Return a printable string representing the architecture and machine
+type.  NB. The use of this routine is depreciated.
+
+File: bfd.info,  Node: Opening and Closing,  Next: Constructors,  Prev: Architectures,  Up: BFD front end
+
+Opening and Closing BFDs
+========================
+
+`bfd_openr'
+...........
+
+*Synopsis*
+     bfd *bfd_openr(CONST char *filename, CONST char*target);
+   *Description*
+This function opens the file supplied (using `fopen') with the target
+supplied, it returns a pointer to the created BFD.  If NULL is returned
+then an error has occured. Possible errors are `no_memory',
+`invalid_target' or `system_call' error.
+`bfd_fdopenr'
+.............
+
+*Synopsis*
+     bfd *bfd_fdopenr(CONST char *filename, CONST char *target, int fd);
+   *Description*
+bfd_fdopenr is to bfd_fopenr much like  fdopen is to fopen.  It opens a
+BFD on a file already described by the FD supplied.  When the file is
+later bfd_closed, the file descriptor will be closed.  If the caller
+desires that this file descriptor be cached by BFD (opened as needed,
+closed as needed to free descriptors for other opens), with the
+supplied FD used as an initial file descriptor (but subject to closure
+at any time), set bfd->cacheable nonzero in the returned BFD.  The
+default is to assume no cacheing; the file descriptor will remain open
+until bfd_close, and will not be affected by BFD operations on other
+files.  Possible errors are no_memory, invalid_target and system_call
+error.
+`bfd_openw'
+...........
+
+*Synopsis*
+     bfd *bfd_openw(CONST char *filename, CONST char *target);
+   *Description*
+Creates a BFD, associated with file FILENAME, using the file format
+TARGET, and returns a pointer to it.  Possible errors are
+system_call_error, no_memory, invalid_target.
+`bfd_close'
+...........
+
+*Synopsis*
+     boolean bfd_close(bfd *);
+   *Description*
+This function closes a BFD. If the BFD was open for writing, then
+pending operations are completed and the file written out and closed.
+If the created file is executable, then `chmod' is called to mark it as
+such.  All memory attached to the BFD's obstacks is released.  The file
+descriptor associated with the BFD is closed (even if it was passed in
+to BFD by bfd_fdopenr).
+*Returns*
+`true' is returned if all is ok, otherwise `false'.
+`bfd_close_all_done'
+....................
+
+*Synopsis*
+     boolean bfd_close_all_done(bfd *);
+   *Description*
+This function closes a BFD. It differs from `bfd_close' since it does
+not complete any pending operations.  This routine would be used if the
+application had just used BFD for swapping and didn't want to use any
+of the writing code.  If the created file is executable, then `chmod'
+is called to mark it as such.  All memory attached to the BFD's
+obstacks is released.
+*Returns*
+`true' is returned if all is ok, otherwise `false'.
+*Synopsis*
+     bfd_size_type bfd_alloc_size(bfd *abfd);
+   *Description*
+Return the number of bytes in the obstacks connected to the supplied
+BFD.
+`bfd_create'
+............
+
+*Synopsis*
+     bfd *bfd_create(CONST char *filename, bfd *templ);
+   *Description*
+This routine creates a new BFD in the manner of `bfd_openw', but
+without opening a file. The new BFD takes the target from the target
+used by TEMPLATE. The format is always set to `bfd_object'.
+`bfd_alloc_by_size_t'
+.....................
+
+*Synopsis*
+     PTR bfd_alloc_by_size_t(bfd *abfd, size_t wanted);
+   *Description*
+This function allocates a block of memory in the obstack attatched to
+`abfd' and returns a pointer to it.
+
+File: bfd.info,  Node: Constructors,  Next: Internal,  Prev: Opening and Closing,  Up: BFD front end
+
+Constructors
+============
+
+Classes in C++ have `constructors' and `destructors'.  These are
+functions which are called automatically by the language whenever data
+of a class is created or destroyed.  Class data which is static data
+may also be have a type which requires `construction', the contructor
+must be called before the data can be referenced, so the contructor
+must be called before the program begins.  The common solution to this
+problem is for the compiler to call a magic function as the first
+statement `main'.  This magic function, (often called `__main') runs
+around calling the constructors for all the things needing it.  With
+COFF the compile has a bargain with the linker et al.  All constructors
+are given strange names, for example `__GLOBAL__$I$foo' might be the
+label of a contructor for the class FOO.  The solution on unfortunate
+systems (most system V machines) is to perform a partial link on all
+the `.o' files, do an `nm' on the result, run `awk' or some such over
+the result looking for strange `__GLOBAL__$' symbols, generate a C
+program from this, compile it and link with the partially linked input.
+This process is usually called `collect'.  Some versions of `a.out' use
+something called the `set_vector' mechanism.  The constructor symbols
+are output from the compiler with a special stab code saying that they
+are constructors, and the linker can deal with them directly.  BFD
+allows applications (ie the linker) to deal with constructor
+information independently of their external implimentation by providing
+a set of entry points for the indiviual object back ends to call which
+maintains a database of the contructor information.  The application can
+interrogate the database to find out what it wants.  The construction
+data essential for the linker to be able to perform its job are:
+
+   * asymbol - The asymbol of the contructor entry point contains all
+     the information necessary to call the function.
+
+   * table id - The type of symbol, i.e., is it a constructor, a
+     destructor or something else someone dreamed up to make our lives
+     difficult.  This module takes this information and then builds
+extra sections attached to the bfds which own the entry points.  It
+creates these sections as if they were tables of pointers to the entry
+points, and builds relocation entries to go with them so that the
+tables can be relocated along with the data they reference.  These
+sections are marked with a special bit (`SEC_CONSTRUCTOR') which the
+linker notices and do with what it wants.
+`bfd_constructor_entry '
+........................
+
+*Synopsis*
+     void bfd_constructor_entry(bfd *abfd,
+         asymbol **symbol_ptr_ptr,
+         CONST char*type);
+   *Description*
+This function is called with an a symbol describing the function to be
+called, an string which descibes the xtor type, e.g., something like
+"CTOR" or "DTOR" would be fine. And the bfd which owns the function.
+Its duty is to create a section called "CTOR" or "DTOR" or whatever if
+the bfd doesn't already have one, and grow a relocation table for the
+entry points as they accumulate.
+
+File: bfd.info,  Node: Internal,  Next: File Caching,  Prev: Constructors,  Up: BFD front end
+
+libbfd
+======
+
+*Description*
+This file contains various routines which are used within BFD.  They
+are not intended for export, but are documented here for completeness.
+`bfd_xmalloc'
+.............
+
+*Synopsis*
+     PTR  bfd_xmalloc( bfd_size_type size);
+   *Description*
+Like malloc, but exit if no more memory.
+`bfd_xmalloc_by_size_t'
+.......................
+
+*Synopsis*
+     PTR bfd_xmalloc_by_size_t ( size_t size);
+   *Description*
+Like malloc, but exit if no more memory.  Uses size_t, so it's suitable
+for use as obstack_chunk_alloc.
+`bfd_write_bigendian_4byte_int'
+...............................
+
+*Synopsis*
+     void bfd_write_bigendian_4byte_int(bfd *abfd,  int i);
+   *Description*
+Writes a 4 byte integer to the outputing bfd, in big endian mode
+regardless of what else is going on.  This is useful in archives.
+`bfd_put_size'
+..............
+
+`bfd_get_size'
+..............
+
+*Description*
+These macros as used for reading and writing raw data in sections; each
+access (except for bytes) is vectored through the target format of the
+BFD and mangled accordingly. The mangling performs any necessary endian
+translations and removes alignment restrictions.  Note that types
+accepted and returned by these macros are identical so they can be
+swapped around in macros-for example libaout.h defines GET_WORD to
+either bfd_get_32 or bfd_get_64.  In the put routines, val must be a
+bfd_vma.  If we are on a system without prototypes, the caller is
+responsible for making sure that is true, with a cast if necessary.  We
+don't cast them in the macro definitions because that would prevent lint
+or gcc -Wall from detecting sins such as passing a pointer.  To detect
+calling these with less than a bfd_vma, use gcc -Wconversion on a host
+with 64 bit bfd_vma's.
+
+      /* Byte swapping macros for user section data.  */
+     
+     #define bfd_put_8(abfd, val, ptr) \
+                     (*((unsigned char *)(ptr)) = (unsigned char)val)
+     #define bfd_put_signed_8 \
+     		bfd_put_8
+     #define bfd_get_8(abfd, ptr) \
+                     (*(unsigned char *)(ptr))
+     #define bfd_get_signed_8(abfd, ptr) \
+     		((*(unsigned char *)(ptr) ^ 0x80) - 0x80)
+     
+     #define bfd_put_16(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_putx16, ((val),(ptr)))
+     #define bfd_put_signed_16 \
+     		 bfd_put_16
+     #define bfd_get_16(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_getx16, (ptr))
+     #define bfd_get_signed_16(abfd, ptr) \
+              	 BFD_SEND (abfd, bfd_getx_signed_16, (ptr))
+     
+     #define bfd_put_32(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_putx32, ((val),(ptr)))
+     #define bfd_put_signed_32 \
+     		 bfd_put_32
+     #define bfd_get_32(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_getx32, (ptr))
+     #define bfd_get_signed_32(abfd, ptr) \
+     		 BFD_SEND(abfd, bfd_getx_signed_32, (ptr))
+     
+     #define bfd_put_64(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_putx64, ((val), (ptr)))
+     #define bfd_put_signed_64 \
+     		 bfd_put_64
+     #define bfd_get_64(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_getx64, (ptr))
+     #define bfd_get_signed_64(abfd, ptr) \
+     		 BFD_SEND(abfd, bfd_getx_signed_64, (ptr))
+
+`bfd_h_put_size'
+................
+
+`bfd_h_get_size'
+................
+
+*Description*
+These macros have the same function as their `bfd_get_x' bretherin,
+except that they are used for removing information for the header
+records of object files. Believe it or not, some object files keep
+their header records in big endian order, and their data in little
+endian order.
+
+      /* Byte swapping macros for file header data.  */
+     
+     #define bfd_h_put_8(abfd, val, ptr) \
+     		bfd_put_8 (abfd, val, ptr)
+     #define bfd_h_put_signed_8(abfd, val, ptr) \
+     		bfd_put_8 (abfd, val, ptr)
+     #define bfd_h_get_8(abfd, ptr) \
+     		bfd_get_8 (abfd, ptr)
+     #define bfd_h_get_signed_8(abfd, ptr) \
+     		bfd_get_signed_8 (abfd, ptr)
+     
+     #define bfd_h_put_16(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_h_putx16,(val,ptr))
+     #define bfd_h_put_signed_16 \
+     		 bfd_h_put_16
+     #define bfd_h_get_16(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_h_getx16,(ptr))
+     #define bfd_h_get_signed_16(abfd, ptr) \
+     		 BFD_SEND(abfd, bfd_h_getx_signed_16, (ptr))
+     
+     #define bfd_h_put_32(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_h_putx32,(val,ptr))
+     #define bfd_h_put_signed_32 \
+     		 bfd_h_put_32
+     #define bfd_h_get_32(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_h_getx32,(ptr))
+     #define bfd_h_get_signed_32(abfd, ptr) \
+     		 BFD_SEND(abfd, bfd_h_getx_signed_32, (ptr))
+     
+     #define bfd_h_put_64(abfd, val, ptr) \
+                     BFD_SEND(abfd, bfd_h_putx64,(val, ptr))
+     #define bfd_h_put_signed_64 \
+     		 bfd_h_put_64
+     #define bfd_h_get_64(abfd, ptr) \
+                     BFD_SEND(abfd, bfd_h_getx64,(ptr))
+     #define bfd_h_get_signed_64(abfd, ptr) \
+     		 BFD_SEND(abfd, bfd_h_getx_signed_64, (ptr))
+
+`bfd_log2'
+..........
+
+*Description*
+Return the log base 2 of the value supplied, rounded up. eg an arg of
+1025 would return 11.
+*Synopsis*
+     unsigned int bfd_log2(bfd_vma x);
+
+
+File: bfd.info,  Node: File Caching,  Prev: Internal,  Up: BFD front end
+
+File Caching
+============
+
+   The file caching mechanism is embedded within BFD and allows the
+application to open as many BFDs as it wants without regard to the
+underlying operating system's file descriptor limit (often as low as 20
+open files).  The module in `cache.c' maintains a least recently used
+list of `BFD_CACHE_MAX_OPEN' files, and exports the name
+`bfd_cache_lookup' which runs around and makes sure that the required
+BFD is open. If not, then it chooses a file to close, closes it and
+opens the one wanted, returning its file handle.
+`BFD_CACHE_MAX_OPEN macro'
+..........................
+
+*Description*
+The maximum number of files which the cache will keep open at one time.
+     #define BFD_CACHE_MAX_OPEN 10
+
+`bfd_last_cache'
+................
+
+*Synopsis*
+     extern bfd *bfd_last_cache;
+   *Description*
+Zero, or a pointer to the topmost BFD on the chain.  This is used by
+the `bfd_cache_lookup' macro in `libbfd.h' to determine when it can
+avoid a function call.
+`bfd_cache_lookup'
+..................
+
+*Description*
+Checks to see if the required BFD is the same as the last one looked
+up. If so then it can use the iostream in the BFD with impunity, since
+it can't have changed since the last lookup, otherwise it has to
+perform the complicated lookup function
+     #define bfd_cache_lookup(x) \
+         ((x)==bfd_last_cache? \
+           (FILE*)(bfd_last_cache->iostream): \
+            bfd_cache_lookup_worker(x))
+
+`bfd_cache_close'
+.................
+
+*Description*
+Remove the BFD from the cache. If the attached file is open, then close
+it too.
+*Synopsis*
+     boolean bfd_cache_close (bfd *);
+   *Returns*
+`false' is returned if closing the file fails, `true' is returned if
+all is well.
+`bfd_open_file'
+...............
+
+*Description*
+Call the OS to open a file for this BFD.  Returns the FILE * (possibly
+null) that results from this operation.  Sets up the BFD so that future
+accesses know the file is open. If the FILE returned is null, then
+there is won't have been put in the cache, so it won't have to be
+removed from it.
+*Synopsis*
+     FILE* bfd_open_file(bfd *);
+
+`bfd_cache_lookup_worker'
+.........................
+
+   *Description*
+Called when the macro `bfd_cache_lookup' fails to find a quick answer.
+Finds a file descriptor for this BFD.  If necessary, it open it. If
+there are already more than BFD_CACHE_MAX_OPEN files open, it trys to
+close one first, to avoid running out of file descriptors.
+*Synopsis*
+     FILE *bfd_cache_lookup_worker(bfd *);
+
+
+File: bfd.info,  Node: BFD back end,  Next: Index,  Prev: BFD front end,  Up: Top
+
+BFD back end
+************
+
+* Menu:
+
+* What to Put Where::
+* aout ::	a.out backends
+* coff ::	coff backends
+* elf  ::	elf backends
+
+
+File: bfd.info,  Node: What to Put Where,  Next: aout,  Prev: BFD back end,  Up: BFD back end
+
+   All of BFD lives in one directory.
+
+
+File: bfd.info,  Node: aout,  Next: coff,  Prev: What to Put Where,  Up: BFD back end
+
+a.out backends
+==============
+
+*Description*
+BFD supports a number of different flavours of a.out format, though the
+major differences are only the sizes of the structures on disk, and the
+shape of the relocation information.  The support is split into a basic
+support file `aoutx.h' and other files which derive functions from the
+base. One derivation file is `aoutf1.h' (for a.out flavour 1), and adds
+to the basic a.out functions support for sun3, sun4, 386 and 29k a.out
+files, to create a target jump vector for a specific target.  This
+information is further split out into more specific files for each
+machine, including `sunos.c' for sun3 and sun4, `newsos3.c' for the
+Sony NEWS, and `demo64.c' for a demonstration of a 64 bit a.out format.
+The base file `aoutx.h' defines general mechanisms for reading and
+writing records to and from disk, and various other methods which BFD
+requires. It is included by `aout32.c' and `aout64.c' to form the names
+aout_32_swap_exec_header_in, aout_64_swap_exec_header_in, etc.  As an
+example, this is what goes on to make the back end for a sun4, from
+aout32.c
+     	#define ARCH_SIZE 32
+     	#include "aoutx.h"
+   Which exports names:
+     	...
+     	aout_32_canonicalize_reloc
+     	aout_32_find_nearest_line
+     	aout_32_get_lineno
+     	aout_32_get_reloc_upper_bound
+     	...
+   from sunos.c
+     	#define ARCH 32
+     	#define TARGET_NAME "a.out-sunos-big"
+     	#define VECNAME    sunos_big_vec
+     	#include "aoutf1.h"
+   requires all the names from aout32.c, and produces the jump vector
+     	sunos_big_vec
+   The file host-aout.c is a special case.  It is for a large set of
+hosts that use "more or less standard" a.out files, and for which
+cross-debugging is not interesting.  It uses the standard 32-bit a.out
+support routines, but determines the file offsets and addresses of the
+text, data, and BSS sections, the machine architecture and machine
+type, and the entry point address, in a host-dependent manner.  Once
+these values have been determined, generic code is used to handle the
+object file.  When porting it to run on a new system, you must supply:
+             HOST_PAGE_SIZE
+             HOST_SEGMENT_SIZE
+             HOST_MACHINE_ARCH       (optional)
+             HOST_MACHINE_MACHINE    (optional)
+             HOST_TEXT_START_ADDR
+             HOST_STACK_END_ADDR
+
+   in the file `../include/sys/h-XXX.h' (for your host).  These values,
+plus the structures and macros defined in `a.out.h' on your host
+system, will produce a BFD target that will access ordinary a.out files
+on your host. To configure a new machine to use `host-aout.c', specify:
+     	TDEFAULTS = -DDEFAULT_VECTOR=host_aout_big_vec
+     	TDEPFILES= host-aout.o trad-core.o
+   in the `config/mt-XXX' file, and modify configure.in to use the
+`mt-XXX' file (by setting "`bfd_target=XXX'") when your configuration
+is selected.
+relocations
+-----------
+
+*Description*
+The file `aoutx.h' caters for both the *standard* and *extended* forms
+of a.out relocation records.  The standard records are characterised by
+containing only an address, a symbol index and a type field. The
+extended records (used on 29ks and sparcs) also have a full integer for
+an addend.
+Internal Entry Points
+---------------------
+
+*Description*
+`aoutx.h' exports several routines for accessing the contents of an
+a.out file, which are gathered and exported in turn by various format
+specific files (eg sunos.c).
+`aout_<size>_swap_exec_header_in'
+.................................
+
+*Description*
+Swaps the information in an executable header taken from a raw byte
+stream memory image, into the internal exec_header structure.
+*Synopsis*
+     void aout_<size>_swap_exec_header_in,
+        (bfd *abfd,
+         struct external_exec *raw_bytes,
+         struct internal_exec *execp);
+
+`aout_<size>_swap_exec_header_out'
+..................................
+
+   *Description*
+Swaps the information in an internal exec header structure into the
+supplied buffer ready for writing to disk.
+*Synopsis*
+     void aout_<size>_swap_exec_header_out
+        (bfd *abfd,
+         struct internal_exec *execp,
+         struct external_exec *raw_bytes);
+
+`aout_<size>_some_aout_object_p'
+................................
+
+   *Description*
+Some A.OUT variant thinks that the file whose format we're checking is
+an a.out file.  Do some more checking, and set up for access if it
+really is.  Call back to the calling environments "finish up" function
+just before returning, to handle any last-minute setup.
+*Synopsis*
+     bfd_target *aout_<size>_some_aout_object_p
+        (bfd *abfd,
+         bfd_target *(*callback_to_real_object_p)());
+
+`aout_<size>_mkobject'
+......................
+
+   *Description*
+This routine initializes a BFD for use with a.out files.
+*Synopsis*
+     boolean aout_<size>_mkobject, (bfd *);
+
+`aout_<size>_machine_type'
+..........................
+
+   *Description*
+Keep track of machine architecture and machine type for a.out's. Return
+the machine_type for a particular arch&machine, or M_UNKNOWN if that
+exact arch&machine can't be represented in a.out format.  If the
+architecture is understood, machine type 0 (default) should always be
+understood.
+*Synopsis*
+     enum machine_type  aout_<size>_machine_type
+        (enum bfd_architecture arch,
+         unsigned long machine));
+
+`aout_<size>_set_arch_mach'
+...........................
+
+   *Description*
+Sets the architecture and the machine of the BFD to those values
+supplied. Verifies that the format can support the architecture
+required.
+*Synopsis*
+     boolean aout_<size>_set_arch_mach,
+        (bfd *,
+         enum bfd_architecture,
+         unsigned long machine));
+
+`aout_<size>_new_section_hook'
+..............................
+
+   *Description*
+Called by the BFD in response to a `bfd_make_section' request.
+*Synopsis*
+     boolean aout_<size>_new_section_hook,
+        (bfd *abfd,
+         asection *newsect));
+

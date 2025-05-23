@@ -1,0 +1,330 @@
+
+
+
+ar(1)                 GNU Development Tools                 ar(1)
+
+
+NNAAMMEE
+       ar - create, modify, and extract from archives.
+
+
+SSYYNNOOPPSSIISS
+       aarr [--]_{_d_m_p_q_r_t_x_}_[_a_b_c_i_l_o_s_u_v_V_] [_m_e_m_b_e_r_n_a_m_e] _a_r_c_h_i_v_e _f_i_l_e_s...
+
+
+DDEESSCCRRIIPPTTIIOONN
+       The GNU aarr program creates, modifies,  and  extracts  from
+       archives.   An  _a_r_c_h_i_v_e is a single file holding a collec-
+       tion of other files in a structure that makes it  possible
+       to  retrieve the original individual files (called _m_e_m_b_e_r_s
+       of the archive).
+
+       The original files' contents, mode  (permissions),  times-
+       tamp,  owner,  and group are preserved in the archive, and
+       may be reconstituted on extraction.
+
+       GNU aarr can maintain archives whose members have  names  of
+       any  length; however, depending on how aarr is configured on
+       your system, a limit on member-name length may be  imposed
+       (for  compatibility  with  archive formats maintained with
+       other tools).  If it exists, the limit is often 15 charac-
+       ters  (typical  of formats related to a.out) or 16 charac-
+       ters (typical of formats related to coff).
+
+       aarr is considered a binary utility because archives of this
+       sort  are  most  often  used as _l_i_b_r_a_r_i_e_s holding commonly
+       needed subroutines.
+
+       aarr will create an index to the symbols defined in relocat-
+       able  object  modules  in the archive when you specify the
+       modifier `ss'.  Once created, this index is updated in  the
+       archive  whenever  aarr makes a change to its contents (save
+       for the `qq' update operation).  An archive  with  such  an
+       index  speeds  up  linking to the library, and allows rou-
+       tines in the library to call each other without regard  to
+       their placement in the archive.
+
+       You may use `nnmm --ss' or `nnmm ----pprriinntt--aarrmmaapp' to list this in-
+       dex table.  If an archive lacks the table, another form of
+       aarr called rraannlliibb can be used to add just the table.
+
+       aarr  insists  on  at  least  two  arguments to execute: one
+       keyletter specifying the _o_p_e_r_a_t_i_o_n (optionally accompanied
+       by other keyletters specifying _m_o_d_i_f_i_e_r_s), and the archive
+       name to act on.
+
+       Most operations can also accept further  _f_i_l_e_s  arguments,
+       specifying particular files to operate on.
+
+
+
+
+
+
+cygnus support           5 November 1991                        1
+
+
+
+
+
+ar(1)                 GNU Development Tools                 ar(1)
+
+
+OOPPTTIIOONNSS
+       GNU aarr allows you to mix the operation code _p and modifier
+       flags _m_o_d in any order, within the first command-line  ar-
+       gument.
+
+       If you wish, you may begin the first command-line argument
+       with a dash.
+
+       The _p keyletter specifies what operation  to  execute;  it
+       may be any of the following, but you must specify only one
+       of them:
+
+
+       dd      _D_e_l_e_t_e modules from the archive.  Specify the names
+              of  modules  to be deleted as _f_i_l_e_s; the archive is
+              untouched if you specify no files to delete.
+
+              If you specify the `vv' modifier, aarr will list  each
+              module as it is deleted.
+
+
+       mm      Use this operation to _m_o_v_e members in an archive.
+
+              The  ordering  of  members in an archive can make a
+              difference in how programs are linked using the li-
+              brary, if a symbol is defined in more than one mem-
+              ber.
+
+              If no modifiers are used with mm,  any  members  you
+              name in the _f_i_l_e_s arguments are moved to the _e_n_d of
+              the archive; you can use the `aa', `bb', or `ii' modi-
+              fiers to move them to a specified place instead.
+
+
+       pp      _P_r_i_n_t  the specified members of the archive, to the
+              standard output file.  If the `vv' modifier is spec-
+              ified, show the member name before copying its con-
+              tents to standard output.
+
+              If you specify no  _f_i_l_e_s,  all  the  files  in  the
+              archive are printed.
+
+
+       qq      _Q_u_i_c_k  _a_p_p_e_n_d;  add  _f_i_l_e_s  to  the end of _a_r_c_h_i_v_e,
+              without checking for replacement.
+
+              The modifiers `aa', `bb', and `ii' do _n_o_t affect  this
+              operation; new members are always placed at the end
+              of the archive.
+
+              The modifier `vv' makes aarr list each file as  it  is
+              appended.
+
+              Since  the  point  of  this operation is speed, the
+
+
+
+cygnus support           5 November 1991                        2
+
+
+
+
+
+ar(1)                 GNU Development Tools                 ar(1)
+
+
+              archive's symbol table index is not  updated,  even
+              if it already existed; you can use `aarr ss' or rraannlliibb
+              explicitly to update the symbol table index.
+
+
+       rr      Insert _f_i_l_e_s into _a_r_c_h_i_v_e (with _r_e_p_l_a_c_e_m_e_n_t).  This
+              operation  differs  from `qq' in that any previously
+              existing members are deleted if their  names  match
+              those being added.
+
+              If  one  of the files named in _f_i_l_e_s doesn't exist,
+              aarr displays an error  message,  and  leaves  undis-
+              turbed any existing members of the archive matching
+              that name.
+
+              By default, new members are added at the end of the
+              file;  but  you  may  use one of the modifiers `aa',
+              `bb', or `ii' to request placement relative  to  some
+              existing member.
+
+              The modifier `vv' used with this operation elicits a
+              line of output for each file inserted,  along  with
+              one  of  the letters `aa' or `rr' to indicate whether
+              the file was appended (no old  member  deleted)  or
+              replaced.
+
+
+       tt      Display a _t_a_b_l_e listing the contents of _a_r_c_h_i_v_e, or
+              those of the files listed in _f_i_l_e_s that are present
+              in  the  archive.  Normally only the member name is
+              shown; if you also want to see the  modes  (permis-
+              sions),  timestamp, owner, group, and size, you can
+              request that by also specifying the `vv' modifier.
+
+              If you do not specify any _f_i_l_e_s, all files  in  the
+              archive are listed.
+
+              If  there  is more than one file with the same name
+              (say, `ffiiee') in an archive (say `bb..aa'), `aarr  tt  bb..aa
+              ffiiee' will list only the first instance; to see them
+              all, you must ask for a  complete  listing--in  our
+              example, `aarr tt bb..aa'.
+
+
+       xx      _E_x_t_r_a_c_t  members  (named  _f_i_l_e_s)  from the archive.
+              You can use the `vv' modifier with  this  operation,
+              to  request  that  aarr list each name as it extracts
+              it.
+
+              If you do not specify any _f_i_l_e_s, all files  in  the
+              archive are extracted.
+
+
+
+
+
+
+cygnus support           5 November 1991                        3
+
+
+
+
+
+ar(1)                 GNU Development Tools                 ar(1)
+
+
+       A  number  of modifiers (_m_o_d) may immediately follow the _p
+       keyletter, to specify variations on an operation's  behav-
+       ior:
+
+
+       aa      Add  new  files  _a_f_t_e_r  an  existing  member of the
+              archive.  If you use the modifier aa, the name of an
+              existing archive member must be present as the _m_e_m_-
+              _b_e_r_n_a_m_e argument, before the _a_r_c_h_i_v_e specification.
+
+
+       bb      Add  new  files  _b_e_f_o_r_e  an  existing member of the
+              archive.  If you use the modifier bb, the name of an
+              existing archive member must be present as the _m_e_m_-
+              _b_e_r_n_a_m_e argument, before the _a_r_c_h_i_v_e specification.
+              (same as `ii').
+
+
+       cc      _C_r_e_a_t_e  the  archive.  The specified _a_r_c_h_i_v_e is al-
+              ways created if it didn't exist, when  you  request
+              an  update.   But  a  warning  is issued unless you
+              specify in advance that you expect to create it, by
+              using this modifier.
+
+
+       ii      Insert  new  files _b_e_f_o_r_e an existing member of the
+              archive.  If you use the modifier ii, the name of an
+              existing archive member must be present as the _m_e_m_-
+              _b_e_r_n_a_m_e argument, before the _a_r_c_h_i_v_e specification.
+              (same as `bb').
+
+
+       ll      This modifier is accepted but not used.
+
+
+       oo      Preserve  the  _o_r_i_g_i_n_a_l  dates  of members when ex-
+              tracting them.  If you do not specify this  modifi-
+              er,  files  extracted  from  the  archive  will  be
+              stamped with the time of extraction.
+
+
+       ss      Write an object-file index into the archive, or up-
+              date  an  existing  one, even if no other change is
+              made to the archive.  You  may  use  this  modifier
+              flag  either with any operation, or alone.  Running
+              `aarr ss' on  an  archive  is  equivalent  to  running
+              `rraannlliibb' on it.
+
+
+       uu      Normally, aarr rr... inserts all files listed into the
+              archive.  If you would like to insert _o_n_l_y those of
+              the  files  you  list  that are newer than existing
+              members of the same names, use this modifier.   The
+              `uu'  modifier is allowed only for the operation `rr'
+
+
+
+cygnus support           5 November 1991                        4
+
+
+
+
+
+ar(1)                 GNU Development Tools                 ar(1)
+
+
+              (replace).  In particular, the combination `qquu'  is
+              not  allowed,  since  checking the timestamps would
+              lose any speed advantage from the operation `qq'.
+
+
+       vv      This modifier requests the _v_e_r_b_o_s_e  version  of  an
+              operation.   Many operations display additional in-
+              formation, such as filenames  processed,  when  the
+              modifier `vv' is appended.
+
+
+       VV      This modifier shows the version number of aarr.
+
+
+
+
+SSEEEE AALLSSOO
+       `bbiinnuuttiillss' entry in iinnffoo; _T_h_e _G_N_U _B_i_n_a_r_y _U_t_i_l_i_t_i_e_s, Roland
+       H. Pesch (October 1991).  nnmm(11), rraannlliibb((1)).
+
+
+CCOOPPYYIINNGG
+       Copyright (c) 1991 Free Software Foundation, Inc.
+
+       Permission is granted  to  make  and  distribute  verbatim
+       copies  of  this  manual provided the copyright notice and
+       this permission notice are preserved on all copies.
+
+       Permission is granted to copy and distribute modified ver-
+       sions  of  this  manual  under the conditions for verbatim
+       copying, provided that the entire resulting  derived  work
+       is  distributed  under  the  terms  of a permission notice
+       identical to this one.
+
+       Permission is granted to copy and distribute  translations
+       of this manual into another language, under the above con-
+       ditions for modified versions, except that this permission
+       notice  may  be  included  in translations approved by the
+       Free Software Foundation instead of in  the  original  En-
+       glish.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cygnus support           5 November 1991                        5
+
+

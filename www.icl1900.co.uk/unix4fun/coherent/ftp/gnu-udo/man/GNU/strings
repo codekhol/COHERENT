@@ -1,0 +1,132 @@
+
+
+
+strings(1)            GNU Development Tools            strings(1)
+
+
+NNAAMMEE
+       strings  -  print  the  strings of printable characters in
+       files
+
+
+SSYYNNOOPPSSIISS
+       ssttrriinnggss
+              [--aa|--|----aallll] [--ff|----pprriinntt--ffiillee--nnaammee] [--oo] [----hheellpp]
+              [--vv|----vveerrssiioonn] [--nn
+              _m_i_n_-_l_e_n|_-_m_i_n_-_l_e_n|----bbyytteess==_m_i_n_-_l_e_n] [--tt
+              _{_o_,_x_,_d_}[----ttaarrggeett==_b_f_d_n_a_m_e] |----rraaddiixx==_{_o_,_x_,_d_}] _f_i_l_e
+
+DDEESSCCRRIIPPTTIIOONN
+       For  each  _f_i_l_e  given,  GNU  ssttrriinnggss prints the printable
+       character sequences that are at least  4  characters  long
+       (or  the number given with the options below) and are fol-
+       lowed by a NUL or newline character.  By default, it  only
+       prints  the  strings from the initialized data sections of
+       object files; for other types  of  files,  it  prints  the
+       strings from the whole file.
+
+
+       ssttrriinnggss  is  mainly useful for determining the contents of
+       non-text files.
+
+
+OOPPTTIIOONNSS
+       The long and short forms of options, shown here as  alter-
+       natives, are equivalent.
+
+
+       --aa
+
+       ----aallll
+
+       --      Do  not  scan  only the initialized data section of
+              object files; scan the whole files.
+
+
+       --ff
+
+       ----pprriinntt--ffiillee--nnaammee
+              Print the name of the file before each string.
+
+
+       ----hheellpp Print a summary of the options to  ssttrriinnggss  on  the
+              standard output and exit.
+
+
+       --vv
+
+       ----vveerrssiioonn
+              Print the version number of ssttrriinnggss on the standard
+              output and exit.
+
+
+
+cygnus support             25 June 1993                         1
+
+
+
+
+
+strings(1)            GNU Development Tools            strings(1)
+
+
+       --nn _m_i_n_-_l_e_n
+              --_m_i_n_-_l_e_n
+
+       --bbyytteess==_m_i_n_-_l_e_n
+              Print sequences of characters  that  are  at  least
+              _m_i_n_-_l_e_n  characters long, instead of the default 4.
+
+
+       --tt {o,x,d}
+
+       ----rraaddiixx=={o,x,d}
+              Print  the  offset  within  the  file  before  each
+              string.   The  single  character argument specifies
+              the radix of  the  offset--octal,  hexadecimal,  or
+              decimal.
+
+
+       ----ttaarrggeett==_b_f_d_n_a_m_e
+               Specify an object code format other than your sys-
+              tem's default format.  See oobbjjdduummpp(11), for informa-
+              tion on listing available formats.
+
+
+       --oo     Like --tt oo.
+
+
+
+
+SSEEEE AALLSSOO
+       `bbiinnuuttiillss' entry in iinnffoo; _T_h_e _G_N_U _B_i_n_a_r_y _U_t_i_l_i_t_i_e_s, Roland
+       H. Pesch (October 1991); aarr(11),  nnmm(11),  oobbjjdduummpp(11),  rraann--
+       lliibb(11).
+
+
+
+CCOOPPYYIINNGG
+       Copyright (c) 1993 Free Software Foundation, Inc.
+
+       Permission  is  granted  to  make  and distribute verbatim
+       copies of this manual provided the  copyright  notice  and
+       this permission notice are preserved on all copies.
+
+       Permission is granted to copy and distribute modified ver-
+       sions of this manual under  the  conditions  for  verbatim
+       copying,  provided  that the entire resulting derived work
+       is distributed under the  terms  of  a  permission  notice
+       identical to this one.
+
+       Permission  is granted to copy and distribute translations
+       of this manual into another language, under the above con-
+       ditions for modified versions, except that this permission
+       notice may be included in  translations  approved  by  the
+       Free  Software  Foundation  instead of in the original En-
+       glish.
+
+
+
+cygnus support             25 June 1993                         2
+
+

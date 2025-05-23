@@ -1,0 +1,132 @@
+
+
+
+EXPR(1L)                                                 EXPR(1L)
+
+
+NNAAMMEE
+       expr - evaluate expressions
+
+SSYYNNOOPPSSIISS
+       eexxpprr expression...
+       eexxpprr {--help,--version}
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual page documents the GNU version of eexxpprr.  eexxpprr
+       evaluates an expression and writes the result on its stan-
+       dard output.  Each token of the expression must be a sepa-
+       rate argument.  Operands are either  numbers  or  strings.
+       Strings  are  not  quoted for eexxpprr, though you may need to
+       quote them to protect them from the shell.   eexxpprr  coerces
+       anything appearing in an operand position to an integer or
+       a string depending on the operation being applied to it.
+
+       The operators (in order of increasing precedence) are:
+
+       _|      Yields its first argument if it is neither null nor
+              0,  otherwise  its  second  argument.   This is the
+              usual `or' operation.
+
+       _&      Yields its first argument if  neither  argument  is
+              null or 0, otherwise 0.
+
+       _<  _<_=  _=  _=_=  _!_=  _>_=  _>
+              Compare  their  arguments and return 1 if the rela-
+              tion is true, 0 otherwise.  (_=_= is  a  synonym  for
+              _=.)  eexxpprr tries to coerce both arguments to numbers
+              and do a numeric comparison; if it fails when  try-
+              ing  to coerce either argument it then does a lexi-
+              cographic comparison.
+
+       _+  _-   Perform arithmetic operations.  Both arguments  are
+              coerced  to numbers; an error occurs if this cannot
+              be done.
+
+       _*  _/  _%
+              Perform arithmetic operations (`%' is the remainder
+              operation, as in C).  Both arguments are coerced to
+              numbers; an error occurs if this cannot be done.
+
+       _:      Perform  pattern  matching.   Its   arguments   are
+              coerced to strings and the second one is considered
+              to be a regular expression, with a  `^'  implicitly
+              added at the beginning.  The first argument is then
+              matched against this regular  expression.   If  the
+              match  succeeds  and part of the string is enclosed
+              in `\(' and `\)', that part is the value of  the  _:
+              expression; otherwise an integer whose value is the
+              number of characters matched is returned.   If  the
+              match fails, the _: operator returns the null string
+              if `\(' and `\)' are used, otherwise 0.   Only  one
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+
+
+
+
+EXPR(1L)                                                 EXPR(1L)
+
+
+              `\(' and `\)' pair can be used.
+
+       In addition, the following keywords are recognized:
+
+       mmaattcchh _s_t_r_i_n_g _r_e_g_e_x
+              An alternative way to do pattern matching.  This is
+              the same as ``_s_t_r_i_n_g :: _r_e_g_e_x''.
+
+       ssuubbssttrr _s_t_r_i_n_g _p_o_s_i_t_i_o_n _l_e_n_g_t_h
+              Return the substring of _s_t_r_i_n_g beginning  at  _p_o_s_i_-
+              _t_i_o_n  with  length at most _l_e_n_g_t_h.  If either _p_o_s_i_-
+              _t_i_o_n or _l_e_n_g_t_h is negative or non-numeric, return a
+              null string.
+
+       iinnddeexx _s_t_r_i_n_g _c_h_a_r_a_c_t_e_r_-_c_l_a_s_s
+              Return the first position in _s_t_r_i_n_g where the first
+              character in  _c_h_a_r_a_c_t_e_r_-_c_l_a_s_s  was  found.   If  no
+              character  in  _c_h_a_r_a_c_t_e_r_-_c_l_a_s_s  is found in _s_t_r_i_n_g,
+              return 0.
+
+       lleennggtthh _s_t_r_i_n_g
+              Return the length of _s_t_r_i_n_g.
+
+       Parentheses are used for grouping  in  the  usual  manner.
+       The keywords cannot be used as strings.
+
+   OOPPTTIIOONNSS
+       When  GNU  eexxpprr  is invoked with exactly one argument, the
+       following options are recognized:
+
+       _-_-_h_e_l_p Print a usage message on standard output  and  exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit successfully.
+
+EEXXAAMMPPLLEESS
+       To add 1 to the shell variable _a:
+
+              a=`expr $a + 1`
+
+       To find the filename part of the pathname stored in  vari-
+       able _a, which may or may not contain `/':
+
+              expr $a : '.*/\(.*\)' '|' $a
+
+       Note the quoted shell metacharacters.
+
+       eexxpprr returns the following exit status:
+
+       0 if the expression is neither null nor 0,
+       1 if the expression is null or 0,
+       2 for invalid expressions.
+
+
+
+FSF                    GNU Shell Utilities                      2
+
+

@@ -1,0 +1,66 @@
+
+
+
+RMDIR(1L)                                               RMDIR(1L)
+
+
+NNAAMMEE
+       rmdir - remove empty directories
+
+SSYYNNOOPPSSIISS
+       rrmmddiirr [-p] [--parents] [--help] [--version] dir...
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU  version of rrmmddiirr.
+       rrmmddiirr removes each given empty  directory.   If  any  non-
+       option argument does not refer to an existing empty direc-
+       tory, it is an error.
+
+   OOPPTTIIOONNSS
+       _-_p_, _-_-_p_a_r_e_n_t_s
+              Remove any parent directories that  are  explicitly
+              mentioned  in  an  argument,  if  they become empty
+              after the argument file is removed.
+
+       _-_-_h_e_l_p Print a usage message on standard output  and  exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU File Utilities                      1
+
+

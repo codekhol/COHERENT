@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Make MWC/RTR X11R5 working</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX, X11R5">
+</head>
+
+<body>
+
+<div id="navigation">
+<nav>
+<ul>
+<li><a href="x11.html#intro">Introduction</a></li>
+<li><a href="x11.html#fixes">More fixes</a></li>
+<li><a href="index.html">Previous Page</a></li>
+</ul>
+</nav>
+</div>
+
+<div id="content">
+
+<a name="intro"></a>
+<p><b><font size="5">Introduction:</font></b></p>
+After my adventures with the Bellcore MGR Window System I started to use
+X11R5 under COHERENT in 1993. The first implementation was done by
+Answer Software & Consulting (ASC) for the COHERENT 4.0 release, later
+updated for COHERENT 4.2.
+The second implementation was done by Ready-to-Run Software Inc. (RTR) for
+MWC and distributed by MWC for the COHERENT 4.2 release.
+<p>
+The ASC X11R5 distribution came on six 3.5" floppy disks and was pretty
+complete. It also came with some goodies like the Open Look window manager,
+MIT's TWM wasn't something one really would like to use, even not way back
+then. With this distribution it was possible to build and use the free
+available X11R5 software right away.
+<p>
+The RTR/MWC distribution came on two 3.5" floppy disks, MWC should
+receive an award for building the smallest X11R5 distribution ever ;-)
+Besides the XFree 1.2 color and monochrome X servers most MIT clients
+were included, but not much more. For example the distribution only came
+with a few most essential fonts to keep it this small. Many applications
+just won't run with that, so I started to work on additional stuff, to
+build a usable GUI from this minimal base system.
+<p>
+Also the first revision had a number of bugs we fixed after
+the release. You'll still find these bugfixes as Xkit.tgz in the old
+COHERENT archives. Don't try to apply it to a system, the X11R5
+distribution disks we have are revision 2 including these bugfixes.
+<p>
+The following describes which modifications I made to get an usable
+GUI for me, if you download a VM or disk images from here, all this
+changes are included already.
+<br>
+<br>
+<br>
+
+<a name="fixes"></a>
+<p><b><font size="5">More fixes:</font></b></p>
+The first problem you'll likely run into is, that editors won't
+work in the X11 terminal emulations. This is because of wrong
+initial window size 80x25 instead of 80x24 in /usr/X11/lib/xinit/xinitrc
+as well as in /usr/X11/lib/twm/system.twmrc.
+Also COHERENT has no signal SIGWINCH implementation, so there is no
+way to inform applications running on terminal emulations about
+window size changes. For resizing the terminal emulations
+exit running applications, then resize the window and adjust
+the environment with: <b>eval `resize`</b>. After that text
+applications can be started again and will work with the new
+window size.
+<p>
+The terminal emulations were installed without setuid root permissions,
+without utmp entries cannot be written, and the <b>who</b> command will
+not show all terminal sessions. This can be corrected:
+<pre>
+	chmod 6755 /usr/X11/bin/xterm
+	chmod 6755 /usr/X11/bin/rvt
+</pre>
+<p>
+Next problem are all the missing fonts, I just got them from
+a X11R5 CDROM and build tar archives with installation scripts
+which you'll find
+<a href="http://www.autometer.de/unix4fun/coherent/ftp/distrib/X11R5/">here</a>.
+<p>
+With these changes so far one now can run any X11R5 applications on the
+system, but building applications from sources still yields another
+problem. The distribution comes with source for the application
+<b>xwave</b> in /usr/X11/src. After unarchiving the source creating the
+Makefile from Imakefile with <b>xmkmf</b> results in lots of errors.
+The X11R5 distribution was build to use /lib/cpp as preprocessor, which
+is the MWC one of course. MWC's cpp cannot handle some of the macros
+used in the <b>xmkmf</b> configuration files, this requires GNU cpp.
+The OS distribution included a build GNU cpp as /usr/local/bin/cpp
+and the X11R5 build should have used that of course. So unfortunately we have to
+fix the problem by substituting MWC cpp with GNU cpp. I have not
+removed the MWC cpp, I renamed it and linked the GNU cpp to /lib/cpp,
+so still both versions are available if needed:
+<pre>
+-r-x--x--x  2 root       root         91880 Sat May 21  1994 /lib/cpp
+-r-x--x--x  2 root       root         91880 Sat May 21  1994 /lib/cpp.gnu
+-r-x--x--x  1 bin        bin          10688 Fri Sep 30  1994 /lib/cpp.r14
+</pre>
+And now we are able to build X11R5 applications from the sources with:
+<pre>
+	xmkmf
+	make
+</pre>
+<br>
+<br>
+<br>
+<center>
+<img src="olvwm.png" alt="olvwm" title="olvwm"
+style="width:800px;height:600px;">
+</center>
+
+</div>
+
+</body>
+</html>

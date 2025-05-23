@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>COHERENT operating system by MWC</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX, Virtualbox, QEMU, PCem">
+</head>
+
+<body>
+
+<p><a href="../index.html">Home</a></p>
+
+<div id="navigation">
+<nav>
+<ul>
+<li><a href="index.html#intro">Introduction</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#vbox">COHERENT 4.2 on Virtualbox</a></li>
+<li><a href="index.html#inst_coh">Installing COHERENT 4.2</a></li>
+<li><a href="index.html#conf_coh">Configuring COHERENT 4.2</a></li>
+<li><a href="index.html#inst_ddk">Installing DDK 4.2</a></li>
+<li><a href="index.html#inst_x11">Installing MWC/RTR X11</a></li>
+<li><a href="x11.html">Make MWC/RTR X11 working</a></li>
+<li><a href="coh_pcem.html">COHERENT on PCem</a></li>
+<li><a href="coh_qemu.html">COHERENT on QEMU</a></li>
+<li><a href="coh_prog.html">C programming</a></li>
+<li><a href="third_party.html">Third-party Software</a></li>
+<li><a href="coh_build.html">Building systems</a></li>
+<li><a href="ftp/index.html">Downloads</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="news.html">News (17-DEC-2021)</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="../dsgvo.html">Datenschutz</a></li>
+</ul>
+</nav>
+</div>
+
+<div id="content">
+
+<a name="intro"></a>
+<p><b><font size="5">Introduction:</font></b></p>
+In 1990 Mark Williams Company released COHERENT 3.0, a clone of
+the UNIX V7 operating system for Intel 286 based systems.
+I already had a real nice PC with Intel 386 CPU, I passed on the PC XT
+and PC AT because of the technically bad design of these systems.
+At this time I was working for Nixdorf Computer and had access to all and
+any UNIX systems they had there in the labs. Besides the large RISC mainframes
+the smaller Nixdorf UNIX systems were based on 68020 and 386 CPU's, so I knew
+that a 386 machine would do what I wanted.
+<p>
+I got COHERENT 3.0, installed it on my private 386 box and got
+hooked. Sure, the system was limited by the MMU of the 286 CPU, processes
+have a 64KB code and a 64KB data segment, same as UNIX V7 on the
+PDP-11, but the system was very complete and fun to use. It came
+with a HDB uucp and soon I had it online with an analog modem, exchanging
+email and Usenet news via uucp. This also enabled me to get access
+to sources for applications and tools written for UNIX systems,
+that were shared over the uucp network at this time. I collaborated
+with many others using Minix and COHERENT, to make such applications
+available for theses small systems. See the old COHERENT archives,
+there you'll find most of the stuff we did and shared with others.
+<p>
+In 1992 COHERENT 4.0 for the 386/486 was released, the limitations
+of the 286 gone, and the whole system looked pretty much like the
+UNIX System V.3 boxes I was using for work. This is meant API wise,
+UNIX System V.3 has more features than COHERENT, but it is possible
+to get most software written for UNIX working on COHERENT.
+Also the system is iBCS2 compatible, so it runs the same shrinkwrap
+applications like the other 386 UNIX systems from SCO, Interactive
+and so on. The old HDB uucp was replaced with Taylor uucp from
+Ian Lance Taylor, which you'll still find on almost any modern UNIX systems
+nowadays.
+<p>
+In 1993 I was asked if I would like to work for Mark Williams.
+After a visit at the office in Northbrook, Illinois we came to an
+agreement and I started to work for MWC until 1995, when the
+company was closed.
+<p>
+In 1994 Mark Williams released COHERENT 4.2, with STREAMS, POSIX.1
+and POSIX.2 compatibility and other features, that made the system
+pretty much look like UNIX System V.4. Again, meant API wise, UNIX
+System V.4 has many more features than COHERENT.
+<p>
+These pages are dedicated to my former colleagues and friends
+from Mark Williams Company. It is a honor to have known and worked
+with you all. In January 2015, Robert "Bob" Swartz (founder and president
+of MWC) agreed to open posting of COHERENT command and system sources under
+this Open Source license: 
+<br>
+<br>
+<br>
+<a name="license"></a>
+<p><b><font size="5">License:</font></b></p>
+<p>
+<hr>
+<p>
+Copyright &copy; 1977-1995 by Robert Swartz.
+All rights reserved.
+<p>
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+<p>
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+<p>
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+<p>
+3. Neither the name of the copyright holder nor the names of its contributors
+may be used to endorse or promote products derived from this software without
+specific prior written permission.
+<p>
+This software is provided by the copyright holders and contributors "as is"
+and any express or implied warranties, including, but not limited to, the
+implied warranties of merchantability and fitness for a particular purpose
+are disclaimed. In no event shall the copyright holder or contributors be
+liable for any direct, indirect, incidental, special, exemplary, or
+consequential damages (including, but not limited to, procurement of
+substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in
+contract, strict liability, or tort (including negligence or otherwise)
+arising in any way out of the use of this software, even if advised of the
+possibility of such damage.
+<p>
+<hr>
+<p>
+Thank you very much for this Bob, now it is possible to build systems that
+can be shared with others, and archive all this work done over decades in
+an accessible manner.
+<p>
+A while ago I said (post 9 in the thread)
+<a href="https://groups.google.com/forum/#!topic/comp.os.coherent/TLMouSQKBfc">
+this</a>. Now it is possible, so I'm at work.
+<br>
+<br>
+<br>
+<a name="vbox"></a>
+<p><b><font size="5">Oracle Virtualbox:</font></b></p>
+<p>
+Virtualbox is a powerful Open Source x86 and Intel64/AMD64 virtualization 
+product.
+In 2016 Oracle <a href="https://www.virtualbox.org/">Virtualbox</a>
+5.0.14 was released and the VM now is able to run COHERENT 4.2 systems,
+wasn't working with releases 
+<a href="https://www.virtualbox.org/ticket/12579">before</a>.
+Thanks to the Virtualbox team for making it working, much appreciated.
+<p>
+COHERENT releases before 4.2 are not working, emulation of floppy disk
+and harddisk controllers is not exact enough. The older versions
+can be used on other virtualizations like QEMU and PCem.
+<p>
+<hr>
+<p>
+Before we get at work, you don't have to read and work through this.
+You can just download Virtualbox and a ready to use VM, I provide here
+under Downloads.
+Good enough if you just want to use a working COHERENT system.
+However, this is a very complex VM
+and I'll try to explain some of the details, how to use it for
+running COHERENT. So sometime you should get back and read a bit
+of the following, to become familiar with the VM configuration.
+<p>
+That said, let's configure a VM now. You do that
+by clicking on New in the Virtualbox Manager and then follow the dialog.
+The following screenshots and explanations will show the VM configuration
+I'm using successfully on host systems with OSX and Windows 7, should also
+work with Solaris or Linux hosts.
+<p>
+<img src="settings-1.png" style="float:left; margin:10px;">
+For the VM Version don't use a 64bit one, COHERENT 4.x is a
+32bit OS.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-2.png" style="float:left; margin:10px;">
+It is not possible to install Virtualbox tools on COHERENT, so we disable
+the features here, requiring the guest OS running the tools.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-3.png" style="float:left; margin:10px;">
+COHERENT 4.x supports 16MB memory, no point in assigning more to the VM.
+<br>
+For the motherboard chipset use PIIX3, that already is for Pentium II
+systems that came years after 1995. It will also run with PIIX4 and later
+ICH chipsets, not suggested to use these.
+<br>
+For the pointing device use PS/2 Mouse, way back I wrote a device driver for
+that, we'll get at this later.
+<br>
+Uncheck I/O APIC and EFI, COHERENT doesn't support it, came years after
+1995.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-4.png" style="float:left; margin:10px;">
+Use 1 CPU for COHERENT. Nigel modified kernel and drivers to use SMP
+locks instead of spin locks, the base for SMP is there, but we never
+got it implemented fully before MWC closed.
+<br>
+Uncheck PAE/NX extensions, COHERENT won't use them.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-5.png" style="float:left; margin:10px;">
+Don't use Virtualization features, COHERENT is not aware about
+running under control of a VM hypervisor, there was none in 1995.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-6.png" style="float:left; margin:10px;">
+The VGA video cards of 90th PC's had 64-128KB video memory, some more
+and some also used banked memory. Later VESA cards had 512KB-2MB
+video memory. Set Video Memory to lowest possible setting, which
+is 1MB. The OS can't use the video framebuffer for code or data
+of course, higher settings just reduce the memory the system can
+use for running programs.
+<br>
+Uncheck Acceleration, it is not used for now.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-7.png" style="float:left; margin:10px;">
+Add an IDE controller and a Floppy Controller to the system. For the
+IDE controller also use the PIIX3 chipset, later chipsets might
+not work reliable with the COHERENT at device driver.
+<br>
+You can enable the Host I/O cache, but COHERENT uses it's own
+buffer cache for the filesystem. This also might slow down your host
+system, see the Virtualbox manual for details.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-8.png" style="float:left; margin:10px;">
+Add a Harddisk image to the IDE disk controller. Use a 500MB Harddisk,
+it is possible to use larger ones, if one knows what one is doing.
+With 500MB drives you won't run into problems, so use this if you're
+not familiar with the workarounds. Also make sure the drive is the
+Primary Master.
+<br>
+I have used a dynamically allocated storage device here in this example.
+It is better to use fixed storage devices. One won't save much with
+the dynamic ones, because mkfs already scribbles all over the plate, and
+so forces the VM to expand it anyway.
+<br>
+Exported VM's always have dynamically allocated storage devices to save
+space. Before you start the VM clone the disk image to a fixed
+one with <b>VBoxManage clonehd infile outfile --variant Fixed</b> and attach
+this image to the IDE controller. Also see the Virtualbox manual for
+details.
+<p>
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-9.png" style="float:left; margin:10px;">
+We wrote Soundblaster device drivers for COHERENT way back then,
+so you can enable Audio and set the Audio Controller to SoundBlaster 16.
+I'll get at this later.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-10.png" style="float:left; margin:10px;">
+COHERENT 4.x has no networking implemented, disable the Network
+Adapters.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-11.png" style="float:left; margin:10px;">
+Enable the serial ports, so that you can telnet into the VM.
+This setting shows the odd configuration needed for a Windows
+host for Virtualbox releases before 5.0.16, the TCP/IP socket was not working.
+If you use several VM's with serial ports better name the
+host pipe like \\.\pipe\coh1-com1 etc. and use different
+names for the COM1 port for every VM.
+<br>
+With Virtualbox 5.0.16 this is fixed and TCP/IP sockets are working now.
+Also the number of ports was increased to 4. Before you use more than 2
+ports read <b>man asy</b>, because of the shared interrupts some ports
+need to be configured for polling.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-12.png" style="float:left; margin:10px;">
+On UNIX hosts use a TCP/IP socket as shown in this setting. For the port
+number you might want to avoid 4000-4019, I use these for my virtual
+8080/Z80 machines and of course I want to connect all these virtual
+systems via serial ports.
+<br>
+Please note that Virtualbox implements raw sockets, no telnet negotiation
+done. For using a telnet client escape to the telnet prompt and use
+the command <b>mode character</b>, else it does local editing and local echo.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-13.png" style="float:left; margin:10px;">
+COHERENT doesn't support USB devices, disable it.
+<br style="clear: both;">
+</p>
+<p>
+<img src="settings-14.png" style="float:left; margin:10px;">
+Shared Folders are not possible without running Virtualbox tools
+on the guest system, so none here.
+<br style="clear: both;">
+</p>
+<br>
+<br>
+<br>
+<a name="inst_coh"></a>
+<p><b><font size="5">Installing COHERENT 4.2 on Virtualbox:</font></b></p>
+<p>
+So now we have configured a proper VM and we are going to install
+COHERENT on it. You need to download the disk images from here under
+<a href="ftp/index.html">Downloads</a> or elsewhere. I would suggest you use
+the Y2K fixed disk1, because the 1970 date will cause problems of all
+kind, special if you want to build applications from sources with make.
+<p>
+Just switch the VM on, it will complain that no bootable media was found.
+Attach disk1 to the floppy controller, reset the VM and off you go.
+The installation procedure is documented in great detail in the COHERENT
+release notes and COHERENT FAQ's, so I won't write more about it. Also I
+made a video showing the complete installation:
+<a href="https://www.youtube.com/watch?v=v22LcFoRS8E">Let's install COHERENT</a>
+<p>
+COHERENT is not copy-protected, but asks about a serial number early
+in the installation. You can use your own if you still have it, or use
+<b>47610000</b>, this one was used internally at MWC and you're free to
+use it now.
+<p>
+Do not use the loadable keyboard drivers, use the not loadable
+US keyboard driver. The loadable drivers use keyboard scancode set 3,
+which is not implemented correctly in Virtualbox. The kernel will stop
+with a diagnose code displayed in the upper right corner of the screen,
+if the keyboard is not working.
+<p>
+At this point you should have a working COHERENT base system.
+The first thing you want to do now is enabling the serial ports,
+so that you are able to telnet into the VM. Edit /etc/ttys
+and enable the serial line com1l by changing the 0 to 1,
+so that the file looks like this:
+<pre>
+	1lPcom1l
+	0lPcom2l
+	0lPcom3l
+	0lPcom4l
+	....
+</pre>
+The baud rate doesn't really matter, because TCP/IP sockets or host
+pipes have none, see <b>man ttys</b> for the details.
+Also edit /etc/ttytype and append a line
+for com1l:
+<pre>
+	....
+	ansipc  color6
+	ansipc  color7
+	xterm   com1l
+</pre>
+See <b>man ttytype</b> for the details, terminal type xterm is pretty much
+the best option for the terminal.
+<p>
+Then use <b>kill quit 1</b> so that the init process
+re-reads /etc/ttys and starts the getty process for the serial port.
+On UNIX hosts you can now <b>telnet localhost 4020</b> or whatever port
+you configured for COM1. As mentioned above, Virtualbox has raw sockets
+only, so telnet won't negotiate a useful setting and the default is no
+good. So escape to the telnet prompt with CNTL-], type <b>mode character</b>
+followed by a few CR until you get the login prompt.
+<p>
+If you are using a Windows host you very likely already have, or now want,
+<a href="http://www.putty.org/">PuTTY</a>. For connecting to this
+odd host pipes use this setting:
+<br>
+<br>
+<img src="putty-1.png">
+<br>
+<br>
+And there you go.
+<br>
+<br>
+<img src="putty-2.png">
+<br>
+<br>
+This screenshot was done with installation of the original disk1,
+the system uses 1970 date, because 1916 is implausible. And
+all files on the filesystems have timestamps from the future,
+causing problems. The exported VM's are installed with the Y2K fixed
+disk, so that it uses the correct date.
+<br>
+<br>
+<br>
+<a name="conf_coh"></a>
+<p><b><font size="5">Configuring COHERENT 4.2:</font></b></p>
+<p>
+After installation I have configured the COHERENT system a bit more
+to my liking. This all is done on the exported VM's already, if you
+setup a system your self, you might like some of this configuration
+too.
+<p>
+The 4.2.x releases come with the Bourne shell <b>/bin/sh</b> linked
+to the C Shell <b>/bin/csh</b>. This is not good, because configure
+scripts coming from an environment where the C shell is preferred
+will fail, because of the different syntax. Remove <b>/bin/csh</b>,
+it is not needed, but it will get in your way sometime.
+<p>
+Edit /etc/.kshrc and comment unset ENV, this causes problems
+with X11, because the shell looses the environment and then
+several things are not working correct. Here the configuration
+I am using, I also modified the shell prompt to a more
+informative one.
+<br>
+<pre>
+	# /etc/.kshrc
+	# Wed Oct 27 05:14:15 1993 CST
+
+	# Use set -o emacs for emacs history mode.
+	# Use set -o vi for vi history mode.
+	set -o vi
+	#echo "ksh: vi command history mode.  Edit /etc/.kshrc to change this."
+
+	# Set shell prompt to give login device, user name, and current directory.
+	#PS1=`tty | sed 's/^.....//'`" $USER \$PWD: "
+	PS1="\$USER@\$SITE:\$PWD> "
+
+	# Allow ^C to send SIGINT even when editing command line.
+	bind '^C=abort'
+
+	# Some subshells (e.g. without tty) may be unable to use this file.
+	#unset ENV
+</pre>
+<p>
+Append the following to /etc/profile, this provides
+a good working environment for things we'll use later:
+<br>
+<pre>
+	# customization for X11, GNU compilers, etc.
+	set -- $(tty) $(uname -n)
+	export TTY=${1#/dev/}
+	export SITE=$2
+
+	MWC () {
+        	export PATH=:/bin:/usr/bin:/usr/local/bin:/usr/X11/bin
+	}
+
+	GNU () {
+        	export PATH=:/u1/gnu/bin:/bin:/usr/bin:/usr/local/bin:/usr/X11/bin
+	}
+
+	MWC
+</pre>
+<p>
+After this ~/.profile for any other user you create on your system
+only needs the following single line, because everything else is
+set in the system wide environment.
+<br>
+<pre>
+	MAIL=/usr/spool/mail/&lt;login&gt;
+</pre>
+<p>
+By default COHERENT comes configured with / as the home directory
+for the root user. I never liked that because many programs create
+.xxxrc  like files and directories in the users home directory,
+but I want my / nice and clean. To change this <b>mkdir /home/root</b>,
+edit /etc/shadow and /etc/passwd and change / to /home/root. Then
+move the .xxxrc files from / to /home/root, logout and login again, done.
+<p>
+In the home directory of user root you'll have .exrc with settings that
+are fine for the PC color console, showing some features that can be used
+to setup vi. However, if you try to run vi from a telnet
+session it will complain a lot about this settings. I just renamed
+the file to .exrc.not, so that it isn't used.
+<br>
+<br>
+<br>
+<a name="inst_ddk"></a>
+<p><b><font size="5">Installing Device Driver Kit 4.2:</font></b></p>
+<p>
+To install the DDK use this command as user root:
+<br>
+<pre>
+	install Drv_420 /dev/fva0 1
+</pre>
+After the files got installed on the COHERENT system a post script
+/conf/Drv_420.post will be executed, it will build a kernel /ddk_420.
+On some installations I did it just worked, on some it aborted because
+timestamps are not correct, which will cause problems with build processes
+dependent on correct timestamps. If that happens do:
+<br>
+<pre>
+	cd /etc/conf
+	find . -name "*.c" -exec touch {} \;
+	find . -name "*.s" -exec touch {} \;
+</pre>
+Now all sources have current timestamps and are newer than the
+object files from the 90th. Then run /conf/Drv_420.post and the
+test kernel will be build.
+<p>
+Check the kernels under /, the DDK build one (ddk_420) and the one
+from the COHERENT installation (coherent) should be identical, both
+versions do match.
+<p>
+With the DDK installed you now are able to install the PS/2 mouse driver,
+you can download from here. The archive includes a README with all
+informations needed, to build a kernel including the driver.
+Read the DDK manual too, if you build new kernels never overwrite your
+working kernel, always create a kernel /coh.test or similar, and
+test if the system boots and works with it. After that you can link autoboot
+to your own kernel, so that it is used by default for booting COHERENT.
+<p>
+If you boot COHERENT you might have noticed that it detects a Cyrix CPU,
+which is not correct. This can be modified with kernel tuning, as user
+root do:
+<pre>
+	/etc/conf/bin/idtune CYRIX_CPU_SPEC 0xFFFF
+</pre>
+On a system with kernel source kit do:
+<pre>
+	cd /u1/src/kernel-4210/build/i386
+	bld fva -o /coh.4210
+</pre>
+Or on a base system:
+<pre>
+	/etc/conf/bin/idmkcoh -o /coh.4210
+</pre>
+<br>
+<br>
+<br>
+<a name="inst_x11"></a>
+<p><b><font size="5">Installing MWC/RTR X11 on COHERENT 4.2:</font></b></p>
+<p>
+If you read the X11R5 manual provided by MWC it says that a serial
+mouse is required for running X. This is not correct, the XFree 1.2
+server also does support a PS/2 mouse. At the time the manual was
+written we had no driver for these devices, so they couldn't be used.
+<p>
+In 1994 I wrote a PS/2 mouse driver and it works with this release
+of X11R5. This is why you installed the DDK and the driver before.
+Frankly, when I was trying this the first time on Virtualbox I was
+prepared, that this driver software would require some changes to
+work with a VM, more than 20 years after I wrote it. Much to my
+surprise and my delight this is not the case.
+<p>
+Now install X11R5 with this command as user root:
+<pre>
+	install CohX /dev/fva0 2
+</pre>
+The dialog is straightforward, but at some time you are asked
+to select one of the serial mice. It doesn't matter what you
+select here, because we'll change the configuration file anyway.
+After that the installation procedure will test the mouse, which
+of course will not work. Just ignore and answer the question if
+your mouse is working with y and finish the installation.
+<p>
+Then edit /usr/X11/lib/Xconfig and make it look like this:
+<pre>
+	RGBPath "/usr/X11/lib/rgb/"
+	Fontpath        "/usr/X11/lib/fonts/misc/,/usr/X11/lib/fonts/75dpi/"
+
+	#Mouse configuration
+	#microsoft "/dev/mouse"		<- whatever serial mouse was configured
+	#emulate3buttons		   comment it out
+	#BaudRate 1200
+	#SampleRate 150
+	PS/2 "/dev/mouse"		<- and add the PS/2 mouse
+
+	#Monochrome server
+	vga2
+	Modes "800x600" "640x480"	<- 800x600 first
+	Clocks 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+	Virtual 800 600
+	Viewport 0 0
+
+	#Color server
+	vga256
+	Modes "640x480" "800x600"
+	Clocks 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+	Virtual 800 600
+	Viewport 0 0
+</pre>
+Now login with a non privileged user and type <b>startx</b>. If everything
+was done correctly you'll see something like this:
+<br>
+<br>
+<img src="X11R5.png">
+<br>
+<br>
+X11R5 with XFree 1.2 and the good old TWM window manager, that is
+how it looked like in 1993. Virtualbox provides a generic VGA
+card, so the color X server doesn't work. With this release of XFree
+only the monochrome X server with a maximal resolution 800x600 can
+be used with Virtualbox.
+<br>
+Soon we ported ol(v)wm and fvwm too, these look and handle somewhat
+more like a modern window manager. The source ports can be found in
+the old COHERENT archives, linked below. I even found some archived
+chat about the stuff we did in 1993
+<a href="https://groups.google.com/forum/#!topic/comp.os.coherent/vhpoy7p7Aqc">here</a>.
+<p>
+Congratulations, you now have a COHERENT system as we used it in
+the 90th. Read through the excellent MWC documentation for the system,
+grab some software from the old COHERENT archives and try it out.
+<p>
+Thanks for reading this far and if you have problems to get it working
+feel free to drop me a line, or better post your problem to the Usenet
+newsgroup.
+<p>
+<i>Udo Munk</i>
+<br>
+--
+<br>
+<i>The real fun is building it, and then using it....</i>
+<br>
+<br>
+<br>
+<a name="links"></a>
+<p><b><font size="5">Links:</font></b></p>
+<a href="http://www.nesssoftware.com/home/mwc/source.php">
+Mark Williams Company Sources</a>
+<br>
+<a href="https://nz.linkedin.com/in/nigelbree">
+Mark Williams Company - Nigel Bree</a>
+<br>
+<a href="https://www.elf.org/etc/author.html">
+Mark Williams Company - Roger Critchlow</a>
+<br>
+<a href="https://prabook.com/web/tom.duff/1880183">
+Mark Williams Company - Tom Duff</a>
+<br>
+<a href="https://kg.linkedin.com/in/louis-giliberto-3993257/de">
+Mark Williams Company - Louis Giliberto</a>
+<br>
+<a href="http://myblog.vindaloo.com/">
+Mark Williams Company - Chris Hilton</a>
+<br>
+<a href="https://randalljhoward.com/2012/01/01/dennis-ritchie-memories/">
+Mark Williams Company - Randall Howard</a>
+<br>
+<a href="https://ciexinc.com/about/">
+Mark Williams Company - William Lederer</a>
+<br>
+<a href="http://www.nesssoftware.com/home/mwc/">
+Mark Williams Company - Steve Ness</a>
+<br>
+<a href="https://www.linkedin.com/in/hsnyder">
+Mark Williams Company - Hal Snyder</a>
+<br>
+<a href="http://www.tuhs.org/Archive/Distributions/Other/Coherent/">
+COHERENT archive at TUHS</a>
+<br>
+<a href="http://gopher.muffinlabs.com/telefisk.org/coherent/">
+Another COHERENT archive</a>
+<br>
+<a href="https://www.youtube.com/channel/UCwOfdlzktTTDuFyFODbA3yA/videos">YouTube video channel - Udo Munk</a>
+<br>
+<a href="news:comp.os.coherent">Usenet newsgroup comp.os.coherent</a>
+or
+<a href="https://groups.google.com/forum/#!forum/comp.os.coherent">
+Google Groups comp.os.coherent</a>.
+
+</div>
+
+<p><a href="../index.html">Home</a></p>
+
+</body>
+</html>

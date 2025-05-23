@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX">
+<title>News about COHERENT operating system</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+</head>
+
+<body>
+<p><a href="index.html#intro">Back</a></p>
+
+<p><b><font size="5">
+Latest news about COHERENT:
+</font></b></p>
+
+17-DEC-2021:
+<p>
+Uploaded disk images for 8086 COHERENT 2.3.43 as well as the manuals,
+provided by Wouter Visscher.
+<hr>
+<hr>
+01-DEC-2020:
+<p>
+Uploaded disk contents with MWC C 1.0 and 3.0.5 for the Atari machines,
+and the manual rev 3 PDF.
+<hr>
+<hr>
+26-NOV-2020:
+<p>
+Uploaded 4.0.r74 dev system with full MWC sources. Development tools
+(compiler, assembler, linker, librarian, lex, yacc, m4) and runtime
+libraries active are the self compiled ones. Made sure that everything
+builds with them, system now is self contained and can be modified
+in any way.
+<hr>
+<hr>
+19-NOV-2020:
+<p>
+While toying arround with some VGA demo scene stuff I noticed, that
+handling of inline code was not properly ifdef'ed in vga.h, but
+gcc 2.5 can inline code. Makes a notable difference, fixed that and
+uploaded new library source.
+<hr>
+<hr>
+09-NOV-2020:
+<p>
+New COHERENT 4.2 VM's and disk images uploaded to web site. The 4.2
+systems have more software from the MWC archive installed as well
+as some other available Open Source software.
+<p>
+Then I added the top like hmon program to 4.2.10, in 4.2.14 it is
+included in the distribution.
+<p>
+I improved MWC's cpp so that it now can handle the comment macro
+used in imake templates. New compiler bits are installed on the
+4.2.10 and 4.2.14 systems.
+<pre>
+#define XCOMM \#
+XCOMM this is a comment
+</pre>
+now correctly expands to
+<pre>
+# this is a comment
+</pre>
+<hr>
+<hr>
+05-NOV-2020:
+<p>
+Fixed some issues in COHERENT 3.2 /usr/src/sys/usr/games sources.
+Fortune did't work because program and database didn't match, used
+Steve's latest source. Then fixed some permission issues, now guess
+can write it's database and learn.
+<hr>
+<hr>
+02-NOV-2020:
+<p>
+Uploaded new 4.0 disk images with GNU make compiled from sources.
+Also added unproto to the systems to be able to compile ANSI C.
+Put the r78 kernel sources on the r74 system and build kernel
+from sources.
+<hr>
+<hr>
+26-OCT-2020:
+<p>
+Updated all web pages to current status.
+<hr>
+<hr>
+20-OCT-2020:
+<p>
+Steve Ness provided better Let'C manual and also a manual for csd, uploaded
+here too.
+<p>
+Updated the 4.0.72 graphics workstation disk image, the machine also
+has a working MGR installed now. 
+<p>
+Updated the 4.0.68 graphics workstation disk image. MGR works on QEMU
+but not on PCem, because this COHERENT release has bugs in the tty
+line discipline, and a serial mouse won't work with that.
+<hr>
+<hr>
+19-OCT-2020:
+<p>
+Build COHERENT 4.0 r74 graphics workstation with VGA console graphics and
+working Bellcore MGR.
+<hr>
+<hr>
+18-OCT-2020:
+<p>
+Build COHERENT 4.0 r72 graphics workstation with VGA console graphics and
+Bellcore MGR, still same problem.
+<hr>
+<hr>
+16-OCT-2020:
+<p>
+Made COHERENT 4.0 r68 graphics workstation with VGA console graphics and
+Bellcore MGR available, produced video showing the system.
+<p>
+Santo Nucifora provided much better scans of the Commodore-900
+COHERENT manuals, many thanks. Uploaded here too.
+<hr>
+<hr>
+13-OCT-2020:
+<p>
+Uploaded my current VM's and disk images and added the new 4.2.14 version.
+<hr>
+<hr>
+12-OCT-2020:
+<p>
+Sometimes there is interest in MWC Let's C, the MWC C compiler ported to
+DOS. So we made disk images and a reproduced manual available for download.
+The manual of the last version was produced with COHERENT roff on a PDP-11
+in 1987. Steve Ness recreated a readable manual from the old sources as
+good as possible, quite amazing after the long time.
+<hr>
+<hr>
+05-OCT-2020:
+<p>
+<center>
+<img src="4.2.14.png" alt="COHERENT 4.2.14" title="COHERENT 4.2.14"
+style="width:600px;height:400px;">
+</center>
+<p>
+I was able to revive COHERENT 4.2.14, the kernel is build from the
+sources of the MWC source archive.
+<hr>
+<hr>
+02-OCT-2020:
+<br>
+Fiddled days with some old floppy disks from 1993 to get them imaged
+without error. Now we have the r72 update for COHERENT 4.0, which is
+required to run ASC X11, uploaded that update. Then I build a 4.0.1r72
+box on PCem and installed ASC X to see if everything works.
+<hr>
+<hr>
+30-SEP-2020:
+<br>
+Uploaded my personal archive with UNIX software ported to COHERENT systems,
+all sites that used to archive this software seem to be gone.
+<hr>
+<hr>
+29-SEP-2020:
+<br>
+Uploaded new 4.0 disk image with modified /etc/rc & brc, so that
+all kernels boot with correct date/time.
+<hr>
+<hr>
+27-SEP-2020:
+<br>
+Uploaded new disk image with my current 3.2 source development system
+with bug fixes, improvements, some new retro software under /usr/local.
+<hr>
+<hr>
+11-FEB.2020:
+<br>
+Uploaded new disk image with my current 3.2 source development system
+with bug fixes, improvements, some new retro software under /usr/local.
+<hr>
+<hr>
+31-JAN-2019:
+<br>
+Uploaded new disk image with complete 321 sources with many
+improvements.
+<hr>
+<hr>
+10-DEC-2018:
+<br>
+Upladed new disk image with complete 321 sources. Other than uucp
+the whole system can be build from the sources.
+The disk also includes some more game software under /usr/local
+for testing compiler, roff etc. on the self build 321 system.
+<hr>
+<hr>
+05-DEC-2018:
+<br>
+Moved /usr/src/sys to another 30MB partition, so that there is enough
+disk space for the build system.
+Sources for /bin and /usr/bin are almost complete, uucp and some
+other less essential stuff is not done yet.
+Build system libraries from the 321 sources and setup headers/libraries,
+so that the whole system is build from the latest bits.
+<hr>
+<hr>
+27-NOV-2018:
+<br>
+Added most sources for /bin and /usr/bin to the 3.2.0 development disk,
+including all development tools. The build disk self now is usable as a
+development system.
+<hr>
+<hr>
+16-NOV-2018:
+<br>
+Put enough of the 3.2.1 sources onto the 3.2.0 development disk to
+build a COHERENT system from sources on another harddisk. Enough stuff
+is added, so that the build disk boots in single and multiuser mode.
+<hr>
+<hr>
+08-NOV-2018:
+<br>
+Put kernel sources for 3.2.0 onto the 3.2.0 VM disk image and build
+bootable kernel, uploaded disk image.
+<hr>
+<hr>
+07-MAR-2018:
+<br>
+Uploaded my latest COHERENT 4.2 Virtualbox VM, the disk image from the
+VM, and a disk image for usage with PCem, that is configured to run the
+color X11 server. Wrote documentation how to reconfigure the system
+for running under PCem.
+<hr>
+<hr>
+05-MAR-2018:
+<br>
+Uploaded more manuals and distribution disk images. Build Y2K fixed
+installation disks for all x86 COHERENT releases. Wrote documentation
+about COHERENT installations on QEMU and PCem. Build disk images with
+ready to use COHERENT 3.1, 3.2 and 4.0 installations.
+<hr>
+<hr>
+25-NOV-2017:
+<br>
+Uploaded some more MWC distribution disks I imaged from the floppy disks
+I still have from that era. Interesting is the r74 upgrade for 4.0, one
+would need this for running the Bellcore MGR Window System.
+<hr>
+<hr>
+19-NOV-2017:
+<br>
+Uploaded MWC distribution disks for the GNU compiler sources
+and CohWare Volumes 2 and 3.
+<hr>
+<hr>
+11-NOV-2017:
+<br>
+Uploaded new VM with more MWC sources and disk images for usage with
+other virtualizations.
+<hr>
+<hr>
+24-OCT-2017:
+<br>
+Uploaded scan of the COHERENT 3.0 and 4.0 manuals.
+<hr>
+<hr>
+11-OCT-2017:
+<br>
+Uploaded MWC product images for COHERENT 3.0, 3.1, 3.2 and 4.0.
+<br>
+Uploaded manual for /rdb and the ANSI C Lexical Guide.
+<hr>
+<hr>
+11-AUG-2016:
+<br>
+Uploaded z80pack-1.7, the version from Walnut Creek CP/M CD-ROM.
+<hr>
+<hr>
+03-MAY-2016:
+<br>
+Uploaded new VM with many more MWC sources under /u1/src.
+<br>
+Also added RCS to the system, so that one can look into the old revisions.
+<br>
+Added file /COPYING with the license text, because the text in the VM is
+not persistent.
+<hr>
+<hr>
+10-MAR-2016:
+<br>
+Brought MWC sources for 386 development tools, system libraries, shells etc.
+on the system and made sure everything can be build from the sources.
+New Virtualbox VM uploaded.
+<hr>
+<hr>
+07-MAR-2016:
+<br>
+Tried to get Soundblaster 16 driver and tracker mod player working. The
+driver finds the sound card under Virtualbox, but playing .mod files
+with tracker crashes the kernel. Needs hacking, uploaded to ftp server
+for anyone with enough spare time to mess with it.
+<hr>
+<hr>
+05-MAR-2016:
+<br>
+Virtualbox 5.0.16 is released and it fixes some issues, updated web site.
+<hr>
+<hr>
+04-MAR-2016:
+<br>
+Made my first public release of z80pack from 1992 working under COHERENT 4.2
+and re-licensed it under a more liberate license. Uploaded to ftp server.
+<hr>
+<hr>
+29-FEB-2016:
+<br>
+Uploaded new VM that includes vgalib and the complete /u1/gnu bits.
+<br>
+Fixed a typo in README for termios2016.tgz, new version uploaded too.
+<hr>
+<hr>
+24-FEB-2016:
+<br>
+Revised Harry's port of vgalib, so that it can be integrated clean
+into the system. Has some example programs, works OK.
+<br>
+Got Steve's beautiful programs for vgalib, modified them a bit so
+they use the system vgalib, that was the plan anyway.
+<br>
+This stuff will be included in future VMs, to do it your self do this:
+<br>
+Get termios2016.tgz, unpack in /u1/src and do what README says.
+<br>
+Get vgalib2016.tgz, unpack in /u1/src and do what README.Coh says.
+<br>
+Get screen.tgz, unpack in you home directory, make, run the programs
+and watch the fun.
+<hr>
+<hr>
+23-FEB-2016:
+<br>
+Revised my old termios bits and integrated it into the system. Will
+be included in future VMs, uploaded tarball so that it is available
+for others to use.
+<hr>
+<hr>
+22-FEB-2016:
+<br>
+Uploaded new VM with kernel sources 4.2.10, 4.2.12 and 4.2.14. The
+sources are under /u1/src, you'll also find some documentation there,
+how to build the kernels your self. Also the kernels I've build
+are on /, 4.2.14 will boot but won't work.
+<hr>
+<hr>
+20-FEB-2016:
+<br>
+Finished documentation for installation of the MWC products on Virtualbox.
+<br>
+Got kernel 4.2.14 build from the sources from Steve's archive. Kernel
+boots, but system won't work, shells abort. Probably system misconfiguration,
+needs more work. So no new VM yet.
+<hr>
+<hr>
+18-FEB-2016:
+<br>
+I have uploaded a new exported VM that includes kernel sources, so
+that everyone who wants can build the kernel self.
+<hr>
+<hr>
+17-FEB-2016:
+<br>
+Fixed Coherent -> COHERENT all over the place, I should know better.
+<br>
+Various other improvements for the web site.
+<hr>
+<hr>
+15-FEB-2016:
+<br>
+Fixed the usual typos, some better wording here and there.
+<br>
+Completed installation instructions for Coherent.
+<hr>
+<hr>
+14-FEB-2016:
+<br>
+Brought web site online.
+
+<p><a href="index.html#intro">Back</a></p>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+
+
+
+GZEXE(1)                                                 GZEXE(1)
+
+
+NNAAMMEE
+       gzexe - compress executable files in place
+
+SSYYNNOOPPSSIISS
+       ggzzeexxee [ name ...  ]
+
+DDEESSCCRRIIPPTTIIOONN
+       The  _g_z_e_x_e  utility  allows you to compress executables in
+       place and have them automatically uncompress  and  execute
+       when  you  run  them  (at  a penalty in performance).  For
+       example if you execute ``gzexe /bin/cat'' it  will  create
+       the following two files:
+           -r-xr-xr-x  1 root  bin   9644 Feb 11 11:16 /bin/cat
+           -r-xr-xr-x  1 bin   bin  24576 Nov 23 13:21 /bin/cat~
+       /bin/cat~  is  the original file and /bin/cat is the self-
+       uncompressing executable file.  You can  remove  /bin/cat~
+       once you are sure that /bin/cat works properly.
+
+       This  utility  is  most  useful on systems with very small
+       disks.
+
+OOPPTTIIOONNSS
+       --dd     Decompress the given executables  instead  of  com-
+              pressing them.
+
+SSEEEE AALLSSOO
+       gzip(1), znew(1), zmore(1), zcmp(1), zforce(1)
+
+CCAAVVEEAATTSS
+       The compressed executable is a shell script. This may cre-
+       ate some security holes.  In  particular,  the  compressed
+       executable relies on the PATH environment variable to find
+       _g_z_i_p and some other utilities _(_t_a_i_l_, _c_h_m_o_d_, _l_n_, _s_l_e_e_p_)_.
+
+BBUUGGSS
+       _g_z_e_x_e attempts to retain the original file  attributes  on
+       the  compressed  executable,  but you may have to fix them
+       manually in some cases, using _c_h_m_o_d or _c_h_o_w_n_.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                1
+
+

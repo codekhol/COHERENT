@@ -1,0 +1,264 @@
+
+
+
+objdump(1)            GNU Development Tools            objdump(1)
+
+
+NNAAMMEE
+       objdump - display information from object files.
+
+
+SSYYNNOOPPSSIISS
+       oobbjjdduummpp
+              [--aa|----aarrcchhiivvee--hheeaaddeerrss] [--bb _b_f_d_n_a_m_e |
+              ----ttaarrggeett==_b_f_d_n_a_m_e] [--dd|----ddiissaasssseemmbbllee]
+              [--ff|----ffiillee--hheeaaddeerrss] [--hh|----sseeccttiioonn--hheeaaddeerrss |
+              ----hheeaaddeerrss] [--ii|----iinnffoo] [--jj _s_e_c_t_i_o_n |
+              ----sseeccttiioonn==_s_e_c_t_i_o_n] [--ll|----lliinnee--nnuummbbeerrss] [--mm _m_a_c_h_i_n_e
+              | ----aarrcchhiitteeccttuurree==_m_a_c_h_i_n_e] [--rr|----rreelloocc]
+              [--RR|----ddyynnaammiicc--rreelloocc] [--ss|----ffuullll--ccoonntteennttss] [----ssttaabbss]
+              [--tt|----ssyymmss] [--TT|----ddyynnaammiicc--ssyymmss] [--xx|----aallll--hheeaaddeerrss]
+              [----vveerrssiioonn] [----hheellpp] _o_b_j_f_i_l_e...
+
+DDEESSCCRRIIPPTTIIOONN
+       oobbjjdduummpp  displays  information  about  one  or more object
+       files.  The options control what particular information to
+       display.  This information is mostly useful to programmers
+       who are working on the compilation tools,  as  opposed  to
+       programmers  who  just  want  their program to compile and
+       work.
+
+       _o_b_j_f_i_l_e...  are the object files to be examined.  When you
+       specify archives, oobbjjdduummpp shows information on each of the
+       member object files.
+
+
+OOPPTTIIOONNSS
+       Where long and short forms of an option are shown  togeth-
+       er,  they  are equivalent.  At least one option besides --ll
+       (----lliinnee--nnuummbbeerrss) must be given.
+
+
+       --aa
+
+       ----aarrcchhiivvee--hheeaaddeerrss
+              If any files from _o_b_j_f_i_l_e are archives, display the
+              archive  header information (in a format similar to
+              `llss --ll').  Besides the information you  could  list
+              with  `aarr  ttvv',  `oobbjjdduummpp --aa' shows the object file
+              format of each archive member.
+
+
+       --bb _b_f_d_n_a_m_e
+
+       ----ttaarrggeett==_b_f_d_n_a_m_e
+               Specify the  object-code  format  for  the  object
+              files  to  be  _b_f_d_n_a_m_e.  This may not be necessary;
+              _o_b_j_d_u_m_p can automatically recognize  many  formats.
+              For example,
+
+              objdump -b oasys -m vax -h fu.o
+
+
+
+cygnus support           5 November 1991                        1
+
+
+
+
+
+objdump(1)            GNU Development Tools            objdump(1)
+
+
+              display  summary information from the section head-
+              ers (`--hh') of `ffuu..oo', which is  explicitly  identi-
+              fied (`--mm') as a Vax object file in the format pro-
+              duced by Oasys compilers.  You can list the formats
+              available with the `--ii' option.
+
+
+       --dd
+
+       ----ddiissaasssseemmbbllee
+              Display the assembler mnemonics for the machine in-
+              structions from _o_b_j_f_i_l_e.
+
+
+       --ff
+
+       ----ffiillee--hheeaaddeerrss
+              Display summary information from the overall header
+              of each file in _o_b_j_f_i_l_e.
+
+
+       --hh
+
+       ----sseeccttiioonn--hheeaaddeerrss
+
+       ----hheeaaddeerrss
+              Display  summary information from the section head-
+              ers of the object file.
+
+
+       ----hheellpp Print a summary of the options to oobbjjdduummpp and exit.
+
+
+       --ii
+
+       ----iinnffoo Display a list showing all architectures and object
+              formats available for specification with --bb or  --mm.
+
+
+       --jj _n_a_m_e
+
+       ----sseeccttiioonn==_n_a_m_e
+               Display information only for section _n_a_m_e
+
+
+       --ll
+
+       ----lliinnee--nnuummbbeerrss
+              Label  the  display  (using  debugging information)
+              with the filename and source  line  numbers  corre-
+              sponding  to  the  object  code shown.  Only useful
+              with --dd.
+
+
+
+
+
+cygnus support           5 November 1991                        2
+
+
+
+
+
+objdump(1)            GNU Development Tools            objdump(1)
+
+
+       --mm _m_a_c_h_i_n_e
+
+       ----aarrcchhiitteeccttuurree==_m_a_c_h_i_n_e
+               Specify the object files _o_b_j_f_i_l_e are for architec-
+              ture _m_a_c_h_i_n_e.  You can list available architectures
+              using the `--ii' option.
+
+
+       --rr
+
+       ----rreelloocc
+              Print the relocation entries of the file.
+
+
+       --RR
+
+       ----ddyynnaammiicc--rreelloocc
+              Print the dynamic relocation entries of  the  file.
+              This  is  only meaningful for dynamic objects, such
+              as certain types of shared libraries.
+
+
+       --ss
+
+       ----ffuullll--ccoonntteennttss
+              Display the full contents of any sections  request-
+              ed.
+
+
+       ----ssttaabbss
+              Display the contents of the .stab, .stab.index, and
+              .stab.excl sections from an ELF file.  This is only
+              useful  on  systems  (such as Solaris 2.0) in which
+              .stab debugging symbol-table entries are carried in
+              an ELF section.  In most other file formats, debug-
+              ging  symbol-table  entries  are  interleaved  with
+              linkage symbols, and are visible in the --syms out-
+              put.
+
+
+       --tt
+
+       ----ssyymmss Symbol Table.  Print the symbol  table  entries  of
+              the  file.  This is similar to the information pro-
+              vided by the `nnmm' program.
+
+
+       --TT
+
+       ----ddyynnaammiicc--ssyymmss
+              Dynamic Symbol Table.   Print  the  dynamic  symbol
+              table entries of the file.  This is only meaningful
+              for dynamic  objects,  such  as  certain  types  of
+              shared  libraries.  This is similar to the informa-
+
+
+
+cygnus support           5 November 1991                        3
+
+
+
+
+
+objdump(1)            GNU Development Tools            objdump(1)
+
+
+              tion provided by the `nnmm' program when given the --DD
+              ((----ddyynnaammiicc)) option.
+
+
+       ----vveerrssiioonn
+              Print the version number of oobbjjdduummpp and exit.
+
+
+       --xx
+
+       ----aallll--hheeaaddeerrss
+              Display all available header information, including
+              the symbol table  and  relocation  entries.   Using
+              `--xx'  is  equivalent to specifying all of `--aa --ff --hh
+              --rr --tt'.
+
+
+SSEEEE AALLSSOO
+       `bbiinnuuttiillss' entry in iinnffoo; _T_h_e _G_N_U _B_i_n_a_r_y _U_t_i_l_i_t_i_e_s, Roland
+       H. Pesch (October 1991); nnmm(11).
+
+
+CCOOPPYYIINNGG
+       Copyright (c) 1991 Free Software Foundation, Inc.
+
+       Permission  is  granted  to  make  and distribute verbatim
+       copies of this manual provided the  copyright  notice  and
+       this permission notice are preserved on all copies.
+
+       Permission is granted to copy and distribute modified ver-
+       sions of this manual under  the  conditions  for  verbatim
+       copying,  provided  that the entire resulting derived work
+       is distributed under the  terms  of  a  permission  notice
+       identical to this one.
+
+       Permission  is granted to copy and distribute translations
+       of this manual into another language, under the above con-
+       ditions for modified versions, except that this permission
+       notice may be included in  translations  approved  by  the
+       Free  Software  Foundation  instead of in the original En-
+       glish.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cygnus support           5 November 1991                        4
+
+

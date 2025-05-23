@@ -1,0 +1,889 @@
+-*- text -*-  Last modified Tue Mar 30 18:10:57 1993
+
+This is an incomplete and probably out-of-date list of all the packages
+distributed on prep.ai.mit.edu with a brief description explaining what
+each one is.
+
+More information about these programs can typically be found in the GNU
+Bulletin.  To receive a copy, write to gnu@prep.ai.mit.edu.
+
+Problems with the contents of this file (or problems pertaining to the
+packaging of these programs, e.g. if a file is corrupted) should be sent to
+friedman@prep.ai.mit.edu.  Bug reports for the programs themselves should
+go to the appropriate address indicated in the instructions to that
+program.
+
+Because the unix `compress' utility is patented (by two separate patents,
+in fact), we cannot use it; it's not free software.  Therefore, the GNU
+Project has chosen a new compression utility, `gzip', which is free of any
+known software patents and which tends to compress better anyway.  Files
+compressed with this new compression program end in `.z' (as opposed to
+`compress'-compressed files, which end in `.Z').  Gzip can uncompress
+`compress'-compressed files and SVR4 `pack' files (which also end in `.z').
+This is possible because the various decompression algorithms are not
+patented---only compression is.
+
+The gzip program is available from any GNU mirror site in shar, tar, or
+gzipped tar format (for those who already have a prior version of gzip and
+want faster data transmission).  It works on virtually every unix system,
+MSDOS, OS/2, and VMS.
+
+Filenames below ending with "/" are directories.  Other entries are plain
+files. 
+
+
+COPYING-1.0
+   Version 1 of the GNU General Public License.
+
+
+COPYING-2.0
+   Version 2 of the GNU General Public License.
+
+
+COPYING.LIB-2.0
+   Version 2 of the GNU General Public Library License (there is no
+   version 1).
+
+
+GNUinfo/
+   General files of interest about the GNU Project, most of them included in
+   the GNU Emacs distribution.
+
+
+MailingListArchives/
+   Archives of the GNU mailing lists (most of which are also gatewayed to
+   the various gnu.* newsgroups).
+
+
+MicrosPorts/
+   The GNU Project is not directly interested in integrating or
+   maintaining ports of GNU software to many micro-computer systems, like
+   Amiga's or MSDOS, because of limited resources.  However, a few files
+   with pointers to people who do maintain GNU software for these other
+   systems are available in this directory.
+
+
+ae.tar.z
+   This is a complicated profiling system that works with GCC to produce
+   more complete profiling information.  Instructions for compiling `ae'
+   are in the files "README" and "INSTALL".
+
+
+autoconf-1.3.tar.z
+   Autoconf is an extensible package of m4 macros that creates a
+   non-interactive configuration script for a package from a template
+   file.  The template file lists the operating system features that the
+   package can use, in the form of m4 macro calls, and can also contain
+   arbitrary shell commands.  Autoconf requires GNU m4.
+   
+   Autoconf-generated configure scripts are being used by many GNU
+   packages currently, and will be used by more in the future.
+
+
+bash-1.12.tar.z
+   BASH (the Bourne Again SHell) is a Posix-compatable shell with full
+   Bourne shell (`sh') syntax and some C-shell commands.  BASH supports
+   emacs-style command-line editing, job control, functions, and on-line
+   help.  Instructions for compiling BASH may be found in the file
+   "README".
+
+
+bc-1.02.tar.z
+   `bc' is an interactive algebraic language with arbitrary precision.
+   GNU `bc' was implemented from the POSIX 1003.2 draft standard, but it
+   has several extensions including multi-character variable names, an
+   `else' statement, and full Boolean expressions.
+   
+   GNU `bc' does not use the historical method of being a compiler for
+   the `dc' calculator.  This version has a single executable that both
+   compiles the language and runs the resulting "byte code".  The "byte
+   code" is NOT the `dc' language.
+   
+   Instructions for compiling `bc' are in the file "Install".
+
+
+binutils-1.9.tar.z
+   The binutils comprise several small programs that are useful when
+   dealing with compiled programs.  They include `ar', `ld' (the linker),
+   `nm', `size', `strip', and `gprof'.  The programs support BSD
+   (Berkeley) format binary files, as well as COFF-encapsulation (BSD
+   format with a wrapper to allow you to run the binaries on COFF
+   systems).  Read the file "README" for instructions on compiling these
+   programs.
+
+
+binutils-2.1.tar.z
+   This is a beta release of a completely rewritten binutils
+   distribution.  These programs have been tested on various
+   architectures.  Most recently tested are sun3 and sun4s running
+   sunos4, as well as Sony News running newsos3.  However, since this is
+   a beta release taken directly from an evolving source tree, there
+   might be some problems.  In particular, the programs have not been
+   ported to as many machines as the old binutils.  There are also
+   features of the old versions that are missing on the new programs.  We
+   would appreciate patches to make things run on other machines;
+   especially welcome are fixes for what used to work on the old
+   programs!
+   
+   This release contains the following programs: `ar', `demangle', `ld'
+   (the linker), `nm', `objdump', `ranlib', `size', `strip', and `gprof'.
+   
+   BFD (the Binary File Descripter) library is in the subdirectory `bfd'
+   and is built along with GDB (which uses bfd).
+   
+   See the "README" file for further instructions on where to look for
+   building the various utilities.
+
+
+bison-1.19.tar.z
+   Bison is an upwardly compatible replacement for the parser generator
+   `yacc', with more features.  The file "README" gives instructions for
+   compiling Bison; the files `bison.1' (a man page) and `bison.texinfo'
+   (a GNU Texinfo file) give instructions for using it.
+
+
+calc-2.02.tar.z
+   Calc is an extensible, advanced desk calculator and mathematical tool
+   that runs as part of GNU Emacs.  It comes with source for the Calc
+   Manual, which serves as a tutorial and reference.  If you wish, you
+   can use Calc only as a simple four-function calculator, but it
+   provides additional features including choice of algebraic or RPN
+   (stack-based) entry, logarithmic functions, trigonometric and
+   financial functions, arbitrary precision, complex numbers, vectors,
+   matrices, dates, times, infinities, sets, algebraic simplification,
+   differentiation, and integration.  Instructions for install Calc for
+   emacs are in the "README" file.
+
+
+cperf-2.1.tar.z
+   This is a program to generate minimally perfect hash functions for
+   sets of keywords.  GCC was optimized by using this program.  Other
+   programs that must recognize a set of keywords may also benefit from
+   using this program.  Instructions for compiling cperf may be found in
+   the file "README".  Note that a C++ version of cperf (called `gperf')
+   is included in the libg++ distribution.  This version is for the use
+   of people who do not want to install C++ in order to compile a single
+   program.
+
+
+cpio-2.2.tar.z
+   `cpio' is a program for creating, updating, and extracting archives.
+   GNU `cpio' supports the final POSIX 1003.1 "ustar" standard.
+   Instructions for compiling `cpio' are in the file "README".
+
+
+cvs-1.3.tar.z
+   CVS is a collection of programs that provide for software release and
+   revision control functions.  CVS is designed to work on top of RCS
+   version 4.  It will parse older RCS formats, but cannot use any of its
+   fancier features without RCS branch support.  The file "README"
+   contains more information about CVS.
+
+
+dclshar
+   Makes a shar-type .COM file for VAX/VMS systems, so it's possble to
+   transfer whole filesystem heirarchies back and forth.
+
+
+dejagnu-0.9.tar.z
+   DejaGnu is a framework for testing other programs.  Its purpose is to
+   provide a single front end for all tests.  For more information read
+   the "README" file.
+
+
+diff-2.2.tar.z
+   `diff' compares files showing line-by-line changes in several flexible
+   formats.  GNU `diff' is much faster than the traditional Unix
+   versions.  This distribution includes `diff', `diff3', `sdiff', and
+   `cmp'.  Instructions for compiling these are in the "README" file.
+
+
+dirent.tar.z
+   A freely-redistributable implementation of the dirent library
+   routines.  This release predates the GNU C library, which is more
+   complete.
+
+
+dld-3.2.3.tar.z
+   Dld is a library package of C functions that performs "dynamic link
+   editing".  Programs that use dld can add compiled object code to or
+   remove such code from a process anytime during its execution.  Loading
+   modules, searching libraries, resolving external references, and
+   allocating storage for global and static data structures are all
+   performed at run time.
+   
+   Dld works on VAX, Sun 3, SPARCstation, Sequent Symmetry, and Atari ST
+   machines.
+
+
+ecc-1.2.1.tar.z
+   ECC is a Reed-Solomon error correction checking program.  It is
+   capable of correcting three byte errors in a block of 255 bytes, and
+   is capable of detecting more severe errors.
+
+
+elib-0.06.tar.z
+   This is a small library of emacs-lisp functions.
+
+
+elisp-manual-1.03.tar.z
+   This is the GNU Emacs Lisp Reference manual with texinfo source and a
+   DVI file that's ready for printing.  A copy of `makeinfo' is also
+   provided so that you can make an online version of the manual.  The
+   manual documents the extension language used by GNU Emacs.
+
+
+elvis-1.7.tar.z
+   Elvis is a clone of vi/ex, the standard UNIX editor.  It supports
+   nearly all of the vi/ex commands, in both visual mode and colon mode.
+   Elvis runs under BSD UNIX, AT&T SysV UNIX, SCO Xenix, Minix, MS-DOS,
+   Atari TOS, and probably others.  Directions for building elvis are in
+   the "README" file.
+
+
+emacs-18.59.tar.z
+   GNU Emacs is an extensible, customizable fullscreen editor.  Read the
+   files "README" and "INSTALL" for a full description of the parts of
+   GNU Emacs, and the steps needed to install it.  This distribution
+   includes the complete GNU Emacs Manual.
+
+
+f2c-3.2.90.tar.z
+   This is a Fortran-to-C converter program.  Instructions for compiling
+   it are in the file "src/README".
+
+
+fax-3.2.1.tar.z
+   This is a set of software which provides Group 3 fax transmission and
+   reception services for a networked unix system.  It requires a
+   faxmodem which conforms to the new EIA-592 Asynchronous Facsimile DCE
+   Control Standard, Service Class 2.
+
+
+fgrep-1.1.tar.z
+   `fgrep' is a simplified version of `grep' which only searches for
+   literal text rather than regular expressions.  Eventually GNU `fgrep'
+   will disappear into the single grep program mandated by POSIX, but for
+   now it should be a compatible replacement for UNIX fgrep.  The options
+   are the same as those of GNU `egrep', and are a proper superset of the
+   fgrep options on all UNIX systems we are aware of.  Instructions for
+   building fgrep are in the "Makefile" and "README" file.
+
+
+fileutils-3.4.tar.z
+   These are the GNU file-manipulation utilities.  Instructions for
+   compiling these utilities are in the file "README".  The fileutils
+   package contains the following programs: chgrp chmod chown cp dd df
+   dir du ginstall ln ls mkdir mkfifo mknod mv rm rmdir touch vdir.
+
+
+find-3.8.tar.z
+   This is a posix-compliant implementation (with many extensions) of
+   `find', a program used for searching filesystems for files that match
+   certain criteria and performing operations (like showing the path)
+   when they are found.  Also included in this distribution are `xargs'
+   and `locate'.
+
+
+finger-1.37.tar.z
+   GNU Finger is a utility program designed to allow users of Unix hosts
+   on the Internet network to get information about each other.  It is a
+   direct replacement for the Berkeley 4.3 `finger' program, although it
+   produces different looking output.  For more information about why,
+   read "finger-1.37/doc/finger.texinfo".  Instructions for building
+   finger itself are in the "README" file.
+
+
+flex-2.3.8.tar.z
+   This is a faster, but not completely compatible replacement for `lex',
+   a lexical-analyzer-compiler.  Instructions for compiling `flex' are in
+   the file "README".
+
+
+fontutils-0.6.tar.z
+   These are the GNU font utilities.  There are various programs for
+   converting between various bitmaps and other graphical data formats,
+   creating fonts using Ghostscript, and other frobnicating utilities.
+   You will need GCC and GNU Make to compile these programs.  For the
+   programs which do online graphics, you will need an X11 server and the
+   X11R4 or R5 libraries.  Instructions for building the fontutils are in
+   the "README" file.
+
+
+g++-1.42.0.tar.z
+   This is the old source to the GNU C++ compiler, G++.  Note that g++ version
+   1 is separate from GCC version 1, but in version 2 both programs are
+   merged.  Instructions for compilation of this program are in the file
+   "README".
+   
+   The maintainers of g++ recommend use of the 2.x version of g++, as the 1.x
+   version is no longer being maintained.
+
+
+gas-1.38.1.tar.z
+   GAS is the GNU assembler.  GAS includes several features designed to
+   optimize the output of a C compiler.  In particular, it automatically
+   chooses the correct size for branch instructions (when it knows where
+   it is branching to), and automatically modifies jump-table entries
+   that are out-of-bounds.  GAS works on the VAX, the 68020, the 80386,
+   and the 320xx.  Read the file "README" for instructions on building
+   and using GAS.
+
+
+gas-2.0.tar.z
+   GAS is the GNU assembler.  Version 2 has many changes over previous
+   GAS releases.  Most notable among the changes are the separation of
+   host system, target CPU, and target file format (i.e. cross-assembling
+   is much easier).  Many CPU types and object file formats are now
+   supported.
+   
+   Read the file "gas-2.0/gas/README" for instructions on building
+   and using GAS.
+
+
+gawk-2.14.tar.z
+   This version of GNU AWK is upwardly-compatible with the SVR4 version.
+   Read the file "README" for instructions on compiling GAWK.
+   Instructions for using GAWK are in the file "gawk.texinfo".
+
+
+gcc-1.42.tar.z
+   The GNU C compiler is a fairly portable optimizing compiler.  It
+   supports full ANSI C.  It generates good code for the 32000, 680x0,
+   80386, Alliant, Convex, Tahoe, and Vax CPUs, and for these RISC CPUs:
+   i860, Pyramid, Sparc, and SPUR.  The MIPS RISC CPU is also supported.
+   Machines using these CPUs include 386 running AIX, Alliant FX/8, Altos
+   3068, Apollo 68000/68020 running Aegis, AT&T 3B1, Convex C1 and C2,
+   DECstation 3100, DECstation 5000, DEC VAX, Encore MultiMax (NS32000),
+   Genix NS32000, Harris HCX-7 and HCX-9, HP-UX 68000/68020, HP running
+   BSD, IBM PS/2 running AIX, Intel 386 (System V, Xenix, BSD, but not
+   MS-DOS), Iris MIPS machine, ISI 68000/68020, MIPS, NeXT, Pyramid,
+   Sequent Balance (NS32000), Sequent Symmetry (i386), SONY News, Sun 2,
+   Sun 3 (optionally with FPA), Sun 4, SparcStation, and Sun386i.
+
+
+gcc-2.3.3.tar.z
+   This is version 2 of GCC, the GNU C Compiler.  In addition to
+   supporting ANSI C, GCC Version 2 includes support for the C++ and
+   Objective C languages.
+   
+   GCC extends the C language to support nested functions, non-local
+   gotos, taking the address of program labels, and unnamed structures as
+   function arguments (among other things).  There are also many new
+   warnings for frequent programming mistakes.
+   
+   GCC 2 can generate output files in a.out, COFF, ECOFF, ELF, XCOFF,
+   VAX-VMS and OSF-Rose formats when used with a suitable assembler.  It
+   can produce debugging information in several formats: BSD stabs, COFF,
+   ECOFF, ECOFF with stabs symbols, VAX-VMS and DWARF.  (We may support
+   XCOFF for the RS/6000 in the future.)
+   
+   GCC can be easily configured as a cross-compiler, running on one
+   platform while generating code for another.
+   
+   GCC Version 2 supports compatible calling conventions for function
+   calling and return values on the Sparc (unlike version 1) as well as
+   the other machine types.
+   
+   Early testing of GCC Version 2 indicates that it produces faster code
+   for SPARC computers than Sun's latest released compilers (both bundled
+   and unbundled).  It is also the fastest known compiler for the
+   Motorola 88k.
+   
+   GCC Version 2 can produce position-independent code for several types
+   of CPU: 68000, 88000, 80386, Sparc, and RS/6000.  Supporting PIC on
+   additional suitable CPU types is not too difficult a task.
+   
+   A list of supported systems and instructions for compiling GCC are in
+   the file "INSTALL".
+
+
+gdb-4.8.tar.z
+   This is the GNU source-level debugger.  A list of the machines
+   supported as targets or hosts, as well as a list of new features,
+   appears in "gdb-4.8/gdb/NEWS".
+   
+   Instructions for compiling GDB are in the file "gdb-4.8/gdb/README".
+   
+   BFD (the Binary File Descripter) library is in the subdirectory `bfd' and
+   is built along with GDB (which uses it).
+
+
+gdbm-1.5.tar.z
+   This is the beta-test version of the gnu DBM library.  See the file
+   "README" for details.
+
+
+ghostscript-2.5.2.tar.z
+   This program is an interpreter for a language that is intended to be,
+   and very nearly is, compatible with the PostScript language.  It runs
+   under X on Unix and VMS systems, and also runs on MS-DOS machines.  It
+   will drive either displays or low-to-medium-resolution printers.
+   Instructions for compiling Ghostscript are in the file "README".
+   Fonts for Ghostscript are in the directory "ghostscript-2.5.2/fonts".
+
+
+ghostview-1.4.1.tar.z
+   Ghostview allows you to view PostScript(TM) files on X11 displays.
+   Ghostview handles the user interface details and calls the
+   `ghostscript' interpreter to render the image.  Instructions for
+   compiling ghostview are in the "README" file.
+
+
+glibc-1.05.1.tar.z
+   This directory contains a test release of the GNU C Library.  Some
+   bugs surely remain.
+   
+   The library is ANSI C-1989 and POSIX 1003.1-1990 compliant and has most
+   of the functions specified in POSIX 1003.2 draft 11.2.  It is upward
+   compatible with the 4.4 BSD C library and includes many System V
+   functions, plus GNU extensions.
+   
+   Version 1.05.1 uses a standard GNU `configure' script and runs on
+   Sun-3 & Sun-4 (SunOS 4.1), HP 9000/300 & Sony NEWS 800 (4.3 BSD), MIPS
+   DECstation (Ultrix 4.2), and i386/i486 (System V & BSD).  The port to
+   the i386 running either SVR3, SVR4, or BSD, is mostly complete but has
+   not been well tested.  Porting the library is not hard.  If you are
+   interested in doing a port, please get on the mailing list by sending
+   electronic mail to bug-glibc-request@prep.ai.mit.edu.
+   
+   GNU stdio lets you define new kinds of streams, just by writing a few
+   C functions.  `fmemopen' function uses this to open a stream on a
+   string, which can grow as necessary.  You can define your own `printf'
+   formats to use a C function you have written.  Also, you can safely
+   use format strings from user input to implement a `printf'-like
+   function for another programming language, for example.  Extended
+   `getopt' functions are already used to parse options, including long
+   options, in many GNU utilities.
+   
+   See the file "INSTALL" for instructions on building the library.
+
+
+glibc-crypt-1.05.tar.z
+   The GNU C library now includes Michael Glad's Ultra Fast Crypt, which
+   provides the Unix `crypt' function, plus some other entry points.
+   Because of the United States export restriction on DES
+   implementations, we are distributing this code separately from the
+   rest of the C library.  There is an extra distribution tar file just
+   for crypt; it is called `glibc-crypt-1.05.tar.z'.  You can just unpack
+   the crypt distribution along with the rest of the C library and build;
+   you can also build the library without getting crypt.  Users outside
+   the USA can get the crypt distribution via anonymous FTP from
+   ftp.uni-c.dk [129.142.6.74], or another archive site outside the USA.
+   Archive maintainers are encouraged to copy this distribution to their
+   archives outside the USA.  Please get it from ftp.uni-c.dk;
+   transferring this distribution from prep.ai.mit.edu (or any other site
+   in the USA) to a site outside the USA is in violation of US export
+   laws.
+
+
+gmp-1.2.tar.z
+   GNU MP is a library for arbitrary precision arithmetic, operating on
+   signed integers and rational numbers.  It has a rich set of functions,
+   and the functions have a regular interface.  Instructions for using
+   and compiling the MP library are in the file "INSTALL".
+
+
+gnats-3.00.tar.z
+   GNATS (GNats: A Tracking System) is a bug-tracking system.  It is
+   based upon the paradigm of a central site or organization which
+   receives problem reports and negotiates their resolution by electronic
+   mail.  Although it's been used primarily as a software bug-tracking
+   system so far, it is sufficiently generalized so that it could be used
+   for handling system administration issues, project management, or any
+   number of other applications.
+
+
+gnuchess-4.0.pl61.tar.z
+   This is a chess playing program with X, Suntools, curses, ASCII, and
+   IBMPC character set displays available.  Instructions for compiling
+   and using GNUchess may be found in the "README" file.
+
+
+gnugo-1.1.tar.z
+   This program plays the game of "Go".  Instructions for compiling it
+   are in the file "README".
+
+
+gnuplot-3.2.tar.z
+   Gnuplot is an interactive program for plotting mathematical
+   expressions and data.  Oddly enough, this program was neither done for
+   nor named for the GNU Project---the name is a coincidence.
+
+
+gptx-0.2.tar.z
+   This is an alpha release of the GNU version of a permuted index
+   generator.  Among other things, it can produce a readable "KWIC"
+   (KeyWords In their Context) without the need of `nroff'.  There is
+   also an option to produce TeX compatible output.  Instructions for
+   compiling gptx are in the file "README".
+
+
+graphics-0.17.tar.z
+   The GNU graphics utilities are a set of programs for producing plot
+   files and displaying them on Tektronix 4010, PostScript, and X window
+   system compatible output devices.  It includes replacements for the
+   `graph' and `plot' commands commonly supplied with some operating
+   systems.  Instructions for compiling the graphics utilities are in the
+   file "Makefile".
+
+
+grep-1.6.tar.z
+   This is the GNU high-speed `grep' program.  It is similar to its Unix
+   counterpart, but it is usually faster.  Instructions for compiling it
+   are in the file "README".
+
+
+groff-1.07.tar.z
+   This is the GNU 'roff document formatting system.  Included in this
+   release are implementations of `troff', `pic', `eqn', `tbl', the
+   `-man' and `-ms' macros, and drivers for PostScript, TeX dvi format,
+   and typewriter-like devices.  Also included is a modified version of
+   the Berkeley `-me' macros, and an enhanced version of the X11R4
+   `xditview'.
+
+
+gzip-1.0.7.shar
+gzip-1.0.7.tar
+gzip-1.0.7.tar.z
+   This is a new compression program free of known patents which the GNU
+   Project is using instead of the traditional `compress' program (which
+   has patent problems).  Gzip can uncompress LZW-compressed files but
+   uses a different algorithm for compression which generally yields
+   smaller compressed files.  This will be the standard compression
+   program in the GNU system.
+
+
+hello-1.1.tar.z
+   The GNU `hello' program produces a familiar, friendly greeting.  It
+   allows nonprogrammers to use a classic computer science tool which
+   would otherwise be unavailable to them.  Because it is protected by
+   the GNU General Public License, users are free to share and change it.
+
+
+indent-1.7.tar.z
+   This is the GNU modified version of the freely-distributable `indent'
+   program from BSD.  The file "indent.texinfo" contains instructions on
+   using indent.
+
+
+ispell-2.0.02.tar.z
+   Ispell is an interactive spelling corrector based on the ITS SPELL
+   program.
+
+
+less-177.tar.z
+   Less is a paginator similiar to `more' and `pg', but with various
+   features (such as the ability to scroll backwards) that some other
+   pagers lack.  Instructions for compiling `less' are in the file
+   "README".
+
+
+libg++-1.39.0.tar.z
+   This is the GNU C++ Library, a collection of C++ classes and support
+   tools for use with the GNU C++ compiler.  This includes a copy of the
+   `gperf' program that is written in C++ (see also the description of
+   `cperf').
+
+
+libg++-2.3.tar.z
+   This is the GNU C++ library, a collection of C++ classes and support
+   tools for use with the GNU C++ compiler.  Other features include:
+   
+   * Uses new iostream classes to replace the old stream classes.  The
+     new design is mostly compatible with AT&T's version 2.x iostream
+     classes, though some features have not been implemented yet, and
+     there are a number of extensions.  The iostream library will track
+     the ANSI C++ standardization effort.
+   
+     The new iostream classes are more extensible that earlier designs:
+     There is a (reasonably) well-defined protocol for writing new
+     streambufs (character sources and sinks) at the application level;
+     some have already been written, others are planned.
+   
+     There is also a fairly complete implementation of C stdio built on
+     *top* of streambuf (where FILE==streambuf).  This provides 100%
+     compatibility between C and C++ I/O.  It is not installed by
+     default.
+   
+   * Include files no longer hard-wire in C header files. (I.e.
+     g++-include/signal.h uses the gcc 2 #include_next feature instead of
+     #include "/usr/include/signal.h".)  This should make it easier to
+     combine g++ headers with non-standard libraries (such as the
+     recently-released GNU C library).
+   
+   Instructions for building the g++ class library and other tools is in
+   the file "libg++-2.3/libg++/README".
+
+
+m4-1.0.3.tar.z
+   `m4' is a macro processor, in the sense that in copies its input to
+   the output, expanding macros as it goes.  Macros are either built-in
+   or user-defined, and can take any number of arguments.  Besides just
+   doing macro expansion, `m4' has built-in functions for including named
+   files, running Unix commands, doing integer arithmetic, manipulating
+   text in various ways, recursion, etc.  Instructions for building m4
+   are in the "README" file.
+
+
+make-3.63.tar.z
+   This is GNU Make.  GNU Make supports many more options and features
+   than the Unix make.  Instructions for using GNU Make are in the file
+   "make.texinfo".  See the file "README" for installation instructions. 
+
+
+mm-1.07.tar.z
+   This is a macro package for groff.  It is supposed to be compatible
+   with the DWB `mm' macros, and has several extensions.  See the "README"
+   file for more details.
+
+
+ms-0.06.tar.z
+   This is MandelSpawn, a parallel Mandelbrot program for the X window
+   system.  Instructions for compiling it are in the "README" files in
+   each of the three subdirectories.
+
+
+mtools-2.0.7.tar.z
+   Mtools is a public domain collection of programs to allow Unix systems
+   to read, write, and manipulate files on an MSDOS filesystem (typically
+   a diskette).
+
+
+nethack-3.1.tar.z
+   This is the famous game of `nethack'.  Instructions for compiling and
+   using nethack may be found in the "README" file.
+
+
+nihcl-3.0.tar.z
+   This is an object oriented program support class library with a
+   portable collection of classes similar to those in Smalltalk-80.  This
+   library used to be known as OOPS (Object-Oriented Program Support).
+
+
+oleo-1.2.2.tar.z
+   Oleo is a spreadsheet program (better for you than the more expensive
+   spreadsheet).  It supports X windows and character-based terminals,
+   and can generate embedded PostScript renditions of spreadsheets.
+   Keybindings should be familiar to Emacs users and are configurable by
+   users.
+   
+   There is relatively little documentation for Oleo yet.  The file
+   "USING" contains what there is.
+
+
+patch-2.0.12g8.tar.z
+patch-2.0.12u8.tar.z
+   `patch' will take a patch file containing any of the four forms of
+   difference listing produced by the `diff' program and apply those
+   differences to an original file, producing a patched version.
+   Instructions for building patch are in the "README" file.
+
+
+perl-4.036.tar.z
+   This is version 4.036 of Larry Wall's perl programming language.
+   Perl is intended as a faster replacement for sed, awk, and similar
+   languages.  The file "README" contains instructions for compiling
+   perl.
+
+
+rcs-5.6.0.1.tar.z
+   This is the Revision Control System, a program to manage multiple
+   versions of a software project.  This program keeps the changes from
+   one version to another rather than multiple copies of the entire file;
+   this saves disk space.  Instructions for compiling RCS are in the file
+   "README".
+
+
+readline-1.1.tar.z
+   The GNU Readline Library, which aids in the consistency of user
+   interface across discrete programs than need to provide a command line
+   interface.  Supports both emacs and vi-style editing.
+   
+   This release is pretty old; newer versions with more bug fixes are
+   usually distributed with GDB and BASH.
+
+
+recode-3.2.4.tar.z
+   `recode' converts files between character sets and usages.  When exact
+   transliterations are not possible, it may get rid of the offending
+   characters or fall back on approximations.  It recognizes or produces
+   a little more than a dozen of character sets and can convert each
+   charset to almost any other one.  `recode' pays special attention to
+   superimposition of diacritics, particularily for French.
+
+
+regex-0.11.tar.z
+   The GNU regexp library routines.  This release is probably out of
+   date; newer versions of these routines are typically distributed along
+   with programs which use them.
+
+
+screen-3.2b.tar.z
+   `screen' is a window manager that allows you to handle several
+   independent screens (UNIX ttys) on a single physical terminal; each
+   screen has its own set of processes connected to it (typically
+   interactive shells).  Each virtual terminal created by `screen'
+   emulates a DEC VT100 plus several ANSI X3.64 and ISO 2022 functions
+   (including DEC VT102 features such as line and character deletion and
+   insertion).  See the "README" file for details on compiling screen.
+
+
+sed-1.13.tar.z
+   `sed' is a text editor much like `ed', but is stream-oriented.  It is
+   used copiously in shell scripts.  Although GNU sed has fewer static
+   limitations in terms of buffer size, command length, etc., it is a
+   little slower than most implementations.
+   
+   Instructions for building GNU sed are in the file "README".
+
+
+shellutils-1.8.tar.z
+   These are the GNU shell utilities, comprising small commands that are
+   frequently run on the command line or in shell scripts.  Instructions
+   for compiling these utilities are in the file "README".  The
+   shellutils package contains the following programs: basename date
+   dirname echo env expr false groups id logname nice nohup pathchk
+   printenv printf sleep stty su tee test true tty uname who whoami yes.
+
+
+smalltalk-1.1.1.tar.z
+   This is the GNU implementation of Smalltalk, an object-oriented
+   programming language.  Instructions for compiling it are in the file
+   "README".
+
+
+sparc-sun-solaris2/
+   This directory contains binaries for various programs for the SPARC
+   architecture running Solaris 2.0 or higher.  They will *not* work with
+   SunOS 4.1.3 or earlier.
+   
+   These binaries are here because the C compiler was unbundled in
+   Solaris 2.x.  We are not making a commitment to provide binaries for
+   anything else, or even for Solaris, in the future.
+
+
+superopt-2.2.tar.z
+   The superoptimizer is a function sequence generator that uses a
+   exhaustive generate-and-test approach to find the shortest instruction
+   sequence for a given function.
+   
+   The GNU superoptimizer and its application in GCC is described in the
+   ACM SIGPLAN PLDI'92 proceedings.
+
+
+tar-1.11.2.shar.z
+tar-1.11.2.tar.z
+   Tar is a program used for archiving many files in a single file, which
+   makes them easier to transport.
+   
+   GNU tar includes multivolume support, the ability to archive sparse
+   files, automatic archive compression/decompression, remote archives,
+   and special features to allow tar to be used for incremental and full
+   backups.  Unfortunately GNU tar implements an early draft of the POSIX
+   1003.1 `ustar standard which is different from the final standard.
+   Adding support for the new changes in a backward-compatible fashion is
+   not trivial.
+   
+   Instructions for compiling GNU tar may be found in the file `README'.
+
+
+termcap-1.1.tar.z
+   This is a standalone release of the GNU Termcap library, which has
+   been part of the GNU Emacs distribution for years but is now available
+   separately to make it easier to install as `libtermcap.a'.  The GNU
+   Termcap library does not place an arbitrary limit on the size of
+   termcap entries, unlike most other termcap libraries.  Included is
+   extensive documentation in Texinfo format.  Unfortunately, this
+   release does not have a termcap database included.  Instructions for
+   building the termcap library are in the "README" file.
+
+
+texinfo-2.16.tar.z
+   This package contains a set of utilities related to Texinfo, which is
+   used to generate printed manuals and online hypertext-style manuals
+   (called `info').  Programs and interfaces for writing, reading, and
+   formatting texinfo files are available both as standalone programs and
+   as GNU Emacs interfaces.  See the file "README" for directions on how
+   to use the various parts of this package.
+
+
+textutils-1.4.tar.z
+   These are the GNU text utilities, commands that are used to operate on
+   textual data.  Instructions for compiling these utilities are in the
+   file "README".  The textutils package contains the following programs:
+   cat cksum comm csplit cut expand fold head join nl od paste pr sort
+   split sum tac tail tr unexpand uniq wc.
+
+
+tile-forth-2.1.tar.z
+   TILE Forth is a 32-bit implementation of the Forth-83 Standard written
+   in C. Thus allowing it to be easily moved between different computers
+   compared to traditional Forth implementations in assembly (most Forth
+   implementations are done in assembly to be able to utilize the
+   underlying architecture as optimal as possible).
+
+
+time-1.4.tar.z
+   `time' is used to time commands and report statistics about, among
+   other things, the amount of user, system, and approximate real time
+   used by a process.  Instructions for making time (no pun intended) are
+   in the file "README".
+
+
+tput-1.0.tar.z
+   `tput' provides a portable way of allowing shell scripts to use
+   special terminal capabilities.  Although its interface is similar to
+   that of `terminfo'-based tput programs, this one uses `termcap'.
+   Instructions for compiling tput are in the "README" file.
+
+
+uucp-1.04.tar.z
+   This version of UUCP was written by Ian Lance Taylor.  It will be the
+   standard UUCP system for GNU.  It currently supports the `f', `g' (in
+   all window and packet sizes), `G', `t' and `e' protocols, as well a
+   Zmodem protocol and two new bidirectional protocols.  If you have a
+   Berkeley sockets library, it can make TCP connections.  If you have
+   TLI libraries, it can make TLI connections.  Other important notes
+   about this version of UUCP, and instructions for building it, are in
+   the file "README".
+
+
+vh-1.4.tar.z
+   This is a browser for the jargon files which are also in this
+   directory.  It is not part of the GNU distribution proper.
+
+
+wdiff-0.04.tar.z
+   `wdiff' compares two files, finding which words have been deleted or
+   added to the first for getting the second.
+   
+   We hope eventually to integrate `wdiff', as well as some ideas from a
+   similar program called `spiff', into some future release of GNU
+   `diff'.
+
+
+xboard-2.1.pl9.tar.z
+   XBoard is an X11/R4-based user interface for GNU Chess.  It uses the
+   R4 Athena widgets and Xt Intrinsics to provide an interactive referee
+   for managing a chess game between a user and a computer opponent or
+   between two computers.  You can also use XBoard without a chess
+   program to play through games in files or to play through games
+   manually (force mode); in this case, moves aren't validated by XBoard.
+   XBoard manages a digital chess clock for each player and resets the
+   clocks if the proper number of moves are played within the time
+   control period.  A game can be started with the initial chess
+   position, with a series of moves from a game file or with a position
+   from a position file.  The "match" shell script runs a series of games
+   between two machines, alternating sides.  The man page xboard.man
+   describes the features of XBoard.
+
+
+xinfo-1.01.01.tar.z
+   An X-based GNU info widget. 
+
+
+
+                                 Free Software Foundation
+                                 March 1993
+

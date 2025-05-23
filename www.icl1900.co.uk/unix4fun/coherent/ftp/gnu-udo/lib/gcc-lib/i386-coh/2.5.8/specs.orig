@@ -1,0 +1,38 @@
+*asm:
+-g -x
+
+*asm_final:
+
+
+*cpp:
+%{posix:-D_POSIX_SOURCE} %{pedantic:-D__PEDANTIC__=1}
+
+*cc1:
+
+
+*cc1plus:
+
+
+*endfile:
+%scrtend.o
+
+*link:
+-L/lib/ndp -L/usr/lib/ndp
+
+*lib:
+-lc
+
+*startfile:
+%scrt1.o %scrtbegin.o -u _dtefg
+
+*switches_need_spaces:
+
+
+*signed_char:
+%{funsigned-char:-D__CHAR_UNSIGNED__}
+
+*predefines:
+-DCOHERENT -D__COHERENT__ -D_I386 -D_IEEE
+
+*cross_compile:
+0

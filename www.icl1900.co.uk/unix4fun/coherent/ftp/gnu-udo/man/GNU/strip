@@ -1,0 +1,198 @@
+
+
+
+strip(1)              GNU Development Tools              strip(1)
+
+
+NNAAMMEE
+       strip - Discard symbols from object files.
+
+
+SSYYNNOOPPSSIISS
+       ssttrriipp        [--FF       _b_f_d_n_a_m_e|----ttaarrggeett==_b_f_d_n_a_m_e]       [--II
+       _b_f_d_n_a_m_e|----iinnppuutt--ttaarrggeett==_b_f_d_n_a_m_e]                        [--OO
+       _b_f_d_n_a_m_e|----oouuttppuutt--ttaarrggeett==_b_f_d_n_a_m_e]          [--ss|----ssttrriipp--aallll]
+       [--SS|--gg|----ssttrriipp--ddeebbuugg]                   [--xx|----ddiissccaarrdd--aallll]
+       [--XX|----ddiissccaarrdd--llooccaallss]     [--vv|----vveerrbboossee]    [--VV|----vveerrssiioonn]
+       [--VV|----hheellpp] _o_b_j_f_i_l_e...
+
+
+DDEESSCCRRIIPPTTIIOONN
+       GNU ssttrriipp discards all symbols from the object files  _o_b_j_-
+       _f_i_l_e.   The list of object files may include archives.  At
+       least one object file must be given.
+
+
+       ssttrriipp modifies the files named  in  its  argument,  rather
+       than writing modified copies under different names.
+
+
+OOPPTTIIOONNSS
+       --FF _b_f_d_n_a_m_e
+
+       ----ttaarrggeett==_b_f_d_n_a_m_e
+              Treat  the  original  _o_b_j_f_i_l_e  as  a  file with the
+              object code format _b_f_d_n_a_m_e, and rewrite it  in  the
+              same format.
+
+
+       ----hheellpp Show a summary of the options to ssttrriipp and exit.
+
+
+       --II _b_f_d_n_a_m_e
+
+       ----iinnppuutt--ttaarrggeett==_b_f_d_n_a_m_e
+              Treat  the  original  _o_b_j_f_i_l_e  as  a  file with the
+              object code format _b_f_d_n_a_m_e.
+
+
+       --OO _b_f_d_n_a_m_e
+
+       ----oouuttppuutt--ttaarrggeett==_b_f_d_n_a_m_e
+              Replace _o_b_j_f_i_l_e with a file in  the  output  format
+              _b_f_d_n_a_m_e.
+
+
+       --ss
+
+       ----ssttrriipp--aallll
+              Remove all symbols.
+
+
+
+
+cygnus support           5 November 1991                        1
+
+
+
+
+
+strip(1)              GNU Development Tools              strip(1)
+
+
+       --SS
+
+       --gg
+
+       ----ssttrriipp--ddeebbuugg
+              Remove debugging symbols only.
+
+
+       --xx
+
+       ----ddiissccaarrdd--aallll
+              Remove non-global symbols.
+
+
+       --XX ----ddiissccaarrdd--llooccaallss
+              Remove  compiler-generated  local  symbols.  (These
+              usually start with ``L'' or ``.''.)
+
+
+       --vv
+
+       ----vveerrbboossee
+              Verbose output: list all object files modified.  In
+              the case of archives, ssttrriipp --VV lists all members of
+              the archive.
+
+
+       --VV
+
+       ----vveerrssiioonn
+              Show the version number for ssttrriipp and exit.
+
+
+SSEEEE AALLSSOO
+       `bbiinnuuttiillss' entry in  iinnffoo;  _T_h_e  _G_N_U  _B_i_n_a_r_y  _U_t_i_l_i_t_i_e_s  _,
+       Roland H. Pesch (October 1991).
+
+
+CCOOPPYYIINNGG
+       Copyright (c) 1991 Free Software Foundation, Inc.
+
+       Permission  is  granted  to  make  and distribute verbatim
+       copies of this manual provided the  copyright  notice  and
+       this permission notice are preserved on all copies.
+
+       Permission is granted to copy and distribute modified ver-
+       sions of this manual under  the  conditions  for  verbatim
+       copying,  provided  that the entire resulting derived work
+       is distributed under the  terms  of  a  permission  notice
+       identical to this one.
+
+       Permission  is granted to copy and distribute translations
+       of this manual into another language, under the above con-
+       ditions for modified versions, except that this permission
+
+
+
+cygnus support           5 November 1991                        2
+
+
+
+
+
+strip(1)              GNU Development Tools              strip(1)
+
+
+       notice may be included in  translations  approved  by  the
+       Free  Software  Foundation  instead  of  in  the  original
+       English.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cygnus support           5 November 1991                        3
+
+

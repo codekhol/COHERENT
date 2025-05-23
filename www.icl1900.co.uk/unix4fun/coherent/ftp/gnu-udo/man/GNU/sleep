@@ -1,0 +1,66 @@
+
+
+
+SLEEP(1L)                                               SLEEP(1L)
+
+
+NNAAMMEE
+       sleep - delay for a specified amount of time
+
+SSYYNNOOPPSSIISS
+       sslleeeepp [--help] [--version] number[smhd]...
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU  version of sslleeeepp.
+       sslleeeepp pauses for an amount of time specified by the sum of
+       the  values  of the command line arguments.  Each argument
+       is a number followed by an optional unit; the  default  is
+       seconds.  The units are:
+
+       s      seconds
+
+       m      minutes
+
+       h      hours
+
+       d      days
+
+   OOPPTTIIOONNSS
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

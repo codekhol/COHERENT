@@ -1,0 +1,66 @@
+
+
+
+SUM(1L)                                                   SUM(1L)
+
+
+NNAAMMEE
+       sum - checksum and count the blocks in a file
+
+SSYYNNOOPPSSIISS
+       ssuumm [-rs] [--sysv] [--help] [--version] [file...]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents the GNU version of ssuumm.  ssuumm
+       computes a 16-bit checksum for each  named  file,  or  the
+       standard  input if none are given or when a file named `-'
+       is given.  It prints the checksum for each file along with
+       the number of blocks in the file (rounded up).  By default
+       each corresponding file name is also printed if  at  least
+       two arguments are specified.  With the _-_-_s_y_s_v option, cor-
+       responding file name are printed when there  is  at  least
+       one  file  argument.   By  default,  the  GNU ssuumm computes
+       checksums using an algorithm that is compatible  with  the
+       BSD ssuumm and prints file sizes in units of 1K blocks.
+
+   OOPPTTIIOONNSS
+       _-_r     Use  the  default (BSD compatible) algorithm.  This
+              option is included for compatibility with the  Sys-
+              tem V ssuumm.  Unless the _-_s option was also given, it
+              has no effect.
+
+       _-_s_, _-_-_s_y_s_v
+              Compute checksums using an algorithm that  is  com-
+              patible  with  the  one  the  System  V ssuumm uses by
+              default and print file sizes in units  of  512-byte
+              blocks instead of 1K.
+
+       _-_-_h_e_l_p Print a usage message and exit with a non-zero sta-
+              tus.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU Text Utilities                      1
+
+

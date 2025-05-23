@@ -1,0 +1,66 @@
+
+
+
+FALSE(1L)                                               FALSE(1L)
+
+
+NNAAMMEE
+       false - do nothing, unsuccessfully
+
+SSYYNNOOPPSSIISS
+       ffaallssee
+       ffaallssee {--help,--version}
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page documents the GNU version of ffaallssee (and
+       probably every other version, as well).  ffaallssee does  noth-
+       ing  except  return  an  exit status of 1, meaning ``fail-
+       ure''.  It can be used as a place holder in shell  scripts
+       where an unsuccessful command is needed.
+
+   OOPPTTIIOONNSS
+       When  GNU  ffaallssee is invoked with exactly one argument, the
+       following options are recognized:
+
+       _-_-_h_e_l_p Print a usage message on standard output  and  exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

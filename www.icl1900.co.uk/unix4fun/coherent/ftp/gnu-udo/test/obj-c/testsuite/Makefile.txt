@@ -1,0 +1,63 @@
+#
+#  Makefile for GNU Objective C test suite.  This is really poor, but
+#  we're working on it.  Please report bugs to krab@iesd.auc.dk
+#
+
+
+all: runtests
+
+CC=gcc
+
+# richards doesn't compile under COHERENT because of missing rusage
+# udo@umunk.gun.de
+
+TESTS= archtest category forward proto initialize hello-test \
+	conformsto
+
+
+tests: $(TESTS)
+
+runtests: tests
+	@echo "=========="
+	-richards
+	@echo "=========="
+	-archtest
+	@echo "=========="
+	-category
+	@echo "=========="
+	-proto
+	@echo "=========="
+	-forward
+	@echo "=========="
+	-initialize
+	@echo "=========="
+	-hello-test
+	@echo "=========="
+	-conformsto
+
+clean:
+	rm -f $(TESTS)
+
+archtest: archtest.m
+	$(CC) -fgnu-runtime -o archtest archtest.m -lobjc
+
+category: category.m
+	$(CC) -fgnu-runtime -o category category.m -lobjc
+
+forward: forward.m
+	$(CC) -fgnu-runtime -o forward forward.m -lobjc
+
+proto: proto.m
+	$(CC) -fgnu-runtime -o proto proto.m -lobjc
+
+richards: richards.m
+	$(CC) -O2 -fgnu-runtime -o richards richards.m -lobjc
+
+initialize: initialize.m
+	$(CC) -fgnu-runtime -o initialize initialize.m -lobjc
+
+hello-test: hello-test.m
+	$(CC) -fgnu-runtime -o hello-test hello-test.m -lobjc
+
+conformsto: conformsto.m
+	$(CC) -fgnu-runtime -o conformsto conformsto.m -lobjc

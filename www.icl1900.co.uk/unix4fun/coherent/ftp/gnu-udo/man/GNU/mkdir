@@ -1,0 +1,66 @@
+
+
+
+MKDIR(1L)                                               MKDIR(1L)
+
+
+NNAAMMEE
+       mkdir - make directories
+
+SSYYNNOOPPSSIISS
+       mmkkddiirr  [-p]  [-m  mode] [--parents] [--mode=mode] [--help]
+       [--version] dir...
+
+DDEESSCCRRIIPPTTIIOONN
+       This manual page  documents  the  GNU  version  of  mmkkddiirr.
+       mmkkddiirr  creates  a  directory  with  each  given  name.  By
+       default, the mode of created directories is 0777 minus the
+       bits set in the umask.
+
+   OOPPTTIIOONNSS
+       _-_m_, _-_-_m_o_d_e _m_o_d_e
+              Set  the mode of created directories to _m_o_d_e, which
+              is symbolic as in chmod and uses the  default  mode
+              as the point of departure.
+
+       _-_p_, _-_-_p_a_r_e_n_t_s
+              Ensure that each given path exists.  Make any miss-
+              ing parent directories for each  argument.   Parent
+              directories   default  to  the  umask  modified  by
+              `u+wx'.  Do not consider an argument directory that
+              already exists to be an error.
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU File Utilities                      1
+
+

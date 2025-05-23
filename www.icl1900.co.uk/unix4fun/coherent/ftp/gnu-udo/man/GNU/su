@@ -1,0 +1,132 @@
+
+
+
+SU(1L)                                                     SU(1L)
+
+
+NNAAMMEE
+       su - run a shell with substitute user and group IDs
+
+SSYYNNOOPPSSIISS
+       ssuu  [-flmp]  [-c  command]  [-s  shell] [--login] [--fast]
+       [--preserve-environment]               [--command=command]
+       [--shell=shell] [-] [--help] [--version] [user [arg...]]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU version of ssuu.  ssuu
+       allows one user to temporarily become  another  user.   It
+       runs  a  shell  with the real and effective user ID, group
+       ID, and supplemental groups of USER.  If no USER is given,
+       the  default  is  root,  the super-user.  The shell run is
+       taken from USER's password entry, or /bin/sh  if  none  is
+       specified  there.   If USER has a password, ssuu prompts for
+       the password unless run by a user with real user ID 0 (the
+       super-user).
+
+       By  default, ssuu does not change the current directory.  It
+       sets the environment variables `HOME' and `SHELL' from the
+       password  entry  for  USER,  and if USER is not the super-
+       user, sets `USER' and `LOGNAME' to USER.  By default,  the
+       shell is not a login shell.
+
+       If  one  or  more ARGs are given, they are passed as addi-
+       tional arguments to the shell.
+
+       ssuu does not handle /bin/sh or other shells specially (set-
+       ting  argv[0] to "-su", passing -c only to certain shells,
+       etc.).
+
+       On systems that have syslog, ssuu can be compiled to  report
+       failed,  and optionally successful, ssuu attempts using sys-
+       log.
+
+       This  program  does  not  support  a  "wheel  group"  that
+       restricts  who can ssuu to super-user accounts, because that
+       can help fascist system  administrators  hold  unwarranted
+       power over other users.
+
+   OOPPTTIIOONNSS
+       _-_c _C_O_M_M_A_N_D_, _-_-_c_o_m_m_a_n_d_=_C_O_M_M_A_N_D
+              Pass  COMMAND, a single command line to run, to the
+              shell with a  _-_c  option  instead  of  starting  an
+              interactive shell.
+
+       _-_f_, _-_-_f_a_s_t
+              Pass  the  _-_f  option  to the shell.  This probably
+              only makes sense with ccsshh and ttccsshh, for  which  the
+              _-_f   option   prevents  reading  the  startup  file
+              (.cshrc).  With Bourne-like shells, the  _-_f  option
+              disables filename pattern expansion, which is not a
+              generally desirable thing to do.
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+
+
+
+
+SU(1L)                                                     SU(1L)
+
+
+       _-_-_h_e_l_p Print a usage message on standard output  and  exit
+              successfully.
+
+       _-_, _-_l_, _-_-_l_o_g_i_n
+              Make  the shell a login shell.  This means the fol-
+              lowing.  Unset  all  environment  variables  except
+              `TERM',  `HOME',  and  `SHELL'  (which  are  set as
+              described above), and `USER' and  `LOGNAME'  (which
+              are  set,  even  for  the  super-user, as described
+              above), and set `PATH'  to  a  compiled-in  default
+              value.   Change  to USER's home directory.  Prepend
+              "-" to the shell's name, to make it read its  login
+              startup file(s).
+
+       _-_m_, _-_p_, _-_-_p_r_e_s_e_r_v_e_-_e_n_v_i_r_o_n_m_e_n_t
+              Do  not  change  the  environment variables `HOME',
+              `USER', `LOGNAME', or `SHELL'.  Run the shell given
+              in  the  environment  variable  `SHELL'  instead of
+              USER's shell from /etc/passwd, unless the user run-
+              ning  ssuu  is  not the superuser and USER's shell is
+              restricted.  A restricted shell is one that is  not
+              listed in the file /etc/shells, or in a compiled-in
+              list if that file does not exist.   Parts  of  what
+              this  option  does can be overridden by _-_-_l_o_g_i_n and
+              _-_-_s_h_e_l_l.
+
+       _-_s_, _-_-_s_h_e_l_l _s_h_e_l_l
+              Run SHELL instead of USER's shell from /etc/passwd,
+              unless the user running ssuu is not the superuser and
+              USER's shell is restricted.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      2
+
+

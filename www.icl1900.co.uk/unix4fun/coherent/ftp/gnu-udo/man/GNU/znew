@@ -1,0 +1,66 @@
+
+
+
+ZNEW(1)                                                   ZNEW(1)
+
+
+NNAAMMEE
+       znew -   recompress .Z files to .gz files
+
+SSYYNNOOPPSSIISS
+       zznneeww [ -ftv9PK] [ name.Z ...  ]
+
+DDEESSCCRRIIPPTTIIOONN
+       _Z_n_e_w  recompresses  files from .Z (compress) format to .gz
+       (gzip) format.  If you want to recompress a  file  already
+       in  gzip  format,  rename the file to force a .Z extension
+       then apply znew.
+
+OOPPTTIIOONNSS
+       --ff     Force recompression from .Z to .gz format even if a
+              .gz file already exists.
+
+       --tt     Tests the new files before deleting originals.
+
+       --vv     Verbose.  Display the name and percentage reduction
+              for each file compressed.
+
+       --99     Use the slowest compression  method  (optimal  com-
+              pression).
+
+       --PP     Use  pipes  for the conversion to reduce disk space
+              usage.
+
+       --KK     Keep a .Z file when it is smaller than the .gz file
+
+SSEEEE AALLSSOO
+       gzip(1),    zmore(1),   zdiff(1),   zgrep(1),   zforce(1),
+       gzexe(1), compress(1)
+
+BBUUGGSS
+       _Z_n_e_w does not maintain the time stamp with the  -P  option
+       if _c_p_m_o_d_(_1_) is not available and _t_o_u_c_h_(_1_) does not support
+       the -r option.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                1
+
+

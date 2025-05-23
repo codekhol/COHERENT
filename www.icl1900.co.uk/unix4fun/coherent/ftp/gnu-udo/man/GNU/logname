@@ -1,0 +1,66 @@
+
+
+
+LOGNAME(1L)                                           LOGNAME(1L)
+
+
+NNAAMMEE
+       logname - print user's login name
+
+SSYYNNOOPPSSIISS
+       llooggnnaammee [[----hheellpp]] [[----vveerrssiioonn]]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the GNU version of llooggnnaammee.
+       llooggnnaammee prints the calling user's name, as  found  in  the
+       file /etc/utmp, and exits with a status of 0.  If there is
+       no /etc/utmp entry for the calling process, llooggnnaammee prints
+       an error message and exits with a status of 1.
+
+   OOPPTTIIOONNSS
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

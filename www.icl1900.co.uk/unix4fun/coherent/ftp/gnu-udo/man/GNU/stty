@@ -1,0 +1,462 @@
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+NNAAMMEE
+       stty - change and print terminal line settings
+
+SSYYNNOOPPSSIISS
+       ssttttyy  [-ag]  [--all]  [--help]  [--save] [--version] [set-
+       ting...]
+
+DDEESSCCRRIIPPTTIIOONN
+       This manual page documents the GNU version  of  ssttttyy.   If
+       given no arguments, ssttttyy prints the baud rate, line disci-
+       pline number (on systems that support it), and  line  set-
+       tings  that have been changed from the values set by `stty
+       sane'.  Mode reading and setting are performed on the  tty
+       line connected to the standard input.
+
+       ssttttyy  accepts  the  following  non-option  arguments  that
+       change aspects of the terminal line  operation.   A  `[-]'
+       before  a  capability  means  that it can be turned off by
+       preceding it with a `-'.  Some arguments are not available
+       on all systems, since they use non-POSIX extensions.  Such
+       arguments are marked below with `(np)'.
+
+       Control settings:
+
+
+       [-]parenb
+              Generate parity bit in output and expect parity bit
+              in input.
+
+       [-]parodd
+              Set odd parity (even with `-').
+
+       cs5 cs6 cs7 cs8
+              Set character size to 5, 6, 7, or 8 bits.
+
+       [-]hupcl [-]hup
+              Send  a  hangup signal when the last process closes
+              the tty.
+
+       [-]cstopb
+              Use two stop bits per character (one with `-').
+
+       [-]cread
+              Allow input to be received.
+
+       [-]clocal
+              Disable modem control signals.
+
+       [-]crtscts (np)
+              Enable RTS/CTS handshaking.
+
+       Input settings:
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+       [-]ignbrk
+              Ignore breaks.
+
+       [-]brkint
+              Breaks cause an interrupt signal.
+
+       [-]ignpar
+              Ignore parity errors.
+
+       [-]parmrk
+              Mark  parity   errors   (with   a   255-0-character
+              sequence).
+
+       [-]inpck
+              Enable input parity checking.
+
+       [-]istrip
+              Clear high (8th) bit of input characters.
+
+       [-]inlcr
+              Translate newline to carriage return.
+
+       [-]igncr
+              Ignore carriage return.
+
+       [-]icrnl
+              Translate carriage return to newline.
+
+       [-]ixon
+              Enable XON/XOFF flow control.
+
+       [-]ixoff [-]tandem
+              Enable  sending  of  stop character when the system
+              input buffer is almost full,  and  start  character
+              when it becomes almost empty again.
+
+       [-]iuclc (np)
+              Translate uppercase characters to lowercase.
+
+       [-]ixany (np)
+              Allow  any  character  to  restart output (only the
+              start character with `-').
+
+       [-]imaxbel (np)
+              Enable beeping and not flushing input buffer  if  a
+              character arrives when the input buffer is full.
+
+       Output settings:
+
+
+       [-]opost
+              Postprocess output.
+
+
+
+
+
+FSF                    GNU Shell Utilities                      2
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+       [-]olcuc (np)
+              Translate lowercase characters to uppercase.
+
+       [-]ocrnl (np)
+              Translate carriage return to newline.
+
+       [-]onlcr (np)
+              Translate newline to carriage return-newline.
+
+       [-]onocr (np)
+              Do  not print carriage returns in the first column.
+
+       [-]onlret (np)
+              Newline performs a carriage return.
+
+       [-]ofill (np)
+              Use fill (padding) characters instead of timing for
+              delays.
+
+       [-]ofdel (np)
+              Use  delete  characters  for  fill  instead of null
+              characters.
+
+       nl1 nl0 (np)
+              Newline delay style.
+
+       cr3 cr2 cr1 cr0 (np)
+              Carriage return delay style.
+
+       tab3 tab2 tab1 tab0 (np)
+              Horizontal tab delay style.
+
+       bs1 bs0 (np)
+              Backspace delay style.
+
+       vt1 vt0 (np)
+              Vertical tab delay style.
+
+       ff1 ff0 (np)
+              Form feed delay style.
+
+       Local settings:
+
+
+       [-]isig
+              Enable interrupt, quit, and suspend special charac-
+              ters.
+
+       [-]icanon
+              Enable erase, kill, werase, and rprnt special char-
+              acters.
+
+       [-]iexten
+              Enable non-POSIX special characters.
+
+
+
+FSF                    GNU Shell Utilities                      3
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+       [-]echo
+              Echo input characters.
+
+       [-]echoe, [-]crterase
+              Echo erase characters as backspace-space-backspace.
+
+       [-]echok
+              Echo a newline after a kill character.
+
+       [-]echonl
+              Echo  newline even if not echoing other characters.
+
+       [-]noflsh
+              Disable flushing after interrupt and  quit  special
+              characters.
+
+       [-]xcase (np)
+              Enable  input and output of uppercase characters by
+              preceding their  lowercase  equivalents  with  `\',
+              when icanon is set.
+
+       [-]tostop (np)
+              Stop  background jobs that try to write to the ter-
+              minal.
+
+       [-]echoprt [-]prterase (np)
+              Echo erased characters backward,  between  `\'  and
+              '/'.
+
+       [-]echoctl [-]ctlecho (np)
+              Echo  control  characters  in  hat  notation (`^c')
+              instead of literally.
+
+       [-]echoke [-]crtkill (np)
+              Echo the kill special  character  by  erasing  each
+              character  on  the line as indicated by the echoprt
+              and echoe settings, instead of by the  echoctl  and
+              echok settings.
+
+       Combination settings:
+
+
+       [-]evenp [-]parity
+              Same  as  parenb  -parodd  cs7.   With `-', same as
+              -parenb cs8.
+
+       [-]oddp
+              Same as parenb  parodd  cs7.   With  `-',  same  as
+              -parenb cs8.
+
+       [-]nl  Same  as  -icrnl  -onlcr.   With `-', same as icrnl
+              -inlcr -igncr onlcr -ocrnl -onlret.
+
+       ek     Reset the erase  and  kill  special  characters  to
+
+
+
+FSF                    GNU Shell Utilities                      4
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+              their default values.
+
+       sane   Same  as  cread  -ignbrk brkint -inlcr -igncr icrnl
+              -ixoff -iuclc -ixany imaxbel  opost  -olcuc  -ocrnl
+              onlcr -onocr -onlret -ofill -ofdel nl0 cr0 tab0 bs0
+              vt0 ff0 isig icanon iexten echo echoe echok -echonl
+              -noflsh -xcase -tostop -echoprt echoctl echoke, and
+              also sets all special characters to  their  default
+              values.
+
+       [-]cooked
+              Same  as brkint ignpar istrip icrnl ixon opost isig
+              icanon, plus sets the eof  and  eol  characters  to
+              their  default  values  if they are the same as the
+              min and time characters.  With `-', same as raw.
+
+       [-]raw Same as  -ignbrk  -brkint  -ignpar  -parmrk  -inpck
+              -istrip  -inlcr  -igncr  -icrnl -ixon -ixoff -iuclc
+              -ixany -imaxbel -opost -isig -icanon -xcase  min  1
+              time 0.  With `-', same as cooked.
+
+       [-]cbreak
+              Same as -icanon.
+
+       [-]pass8
+              Same  as  -parenb  -istrip  cs8.  With `-', same as
+              parenb istrip cs7.
+
+       [-]litout
+              Same as -parenb -istrip -opost cs8.  With `-', same
+              as parenb istrip opost cs7.
+
+       [-]decctlq (np)
+              Same as -ixany.
+
+       [-]tabs (np)
+              Same as tab0.  With `-', same as tab3.
+
+       [-]lcase [-]LCASE (np)
+              Same as xcase iuclc olcuc.
+
+       crt    Same as echoe echoctl echoke.
+
+       dec    Same  as echoe echoctl echoke -ixany, and also sets
+              the interrupt special character to Ctrl-C, erase to
+              Del, and kill to Ctrl-U.
+
+       Special characters:
+
+
+       The special characters' default values vary from system to
+       system.  They are set with the syntax `name value',  where
+       the  names  are  listed  below  and the value can be given
+       either literally, in hat notation (`^c'), or as an integer
+
+
+
+FSF                    GNU Shell Utilities                      5
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+       which  may start with `0x' to indicate hexadecimal, `0' to
+       indicate octal, or any other digit  to  indicate  decimal.
+       Giving  a  value  of `^-' or `undef' disables that special
+       character.
+
+
+       intr   Send an interrupt signal.
+
+       quit   Send a quit signal.
+
+       erase  Erase the last character typed.
+
+       kill   Erase the current line.
+
+       eof    Send an end of file (terminate the input).
+
+       eol    End the line.
+
+       eol2 (np)
+              Alternate character to end the line.
+
+       swtch (np)
+              Switch to a different shell layer.
+
+       start  Restart the output after stopping it.
+
+       stop   Stop the output.
+
+       susp   Send a terminal stop signal.
+
+       dsusp (np)
+              Send a terminal  stop  signal  after  flushing  the
+              input.
+
+       rprnt (np)
+              Redraw the current line.
+
+       werase (np)
+              Erase the last word typed.
+
+       lnext (np)
+              Enter  the  next character typed literally, even if
+              it is a special character.
+
+       Special settings:
+
+
+       min N  Set the minimum number of characters that will sat-
+              isfy  a read until the time value has expired, when
+              -icanon is set.
+
+       time N Set the number of tenths of a second  before  reads
+              time  out  if the min number of characters have not
+              been read, when -icanon is set.
+
+
+
+FSF                    GNU Shell Utilities                      6
+
+
+
+
+
+STTY(1L)                                                 STTY(1L)
+
+
+       ispeed N
+              Set the input speed to N.
+
+       ospeed N
+              Set the output speed to N.
+
+       rows N (np)
+              Tell the kernel that the terminal has N rows.
+
+       cols N columns N (np)
+              Tell the kernel that the terminal has N columns.
+
+       size (np)
+              Print the number of rows and columns that the  ker-
+              nel  thinks  the terminal has.  (Systems that don't
+              support rows and cols in the kernel  typically  use
+              the   environment   variables   LLIINNEESS  and  CCOOLLUUMMNNSS
+              instead; however, GNU ssttttyy does not  know  anything
+              about them.)
+
+       line N (np)
+              Use line discipline N.
+
+       speed  Print the terminal speed.
+
+       N      Set the input and output speeds to N.  N can be one
+              of: 0 50 75 110 134 134.5 150 200 300 600 1200 1800
+              2400  4800 9600 19200 38400 exta extb.  exta is the
+              same as 19200; extb is the same as 38400.  0  hangs
+              up the line if -clocal is set.
+
+   OOPPTTIIOONNSS
+       _-_a_, _-_-_a_l_l
+              Print  all current settings in human-readable form.
+
+       _-_-_h_e_l_p Print a usage message on standard output  and  exit
+              successfully.
+
+       _-_g_, _-_-_s_a_v_e
+              Print  all  current  settings in a form that can be
+              used as an argument  to  another  ssttttyy  command  to
+              restore the current settings.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      7
+
+

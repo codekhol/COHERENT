@@ -1,0 +1,172 @@
+GNU Tools distribution for COHERENT 4.2 prepared by Udo Munk
+------------------------------------------------------------
+
+If you want to use this distribution without recompiling everything
+you have to install it under /u1/gnu. /u1 is a partition on my system
+where I have the additional packages which aren't part of the COHERENT
+distribution. If you want the stuff somewhere else you have to configure
+every package with --prefix=/root_dir and compile them again, see also
+the Cygnus configure document included in many packages.
+I would not recommend that if you aren't very familiar with make, sed,
+awk, compilers and debugging.
+
+Add /u1/gnu/bin into your PATH before everything else, then you are
+using the GNU binaries and not the MWC ones. Do not replace the MWC
+binaries with this stuff, this software is without any warranty, see
+the GNU copyleft please, and for sure there are some bugs. If you don't
+want to use a GNU binary, just rename the binary in /u1/gnu/bin
+to filename.not or something like that, then you are using the MWC
+binary again.
+
+The GNU texinfo documentation system already is installed, begin with
+running the command info and learn how to use it! With that you are able
+to read the documentation about the programs like hypertext. So please
+don't ask me how to use the stuff, read the docs instead, that's why I
+already installed them for you. Well, I installed them for me too of
+course :-)
+
+All the man pages are formatted with GNU gnroff and not with the MWC
+nroff, they look better then. The MWC nroff still has some problems
+today and I'm tired of hacking man pages so that they look nice.
+BTW, I don't know which paper size the compiled groff uses, it guessed
+a size self. Personally I save the trees and don't print something on
+paper, I'm using tubes and LCD displays :-) Well, if you need to print
+something formatted with groff and the paper size isn't right for you
+configure the package with PAGE='A4' ./configure or PAGE='letter' ./configure
+and compile/install it again.
+
+Additional things needed to be installed:
+=========================================
+
+Installation of the GNU man pages:
+cpdir man/GNU /usr/man/GNU
+cp gnu.index /usr/man
+
+If you want to use the program "screen", you might want to install the
+terminfo and termcap entry's for screen. You'll find the sources in
+~/src/screen-3.5.2/terminfo.
+
+In directory lib you'll find libfl.a, which is the support function
+library for flex/flex++. You might want to link or copy this lib to
+/usr/lib. In directory include you'll find FlexLexer.h which may be
+used together with flex++. You might want to link or copy it to
+/usr/include. Of course you can left them alone where they are and
+tell the C compiler with -I.. and the linker with -L... where to
+find them, but remember that lexical analyzers generated with flex
+must be linked with libfl.a.
+
+The package p2c isn't installed, I don't know where you want it :-)
+It's ported to COHERENT 4.2, it compiles with the MWC compiler and
+the example programs produced with this p2c are OK. If you want to
+use it read the README file of the package and install it your self.
+
+Also f2c isn't installed or tested. I've compiled the stuff with gcc
+to see if there are any problems with the compiler or the OS header
+files, that was all so far.
+
+Some infos which might be interesting:
+======================================
+
+gcc:		I built the compiler in three stages, exactly as
+		the INSTALL document says. The first stage was made
+		with the old gcc 2.3.2 port for COHERENT 4.0.
+		The compiler was configured with:
+		configure --target=i386-coh --with-stabs --prefix=/u1/gnu
+		The upgrade to 2.5.8 was done in three stages too, the
+		first stage was compiled with 2.5.6. No diffs for 2.5.8,
+		the compiler at least compiles it self without bugs.
+
+binutils-2.3:	Accordingly gcc the package was configured with
+		configure --target=i386-coh --with-stabs --prefix=/u1/gnu
+		In the ld directory the file ldemul-list.h is created
+		with echo and sed commands from the makefile. Something
+		is wrong, there are Null and Cntl-L characters in the
+		produced file. I have no idea where the junk comes from,
+		when the compiler aborts edit this file and remove the
+		offending characters, then run make again.
+		I've compiled it with gcc 2.5.6, no way to compile it
+		with MWC cc. The sources are partially ported but I
+		gave up.
+
+binutils-2.4:	Same as 2.3 but absolutely nothing was done to support
+		the MWC C compiler.
+
+BFD lib:	The only complete port of the BFD lib is done in the
+		gdb source directory!! The BFD libs in binutils and
+		gas still uses the traditional UNIX core file, which
+		is not true for COHERENT! I just ported the libs again
+		for each package where they are included, I didn't check
+		if there are differences or not. I wanted to be sure
+		to use the right sources included in every package and
+		not waste time with experimentation which is the newest
+		and best working version.
+
+perl:		The Configure script coming with perl does work, but
+		makedepend has some problems with the MWC /bin/sh. So
+		before you run "make depend" make GNU bash to /bin/sh,
+		that works fine. When you are going to run Configure
+		remove /bin/csh if this is a link to /bin/sh, it will
+		save you headaches!
+
+
+PROBLEMS:
+=========
+
+make:		getloadavg() doesn't work, support for COHERENT 4.2
+		must be added. Don't worry about that, the binary is
+		usable.
+
+screen:		Same problem as with make.
+
+cmp:		Does not work very well, it often aborts with an error message
+		memory exhausted. This is because it does all work in memory
+		which doesn't work for huge files without swapping.
+		For now I renamed the cmp binary to cmp.not, so that /bin/cmp
+		is used.
+
+split:		Same Problem as with cmp.
+
+mv:		Mv doesn't mv a file when the destination already
+		exists, even not with option -f. It's renamed to
+		mv.not for now, so that /bin/mv is used.
+
+strip:		Creates a stripped temporary file with the name st<pid>,
+		unusable.
+
+glib++:		After a configure many Makefiles includes Null and CNTL
+		characters, same problem as with the binutils. Presumably
+		it's a bug in /bin/sh. So after you run configure you
+		have to edit many Makefiles and remove the offending
+		characters. You could try to run configure with bash
+		as login shell, I don't know if that helps, I haven't
+		tried that.
+
+ghostscript:	Don't try to compile it your self, you'll not get a
+		working binary.
+
+locate:		~/lib/locate/updatedb is hand modified to use /bin/sort
+		and not the GNU sort, there are differences and locate
+		core dumps when GNU sort is used. Not clear yet why,
+		don't forget to modify this shell script when you
+		re-install this stuff.
+
+
+Error reports:
+==============
+
+If you have a problem with this software, read the documentation and check
+the configuration files! I'm using this software my self and it works very
+well for me, so I'll become aware of bugs and problems. I've tested this
+packages a lot, but the whole distribution is huge and I may have oversee
+something. Also a bug may be left from the people who wrote the software,
+so check prep.ai.mit.edu if a newer release is available and try it.
+If you are a programmer please try to find the bug your self, with the
+GNU debugger you have source code debugging under COHERENT. If you absolutely
+can't locate a problem send me a mail, when my spare time allows I'll take a
+look at it. In the documentations you'll also find email addresses from the
+FSF folks and Internet newsgroups, where bugs may be reported.
+
+Happy hacking, Udo
+
+------------------------------------------------------------------------------
+eMail: udo.munk@freenet.de

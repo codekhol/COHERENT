@@ -1,0 +1,567 @@
+   Bytes    Name	Description
+------------------------------------------------------------------------------
+1830947	ADF.tar.Z	A series of database utilities for generating form
+	01/15/92	reports and correspondence.
+			SUBDIRECTORY: adf		PARTS: ADF.tar.Za-s
+
+3127	admshot.tar.Z	Utility for executing utilities once per day.
+	03/28/91
+--->
+86428	advent.tar.Z	A text adventure game. 
+			SUBDIRECTORY: advent		PARTS: advent.Zaa-b
+--->
+17113	almanac.tar.Z	This program calculates the ascension and declination
+	01/25/91	of the Sun, Moon and the 3 major planets when given the
+			calendar date and time. Also calculates the azimuth and
+			altitude of the Sun, Moon and 8 planets.
+--->
+21096	arcwtmp.tar.Z	Utilities for archiving login history files used
+	06/26/91	by the finger utility.
+--->
+27286	awk.320.Z	'Fixed' awk. Now understands 8 bit character set and
+	03/27/91	multiple line continuations and unary negatives.
+			This replaces awk310f.tar.Z.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+17971	banner.c.Z	Create BIG banners with this utility!
+        02/18/91
+--->
+1644	beuucp.c.Z	A utility for running uumvlog from cron if 'uucp' has
+	03/07/91	has been given a password in /etc/password.
+--->
+1369	bkup2.Z		Script file for producing a level 0 dump of /dev/root.
+--->
+2603	bootdaemon.c.Z	Utility for checking when a system was rebooted.
+	04/16/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+30494	booz.tar.Z	Portable archiving utility.
+	06/25/91
+--->
+48963	browser.tar.Z	Utility for scanning a file indexed by qndxr (included
+	01/23/91	in the tar archive).
+--->
+24826	bsnews.tar.Z	Bootstrap News is a collection of programs which enable
+	01/29/91	a leaf node to take a limited news feed without 
+			installing a full news package.  News articles are 
+			spooled in a Unix-mail-format file, where they can be
+			read, printed, forwarded, replied-to or saved with a 
+			mail reader such as Mail or elm.
+--->
+44523	calls.tar.Z	Utility to trace hierarchy of called functions in
+	01/22/91	C programs.
+			SUBDIRECTORY: toolbox
+--->
+2420	cbeaut01.Z	C-beautifier. Use this on your C source files to 
+	11/08/91	properly indent your code.
+
+--->
+
+4140	cdiff.tar.Z     Used to produce Berkley 3.2 style diff files.
+--->
+16065	cflow.tar.Z	Utility for tracing c functions similar to calls.tar.Z
+	05/08/91	SUBDIRECTORY: toolbox
+--->
+
+13394	cgrep.tar.Z	An 'egrep' style utility designed for searching
+	03/13/91	C source for pattern matches. 
+			SUBDIRECTORY: toolbox		PARTS:none
+			NOTES: Replaces original version posted 02/27/91
+--->
+75904	chess.tar.Z	A chess game for Coherent.
+			SUBDIRECTORY: chess		PARTS: chess.tar.Zaa-b
+			NOTES: requires latest curses update, binary included
+--->
+5683	choose.tar.Z	utility for randomly selecting lines from a file.
+	03/28/91
+--->
+176828	clam141.tar.Z	C shell emulator for Coherent.
+        12/27/90	SUBDIRECTORY: clam141		PARTS:clam.Zaa-d
+			NOTES: Source, makefiles and docs, requires 
+			       patch20.tar.Z, libndir.tar.Z
+
+127812	clambin.tar.Z	SUBDIRECTORY: clambin		PARTS:clambin.Zaa-c
+	02/25/91	NOTES: binaries and docs only
+--->
+28560	clife.tar.Z	A simulation of life using curses routines.
+	12/17/91
+--->
+52025	clock.tar.Z	Utility to banner a clock on a terminal or console
+	12/02/91	SUBDIRECTORY: clock		PARTS: clock.tar.Zaa-b
+--->
+16860	cls.tar.Z	Clear screen utility.
+	04/16/91	
+--->
+35387	cmenu.tar.Z	Screen oriented file access utility.
+	07/19/91	
+--->
+653366	cnews.tar.Z	Complete newsreader facility for COHERENT.
+	03/26/91	SUBDIRECTORY: cnews		PARTS: cnews.tar.Zaa-n
+			NOTES: requires rn.tar.Z and sdbm.tar.Z
+--->
+21894	cnewsp1.tar.Z	Modifications for cnews and other related utilities.
+	04/09/91	SUBDIRECTORY: cnews		PARTS: none
+--->
+2192	cobble.tar.Z	Shell script for building BOOTABLE floppies
+	07/24/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+97156	comb132.tar.Z	Another alternative to COHERENT's mailer. Features
+        12/02/91	screen oriented menuing and a reply function. 
+			SUBDIRECTORY: comb		PARTS: comb.tar.Zaa-b
+			NOTES: Replaces previous posting of comb129.tar.Z
+--->
+16283	compress.321.Z	NEW COMPRESS, fixes a bug in zcat. Download as:
+			SUBDIRECTORY: updates		PARTS: none
+			NOTES: When installing compress, you must first
+			delete zcat and uncompress, install the new compress,
+			and link zcat and uncompress to the new compress.
+--->
+147179	cproto.tar.Z	Cproto is a program that generates function prototypes 
+	04/17/91	and variable declarations from C language source code.
+			SUBDIRECTORY: cproto		PARTS: cproto.tar.Zaa-c
+--->
+8176	crc.c.Z		Utility to compute checksums.
+	01/23/92	SUBDIRECTORY: toolbox		PARTS: none
+
+--->
+38556	ctags.tar.Z	Berkley compliant version of ctags.
+        06/04/91
+--->
+854	curses2.h.Z	Curses routines not included with the COHERENT
+	06/04/91	distribution of curses.h.
+			SUBDIRECTORY: toolbox
+--->
+15983	cursive.sh.Z	Utility to generate 'cursive' banners from stdin.
+	01/22/91
+--->
+8278	curses321.h.Z	New include file for version 320.
+	06/24/91	SUBDIRECTORY: updates		PARTS: none
+--->
+28919	cu.tar.Z	ever popular communications utility
+	01/24/92
+--->
+14594	cut.sh.Z	Cut and paste utilities. This is a compressed and
+			sharred file.
+--->
+480825	dash10.tar.Z	Alternative shell which provides greatly enhanced
+	10/16/91	history functions over the korn shell.
+			SUBDIRECTORY: dash		PARTS: dash10.tar.Zaa-j
+--->
+127951	deliver.tar.Z   Local delivery agent to be used in conjunction with
+	01/07/91	a local mailer. 
+			SUBDIRECTORY: deliver		PARTS: deliver.Zaa-c
+--->
+141592	des.tar.Z	Encryption and system access utilities.
+	09/24/91	SUBDIRECTORY: des		PARTS: des.tar.Zaa-c
+--->
+707419	dmake.tar.Z	A newer, pd make utility ported to Coherent. Download
+	01/18/91	the following parts:
+			SUBDIRECTORY:dmake		PARTS: dmake.tar.Zaa-o
+--->
+21933	dos320.tar.Z	New dos command and manpage. This new version allows
+	12/13/90	for formatting dos floppies and understands 16 bit file
+			allocation tables.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+ 995	dowk.c.Z	Utility for passing dates in awk programs.
+	02/13/91
+--->
+19668	dtree.tar.Z	Tree utility for COHERENT
+--->
+924	dumpscreen.c.Z	Screen dump utility for COHERENT.
+--->
+572	echo320 	A new echo utility. Employs many Berkley-isms.
+	02/13/91	SUBDIRECTORY: updates		PARTS: none
+--->
+406093 elle41C.tar.Z    Emacs-like screen editor. Uses Emacs style commands
+			and can handle large files. Download these parts:
+			SUBDIRECTORY: elle		PARTS: elle41C.Zaa-i
+--->
+295474	 elvis14tar.Z	Source code and makefile for elvis1.4 screen editor.
+       		    	This is split into 6 parts. Download the following:
+			SUBDIRECTORY: elvis		PARTS: elvis14tar.Zaa-f
+--->
+
+33167	 emacs.320.Z	Enhanced binary of micro-Emacs which understands high
+	 05/08/91	order characters (necessary for foreign character sets).
+			Also understands cursor movement keys (ie. pg up/down).
+			SUBDIRECTORY: updates		PARTS: none
+			NOTES: Replaces version posted on 04/04/91. Now allows
+			for variable tabs. Corrects core dump bug.
+--->
+12816	 emacs.tar.Z	Enhance to microEmacs to allow usage of keypad cursor
+			control keys.
+--->
+42060	finger.tar.Z	Berkley compliant finger utilities.
+	06/17/91	NOTES: replaces version posted 06/04/91. arcwtmp is
+			       recomended for controlling finger's accounting
+			       files.
+--->
+49538	ff.tar.Z	text formatting utility
+	01/23/92
+--->
+32721	focal.tar.Z	An interpretative language. (Binary included)
+	03/28/81
+--->
+21844	 fsck.320.Z	Improved fsck utility.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+275131	gnews.tar.Z	A news reader written under Coherent for Coherent.
+	07/16/91	SUBDIRECTORY: gnews		PARTS: gnews.tar.Zaa-f
+			NOTES: Binaries included. Now POSTS and reads news.
+			       Replaces previous version posted on 03/13/91.
+--->
+32322	gomoku.tar.Z	A variation of that popular x's and o's game.
+	07/19/91
+--->
+83367	 gnugo.tar.Z	Pd game based upon a game known as 'go'. 
+	 02/18/91	SUBDIRECTORY: gnugo		PARTS: gnugo.tar.Zaa-b
+--->
+195935 	 gnutar.tar.Z	TAR utility for archiving files. Format can be read
+			other Unix systems. Requires a libndir.a library. This
+			can be found in the coh-clam.tar.Z file.
+			SUBDIRECTORY: gnutar		PARTS: gnutar.tar.Zaa-d
+--->
+6929	help321.Z	Updated help utility which fixes bug addressing user
+	10/25/91	defined help files/indices.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+6139	hexdmp.tar.Z	File dump utility, similar to 'od'.
+	01/15/92	SUBDIRECTORY: toolbox		PARTS: none
+--->	
+5593	hd.c.Z		File dump utility, similar to 'od'.
+	03/28/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+108592	hotel.tar.Z	A board game, similar in some respects to monopoly,
+	02/18/91	involving the purchasing and bartering of hotels.
+			SUBDIRECTORY: hotel		PARTS: hotel.tar.Zaa-c
+--->
+4021	howdy.tar.Z	Be greeted with a friendly message when logging in.
+	10/02/91	
+--->
+724931	kermit.tar.Z	Ckermit. A pd kermit which sports several enhanced
+			features, too numerous to list here!
+			SUBDIRECTORY: ckermit		PARTS:kermit.tar.Zaa-o
+--->
+3223	laser.c.Z	Utility for printing w/laser printer, specifying
+	01/14/91	portrait landscape or portrate layout.
+--->
+23346	lcurses.321.Z	Updated libcurses.a . Fixes bug with delwin().
+	09/16/91	SUBDIRECTORY: updates		PARTS: none
+			NOTES: replaces version posted 04/30/91
+--->
+6569	ldlib.a.Z	Driver kit 1.2.0 update. Corrects problem with ttflush()
+	09/26/91	SUBDIRECTORY: updates/driver_kit	
+--->
+241446	less.tar.Z	Public domain less utility.
+	06/04/91	SUBDIRECTORY: less2		PARTS: less.tar.Zaa-e
+			NOTES: Replaces version posted 01/07/91. Mods made to
+			       use sgtty.h instead of termio.
+--->
+103810	lharc.tar.Z	Public domain archiver.
+	01/07/91	SUBDIRECTORY: lharc		PARTS: lharc.tar.Zaa-b
+--->
+48206	libc321.a.Z	Updated libc.a.
+	07/02/91	SUBDIRECTORY: updates			PARTS: none
+			NOTES: Replaces libc310e.a.Z posted 06/07/91. This newer
+			version fixes bugs related to division.
+--->
+3073	list.c.Z	Allows users to view the contents of text files and 
+	04/16/91	allow movement both forward and backward a screen 
+			at a time.
+			SUBDIRECTORY: toolbox		PARTS: none
+--->
+11212	lex.320.Z	Post 310 version of lex which corrects a bug which 
+			misinterpretted a '#' in coloumn #1 inside a lex action.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+27564	libndir.tar.Z	Libndir.a library necessary to build the clam shell
+	12/27/90	and gnutar.
+--->
+7066	llesh.c.Z	Bourne shell overlay for command history
+--->
+12182	lock.tar.Z	Walk away from your terminal and feel safe. This
+	07/23/91	utility will allow you to "lock" your terminal.
+--->
+62519	lotto.tar.Z	Program for generating winning lotto numbers!
+	12/23/91	SUBDIRETCORY: lotto		PARTS: lotto.tar.Zaa-b
+--->
+107084	make.tar.Z	Public domain make utility.
+	01/07/91	SUBDIRECTORY: make		PARTS: make.tar.Zaa-c
+--->
+55762	maze.tar.Z	Multiuser maze game.
+	01/25/91	SUBDIRECTORY: maze		PARTS: maze.tar.Zaa-b
+--->
+90358	mc.tar.Z	Shareware spreadsheet.
+	12/11/91	SUBDIRECTORY: mc		PARTS: mc.tar.Zaa-b
+			NOTES: replaces previous version posted 10/91. Now
+			       adds [nt]roff and /rdb integration.
+--->
+8947	menu.tar.Z	Bourne shell menu utility and equivilant utility produced
+			by CCSH from this shell script.
+--->	
+14965	menu2.tar.Z	BINARY ONLY screen oriented menuing utility.
+	09/10/91
+--->
+4535	menubar.tar.Z	Utility to be incorporated into c programs for 
+	03/28/91	selecting menu items from a window. (Source and docs only)
+--->
+2461	minimenu.tar.Z	Shell scripted menuing utility which employs colors.
+	10/16/91
+--->
+4294	minst.tar.Z	Shell scripts for formatting/installing man pages
+	01/24/92	SUBDIRECTORY: toolbox
+--->
+78633	month.tar.Z	Calendar/scheduling utility
+	03/28/91	SUBDIRECTORY: month		PARTS: month.tar.Zaa-b
+--->
+33785	mtalk.tar.Z	Utility using /drv/msg to allow users logged into a
+	06/26/91	system to 'talk' to each other.
+--->
+13465	mterm.c.Z	A basic terminal services program. Works around the
+        02/12/91	suspend bug in the serial drivers.
+--->
+178772	mtools.tar.Z	A series of msdos (floppy) file manipulation utilities
+	09/24/91	SUBDIRECTORY: dos		PARTS: mtools.tar.Zaa-d
+--->
+15968	mvlog.tar.Z	Alternate for uumvlog.
+	11/21/91
+--->
+3257	mwdl.tar.Z	An awk utility for simplifying requesting files from 
+	09/10/91	mwcbbs.
+--->
+38251	nroff.320.Z	Updated nroff. Resolves several reported problems
+	04/26/91	with divide check/core dump errors.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+44056	ogre.tar.Z	A tank battle game.
+	02/18/91
+--->
+208371	origami.tar.Z	A 'folding' editor for COHERENT.
+	08/13/91	SUBDIRECTORY: origami		PARTS: org.tar.Zaa-e
+--->
+169393	othello.tar.Z	The popular 'othello' game.
+	10/02/91	SUBDIRECTORY: othello		PARTS: othello.Zaa-d
+			NOTES: Requires latest curses updates.
+--->
+88565	patch20.tar.Z	Patch utility, used to build the clam shell and gnutar.
+			SUBDIRECTORY: patch		PARTS: patch20.Zaa-b
+--->
+132097	pathal.tar.Z	(Pathalias) Computes shortest paths & corresponding
+			 routes from one host computer to all other known,
+			 reachable hosts.
+			 SUBDIRECTORY: path		PARTS: pathal.tar.Zaa-c
+--->
+50512	pclist.tar.Z	File listing and directory utility
+	10/16/91	SUBDIRECTORY: pclist		PARTS: pclist.tar.Zaa-b
+			NOTES: Now has a hex listing facility.
+--->
+110561	pcmail.tar.Z	A menu driven mail utility with numerous features, 
+	01/03/90	including a REPLY function. 
+			SUBDIRECTORY: pcmail		PARTS: pcmail.tar.Zaa-c
+			NOTES: Binaries and docs only
+--->
+358638	pcmail.tar.Z	This is the source and makefiles for building pcmail.
+			SUBDIRECTORY: pcmlsrc		PARTS: pcmail.tar.Zaa-h
+--->
+26873	postcrpt.tar.Z	Some postcript files for version 320 troff.
+	08/29/91
+--->
+193648	prolog.tar.Z	Prolog language ported to COHERENT. Examples and
+	02/19/91	tutorials included. 
+			SUBDIRECTORY: prolog		PARTS: prolog.tar.Zaa-d
+			NOTES: Binaries included
+--->
+302804	quebbs.tar.Z	Bulletin board package.
+	09/13/91	SUBDIRECTORY: quebbs		PARTS: quebbs.tar.Zaa-g
+			NOTES: requires patch20.tar.Z . This is a FREEWARE
+			package, NOT public domain.
+--->
+2383	qq.c.Z		Routine for writing directly to video memory.
+--->
+26896	reap.tar.Z	Utility for removing expired news (use with Cnews)
+	03/26/91	NOTES: Binaries are included
+--->	
+17462	retab.tar.Z	tab/space conversion filter
+	01/23/92
+--->
+647078	rcs.tar.Z	Revision control system ported to COHERENT!
+	02/14/91	SUBDIRECTORY: rcs		PARTS: rcs.tar.Zaa-m
+			NOTES: Binaries are included
+--->
+373735	rn.tar.Z	News read software necessary for Cnews.
+	03/36/91	SUBDIRECTORY: rn		PARTS: rn.tar.Zaa-h
+--->
+201438	rogue.tar.Z	A D&D type adventure game
+	12/23/91	SUBDIRECTORY: rogue		PARTS: rogue.tar.Zaa-e
+			NOTES: Requires post 310 curses.
+--->
+14737	romfngr.tar.Z	Utility for displaying extended information on logged
+	02/18/91	in users.
+--->
+7433	sa320.Z		Modifies sa command which can accomodate 500 commands,
+	01/10/91	opposed to 100 commands for the shipping version of sa.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+133581	sc.tar.Z	COHERENT's first spreadsheet!
+	03/28/91	SUBDIRECTORY: sc		PARTS: sc.tar.Zaa-c
+			NOTES: Requires latest libcurses to build. Binary included
+--->
+104058	sdbm.tar.Z	A clone of the ndbm library. Necessary for Cnews.
+	03/26/91	SUBDIRECTORY: sdbm		PARTS: sdbm.tar.Zaa-c
+--->
+23259	sh320.tar.Z	Updated Bourne shell. Known bugs with redirection
+	02/06/91	have been fixed. (Shar files will now be usable w/o
+			modifying the sed commands.).
+			SUBDIRECTORY: updates		PARTS: none
+--->
+1928	shells.tar.Z	Various shell scripts to make formatting, mkfsing and
+			copying diskettes easier tasks.
+--->
+3044	screen.tar.Z	Utility for setting screen colors.
+	08/28/91
+--->
+4345	scripts.tar.Z	Shell scripts for making backing up filesystems and
+	01/28/81	formatting floppies less painless.
+--->
+169160	shar.tar.Z	Shell archiver utility.
+	01/07/91	SUBDIRECTORY: shar		PARTS: shar.tar.Zaa-d
+			NOTES: requires libndir.a. Makefile updated on 5/16/91
+--->
+	smail.tar.Z	"smart mailer" utility.
+	01/28/91	SUBDIRECTORY: smail		PARTS: smail.tar.Zaa-c
+--->
+79116	smiley.tar.Z	The net "smiley"s come to COHERENT! This routine can
+	08/01/91	can be run as a stand alone smiley generator or
+			embedded in a ksh prompt string.
+			SUBDIRECTORY: smiley		PARTS: smiley.tar.Zaa-b
+--->
+54610	sokoban.tar.Z	An interesting game of moving objects to safe zones.
+	08/14/91	SUBDIRECTORY: sokoban		PARTS: soko.tar.Zaa-b
+--->
+1949	strings.c.Z	Utility to find ascii strings in an executable and
+	04/16/91	print them to stdout.
+			SUBDIRECTORY: toolbox		PARTS: none
+--->
+3053	su.c.Z		An alternative 'su' utility.
+	04/16/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+6467	sx.tar.Z	Utility for running shell scripts as setuid.
+	08/14/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+13681	tar.321.Z	V7 tar update. Does not corrupt filesystems
+	09/16/91	when reading non V7 tar formats.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+76965	tass32.tar.Z	Another newsreader for COHERENT. Works well with wnews.
+			SUBDIRECTORY: tass		PARTS: tass.tar.Zaa-b
+--->
+21201	tassgn.tar.Z	Modifications to tass source for use with gnews.
+	07/19/91
+--->
+59613	tetris.tar.Z	A clone of the popular tetris game for COHERENT.
+	06/04/91	SUBDIRECTORY: tetris		PARTS: tetris.tar.Zaa-b
+			NOTES: Requires v3.2 OR curses update from mwcbbs
+--->
+13853	tools.tar.Z	Utilities for checking the polling rate of polled
+	01/22/91	serial ports, checking hard drive params that the
+			COHERENT kernel is working with and a lex fix for
+			the redirection bug encountered when unsharring a
+			shar archive.
+			SUBDIRECTORY: toolbox		PARTS: none
+--->
+3457	tools1.sh.Z	A series of tools for getting a user's id. 
+	01/28/91	SUBDIRECTORY: toolbox		PARTS: none
+--->
+142953	trek73.tar.Z	A game based upon the popular Star Trek series.
+	03/11/91	SUBDIRECTORY: trek		PARTS: trek73.tar.Zaa-c
+			NOTES: Binary included
+--->
+ 6920	twoup.tar.Z	Utility for printing stdout in columns on a laserjet.
+	02/25/91
+--->
+40995	umodem.tar.Z	Xmodem protocol file transfer utility.
+        01/31/91
+--->
+81	unctrl321.h.Z	Header necessary for v320 curses. Was missing from 
+	06/24/91	version 320.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+1964	unpatch.c.Z	utility for reading patchable symbols in a COHERENT
+	12/19/91	kernel.
+			SUBDIRECTORY: toolbox		PARTS: none
+--->
+190927 	unzip.tar.Z	Unzips files compressed with zip. 
+			SUBDIRECTORY: unzip		PARTS: unzip.Zaa-b
+--->
+828	uptime.c.Z	Utility which will print the last time COHERENT
+			was booted.
+--->
+1508	uucp.awk.Z	Utility for calculating the cost of uucp communications
+
+--->
+98410	uucp.tar.Z	updated suite of uucp comands (massive revisions)
+	12/12/91	SUBDIRECTORY: updates/uucp	PARTS: uucp.tar.Zaa-b
+			NOTES: replaces previous posting of 8/06/91; also 
+			includes new init and login. No longer calls out on
+			a port that is in use.
+--->
+28861	uuinst.321.Z	Updated uuinstall utility. Fixes problem with leaving
+	07/23/91	terminal in raw mode upon exit.
+			SUBDIRECTORY: updates		PARTS: none
+--->
+2386	uustat.c.Z	Utility which shows queued activity pending
+	04/16/91	for uucp sites
+			SUBDIRECTORY: toolbox		PARTS: none
+--->
+27582	vtree.tar.Z	Another tree utility. Provides more functionality
+	08/20/91	than dtree.
+			NOTES: Requires libndir.tar.Z
+--->
+1245	which.tar.Z	This is an implementation of which, a BSD Unix program
+	02/18/91	that just searches your path for the first executable 
+			file that matches the command line argument.
+--->
+481	whodo.Z		A shell script utility which produces 'ps' output
+	04/15/91	broken down by user.
+			NOTES: requires cut.sh.Z
+--->
+132824	wmail.tar.Z	mailer for COHERENT which uses smail.
+	05/08/91	SUBDIRECTORY: wmail		PARTS: wmail.tar.Zaa-c
+			NOTES: requires latest curses from mwcbbs
+--->
+136458	wnews30.tar.Z	Another suite of news utilities for COHERENT.
+	05/08/91	SUBDIRECTORY: wnews		PARTS: wnews.tar.Zaa-c
+--->
+89613	wsh.tar.Z	Another screen oriented file access utility.
+	12/11/91	SUBDIRECTORY: wish		PARTS: wsh.tar.Zaa-b
+			NOTES: This is a SHAREWARE package. Replaces previous
+			posted 09/24/91.
+--->
+149399	xlisp.tar.Z	Object oriented programming utility.
+	08/21/91	SUBDIRECTORY: xlisp		PARTS: xlisp.tar.Zaa-c
+--->
+37747	xo.tar.Z	A popular game of x's and o's.
+	06/26/91
+--->
+2000	xargs.tar.Z	Allows many arguments to be passed to a command.
+	01/17/91
+--->
+160139	xcmalt.tar.Z	Communications program which can use scripts to automate
+	02/14/91	login sessions to services like CompuServe, etc...
+			Supports xmodem and B+ protocols.
+			SUBDIRECTORIES: xcmalt		PARTS: xcmalt.tar.Zaa-d
+--->
+34031	xtalk.tar.Z	Screen oriented 'chat' utility.
+	09/10/91
+--->
+4328	xuucp.tar.Z	Shell scripts for automating mwcbbs downloads.
+	09/05/91
+--->
+4120	xxu.tar.Z	Converts Dec-20, VAX/VMS style filenames to *nix/
+	01/17/91	COHERENT style filenames.
+--->
+96226	zmodem.tar.Z	Popular file transfer utilities.
+	01/07/91	SUBDIRECTORY: zmodem		PARTS: zmodem.Zaa-b
+--->
+272059	zoo.tar.Z	Portable archiving utility.
+	08/28/91	SUBDIRECTORY: zoo		PARTS: zoo.tar.Zaa-f

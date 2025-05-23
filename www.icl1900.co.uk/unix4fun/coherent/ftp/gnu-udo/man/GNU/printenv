@@ -1,0 +1,66 @@
+
+
+
+PRINTENV(1L)                                         PRINTENV(1L)
+
+
+NNAAMMEE
+       printenv - print all or part of environment
+
+SSYYNNOOPPSSIISS
+       pprriinntteennvv [--help] [--version] [variable...]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents the GNU version of pprriinntteennvv.
+       If no arguments are  given,  pprriinntteennvv  prints  the  entire
+       environment.   If one or more variable names are given, it
+       prints the value of each one that is set, and nothing  for
+       each one that is not set.
+
+       The exit status is:
+       0 if all variables specified were found
+       1 if at least one specified variable was not found
+       2 if a write error occurred
+
+   OOPPTTIIOONNSS
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

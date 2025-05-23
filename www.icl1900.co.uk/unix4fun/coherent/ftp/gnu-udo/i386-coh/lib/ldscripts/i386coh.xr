@@ -1,0 +1,31 @@
+OUTPUT_FORMAT("coff-i386")
+SEARCH_DIR(/lib); SEARCH_DIR(/usr/lib);
+ENTRY(_start)
+SECTIONS
+{
+  .text  : {
+    *(.init)
+    *(.text)
+    *(.fini)
+    ;
+  }
+  .data  : {
+    *(.data .data2)
+    ;
+  }
+  .bss  :
+  { 					
+    *(.bss)
+    *(COMMON)
+    ;
+    ;
+  }
+  .stab  . (NOLOAD) : 
+  {
+    [ .stab ]
+  }
+  .stabstr  . (NOLOAD) :
+  {
+    [ .stabstr ]
+  }
+}

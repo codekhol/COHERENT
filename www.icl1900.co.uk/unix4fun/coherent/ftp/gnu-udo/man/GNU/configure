@@ -1,0 +1,198 @@
+
+
+
+configure(1)              Cygnus Support             configure(1)
+
+
+NNAAMMEE
+       configure -- prepare source code to be built
+
+
+SSYYNNOOPPSSIISS
+       configure HOST [--target=TARGET] [--srcdir=DIR] [--rm]
+                   [--site=SITE]                   [--prefix=DIR]
+       [--exec_prefix=DIR]
+                   [--program_prefix=DIR] [--tmpdir=DIR]
+                   [--with-PACKAGE[=YES/NO]] [--without-PACKAGE]
+                   [--enable-FEATURE[=YES/NO]]        [--disable-
+       FEATURE]
+                   [--norecursion] [--nfp] [-s] [-v] [-V | --ver-
+       sion] [--help]
+
+
+DDEESSCCRRIIPPTTIIOONN
+       _c_o_n_f_i_g_u_r_e is a program used to prepare souce  code  to  be
+       built.   It does this by generating Makefiles and .gdbinit
+       files, creating symlinks, recursing in subdirectories, and
+       some other miscellaneous file editing.
+
+
+OOPPTTIIOONNSS
+       _c_o_n_f_i_g_u_r_e accepts the following options:
+
+
+       _-_-_t_a_r_g_e_t_=_T_A_R_G_E_T
+              Requests  that  the sources be configured to target
+              the _T_A_R_G_E_T machine.   If  no  target  is  specified
+              explicitly, the target is assumed to be the same as
+              the host.
+
+
+       _-_-_s_r_c_d_i_r_=_D_I_R
+              tells configure to find the source in _D_I_R_.   Object
+              code is always built in the current directory, _`_._'_.
+
+
+       _-_-_r_m   asks configure to  remove  a  configuration  rather
+              than create one.
+
+
+       _-_-_s_i_t_e_=_S_I_T_E
+              asks  configure  to  use any site-specific Makefile
+              fragments for _S_I_T_E when building Makefiles.
+
+
+       _-_-_p_r_e_f_i_x_=_D_I_R
+              sets the location in which to install files to _D_I_R_.
+              The default is "/usr/local".
+
+
+
+
+
+
+cygnus support           2 February 1993                        1
+
+
+
+
+
+configure(1)              Cygnus Support             configure(1)
+
+
+       _-_-_e_x_e_c___p_r_e_f_i_x_=_D_I_R
+              sets the root directory for host-dependent files to
+              _D_I_R_.  The default location is the value of  _p_r_e_f_i_x_.
+
+
+       _-_-_p_r_o_g_r_a_m___p_r_e_f_i_x_=_D_I_R
+              configures  the  source  to  install programs which
+              have the same names as common Unix  programs,  such
+              as  "make", in _D_I_R_.  Also applies to programs which
+              might be used for cross-compilation.
+
+
+       _-_-_t_m_p_d_i_r_=_D_I_R
+              sets the directory in which configure creates  tem-
+              porary files to _D_I_R_.
+
+
+       _-_-_w_i_t_h_-_P_A_C_K_A_G_E_[_=_Y_E_S_/_N_O_]
+              sets a flag for the build to recognize that _P_A_C_K_A_G_E
+              is explicitly present or not present.   If  _=_Y_E_S_/_N_O
+              is  nonexistent,  the  default  is _Y_E_S_.  _-_-_w_i_t_h_o_u_t_-
+              _P_A_C_K_A_G_E is equivalent to _-_-_w_i_t_h_-_P_A_C_K_A_G_E_=_n_o.
+
+
+       _-_-_e_n_a_b_l_e_-_F_E_A_T_U_R_E_[_=_Y_E_S_/_N_O_]
+              sets a flag for the build to recognize that _F_E_A_T_U_R_E
+              should  be included or not included.  If _=_Y_E_S_/_N_O is
+              nonexistent, the default is _Y_E_S_.  _-_-_d_i_s_a_b_l_e_-_F_E_A_T_U_R_E
+              is equivalent to _-_-_e_n_a_b_l_e_-_F_E_A_T_U_R_E_=_n_o.
+
+
+       _-_-_n_o_r_e_c_u_r_s_i_o_n
+              asks that only the current directory be configured.
+              Normally _c_o_n_f_i_g_u_r_e recurs on subdirectories.
+
+
+       _-_n_f_p   Notifies _c_o_n_f_i_g_u_r_e that all of the specified  hosts
+              have _n_o _f_l_o_a_t_i_n_g _p_o_i_n_t units.
+
+
+       _-_s     used internally by configure to supress status mes-
+              sages on subdirectory recursions.  Override with _-_v
+
+
+       _-_v     verbose  output.   Asks that configure print status
+              lines for  each  directory  configured.   Normally,
+              only the status lines for the current directory are
+              printed.
+
+
+       _-_-_v_e_r_s_i_o_n
+              _-_V prints _c_o_n_f_i_g_u_r_e version number.
+
+
+
+
+
+cygnus support           2 February 1993                        2
+
+
+
+
+
+configure(1)              Cygnus Support             configure(1)
+
+
+       _-_h_e_l_p  displays a brief usage summary.
+
+
+
+FFIILLEESS
+       configure.in   for each directory's individual needs
+       Makefile.in    Makefile template
+       config.sub     for parsing configuration names
+       config.guess   for guessing HOST when not specified
+       config.status  non-recursively rebuilds current directory
+
+
+FFIILLEESS
+       a.out    the namelist and text space.
+       gmon.out dynamic call graph and profile.
+       gmon.sum summarized dynamic call graph and profile.
+
+
+SSEEEE AALLSSOO
+       `ccoonnffiigguurree' entry in iinnffoo..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cygnus support           2 February 1993                        3
+
+

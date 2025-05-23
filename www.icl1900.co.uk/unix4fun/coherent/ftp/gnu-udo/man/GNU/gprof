@@ -1,0 +1,198 @@
+
+
+
+GPROF(1)                                                 GPROF(1)
+
+
+NNAAMMEE
+       gprof - display call graph profile data
+
+SSYYNNOOPPSSIISS
+       ggpprrooff  [[ --aabbccsszz ]] [[ --ee||--EE _n_a_m_e ]] [[ --ff||--FF _n_a_m_e ]] [[ --kk _f_r_o_m_-
+       _n_a_m_e _t_o_n_a_m_e ]] [[ _o_b_j_f_i_l_e [[ _g_m_o_n_._o_u_t ]] ]]
+
+DDEESSCCRRIIPPTTIIOONN
+       ggpprrooff produces an execution profile of C, Pascal, or  For-
+       tran77  programs.  The effect of called routines is incor-
+       porated in the profile of each caller.  The  profile  data
+       is  taken  from  the  call  graph profile file (`gmon.out'
+       default) which is created by programs  that  are  compiled
+       with  the --ppgg option of cccc(11),, ppcc(11),, and ff7777(11)..  The --ppgg
+       option also links in versions of the library routines that
+       are  compiled for profiling.  GGpprrooff reads the given object
+       file (the default is `a.out') and establishes the relation
+       between  its  symbol table and the call graph profile from
+       `gmon.out'.  If more than one profile file  is  specified,
+       the  ggpprrooff output shows the sum of the profile information
+       in the given profile files.
+
+       GGpprrooff calculates the amount of time spent in each routine.
+       Next,  these  times  are propagated along the edges of the
+       call graph.  Cycles are discovered, and calls into a cycle
+       are  made to share the time of the cycle.  The first list-
+       ing shows the functions sorted according to the time  they
+       represent  including  the time of their call graph descen-
+       dents.  Below each function entry is  shown  its  (direct)
+       call graph children, and how their times are propagated to
+       this function.  A similar display above the function shows
+       how  this  function's time and the time of its descendents
+       is propagated to its (direct) call graph parents.
+
+       Cycles are also shown, with an entry for the  cycle  as  a
+       whole  and a listing of the members of the cycle and their
+       contributions to the time and call counts of the cycle.
+
+       Second, a flat profile is given, similar to that  provided
+       by pprrooff(11)..  This listing gives the total execution times,
+       the call counts, the time in milleseconds the  call  spent
+       in  the  routine  itself, and the time in milleseconds the
+       call spent in the routine  itself  including  its  descen-
+       dents.
+
+       Finally, an index of the function names is provided.
+
+OOPPTTIIOONNSS
+       The following options are available:
+
+       --aa     suppresses  the  printing  of  statically  declared
+              functions.  If this option is given,  all  relevant
+              information  about  the static function (e.g., time
+              samples, calls to other functions, calls from other
+
+
+
+                         January 29, 1993                       1
+
+
+
+
+
+GPROF(1)                                                 GPROF(1)
+
+
+              functions)  belongs  to  the  function  loaded just
+              before the static function in the `objfile' file.
+
+       --bb     suppresses the printing of a  description  of  each
+              field in the profile.
+
+       --cc     the  static call graph of the program is discovered
+              by a heuristic that examines the text space of  the
+              object  file.   Static-only parents or children are
+              shown with call counts of 0.
+
+       --ee _n_a_m_e
+              suppresses the printing of the graph profile  entry
+              for  routine  _n_a_m_e  and all its descendants (unless
+              they have other ancestors that aren't  suppressed).
+              More  than  one  --ee  option may be given.  Only one
+              _n_a_m_e may be given with each --ee option.
+
+       --EE _n_a_m_e
+              suppresses the printing of the graph profile  entry
+              for  routine  _n_a_m_e  (and  its  descendants) as --ee ,,
+              above, and also excludes the  time  spent  in  _n_a_m_e
+              (and its descendants) from the total and percentage
+              time computations.   (For  example,  --EE  _m_c_o_u_n_t  --EE
+              _m_c_l_e_a_n_u_p is the default.)
+
+       --ff _n_a_m_e
+              prints  the  graph profile entry of only the speci-
+              fied routine _n_a_m_e and its descendants.   More  than
+              one  --ff  option may be given.  Only one _n_a_m_e may be
+              given with each --ff option.
+
+       --FF _n_a_m_e
+              prints the graph profile entry of only the  routine
+              _n_a_m_e  and  its descendants (as --ff ,, above) and also
+              uses only the times  of  the  printed  routines  in
+              total  time and percentage computations.  More than
+              one --FF option may be given.  Only one _n_a_m_e  may  be
+              given with each --FF option.  The --FF option overrides
+              the --EE option.
+
+       --kk _f_r_o_m_n_a_m_e _t_o_n_a_m_e
+              will delete any arcs from routine _f_r_o_m_n_a_m_e to  rou-
+              tine  _t_o_n_a_m_e.   This can be used to break undesired
+              cycles.  More than one  --kk  option  may  be  given.
+              Only  one  pair  of routine names may be given with
+              each --kk option.
+
+       --ss     a profile file `gmon.sum' is produced  that  repre-
+              sents the sum of the profile information in all the
+              specified profile files.  This summary profile file
+              may be given to later executions of gprof (probably
+              also with a --ss) to accumulate profile  data  across
+              several runs of an `objfile' file.
+
+
+
+                         January 29, 1993                       2
+
+
+
+
+
+GPROF(1)                                                 GPROF(1)
+
+
+       --vv     prints  the  version  number  for  gprof,  and then
+              exits.
+
+       --zz     displays routines that have zero usage (as shown by
+              call  counts and accumulated time).  This is useful
+              with the --cc option for discovering  which  routines
+              were never called.
+
+
+FFIILLEESS
+       a.out    the namelist and text space.
+       gmon.out dynamic call graph and profile.
+       gmon.sum summarized dynamic call graph and profile.
+
+SSEEEE AALLSSOO
+       mmoonniittoorr(33),, pprrooffiill(22),, cccc(11),, pprrooff(11)
+
+       ``An Execution Profiler for Modular Programs'', by S. Gra-
+       ham, P. Kessler, M.  McKusick;  _S_o_f_t_w_a_r_e  _-  _P_r_a_c_t_i_c_e  _a_n_d
+       _E_x_p_e_r_i_e_n_c_e_, Vol. 13, pp. 671-685, 1983.
+
+       ``gprof:  A Call Graph Execution Profiler'', by S. Graham,
+       P. Kessler, M. McKusick; _P_r_o_c_e_e_d_i_n_g_s _o_f  _t_h_e  _S_I_G_P_L_A_N  _'_8_2
+       _S_y_m_p_o_s_i_u_m  _o_n _C_o_m_p_i_l_e_r _C_o_n_s_t_r_u_c_t_i_o_n_, SIGPLAN Notices, Vol.
+       17, No  6, pp. 120-126, June 1982.
+
+HHIISSTTOORRYY
+       GGpprrooff appeared in 4.2 BSD.
+
+BBUUGGSS
+       The granularity of the sampling is shown, but remains sta-
+       tistical at best.  We assume that the time for each execu-
+       tion of a function can be expressed by the total time  for
+       the  function  divided by the number of times the function
+       is called.  Thus the time propagated along the call  graph
+       arcs to the function's parents is directly proportional to
+       the number of times that arc is traversed.
+
+       Parents that are not themselves  profiled  will  have  the
+       time  of  their  profiled children propagated to them, but
+       they will appear to be spontaneously invoked in  the  call
+       graph  listing,  and  will  not have their time propagated
+       further.  Similarly, signal  catchers,  even  though  pro-
+       filed,  will  appear  to be spontaneous (although for more
+       obscure reasons).  Any profiled children of signal  catch-
+       ers  should  have  their times propagated properly, unless
+       the signal catcher was invoked during the execution of the
+       profiling routine, in which case all is lost.
+
+       The  profiled program must call eexxiitt(22) or return normally
+       for  the  profiling  information  to  be  saved   in   the
+       `gmon.out' file.
+
+
+
+
+
+                         January 29, 1993                       3
+
+

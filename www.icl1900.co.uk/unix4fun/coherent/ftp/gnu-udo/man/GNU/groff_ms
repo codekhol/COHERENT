@@ -1,0 +1,198 @@
+
+
+
+GROFF_MS(7)                                           GROFF_MS(7)
+
+
+NNAAMMEE
+       groff_ms - groff ms macros
+
+SSYYNNOOPPSSIISS
+       ggrrooffff --mmggss [ _o_p_t_i_o_n_s...  ] [ _f_i_l_e_s...  ]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  describes  the  GNU  version of the ms
+       macros, which is part of  the  groff  document  formatting
+       system.  The groff ms macros are intended to be compatible
+       with the 4.3 BSD Unix ms macros subject to  the  following
+       limitations:
+
+       +o      the  internals  of  groff ms are not similar to the
+              internals of Unix ms and so documents  that  depend
+              upon implementation details of Unix ms may well not
+              work with groff ms;
+
+       +o      there is no support for typewriter-like devices;
+
+       +o      Berkeley localisms, in particular  the  TTMM  and  CCTT
+              macros, are not implemented;
+
+       +o      groff ms does not provide cut marks;
+
+       +o      multiple  line spacing is not allowed (use a larger
+              vertical spacing instead);
+
+       +o      groff ms does not work in  compatibility  mode  (eg
+              with the --CC option);
+
+       +o      the  error-handling policy of groff ms is to detect
+              and report errors, rather than silently  to  ignore
+              them.
+
+       The groff ms macros make use of many features of GNU troff
+       and therefore cannot be used with any other troff.
+
+       Bell Labs localisms are not implemented in either the  BSD
+       ms macros or in the groff ms macros.
+
+       Some  Unix ms documentation says that the CCWW and GGWW number
+       registers can be used to control the column width and gut-
+       ter width respectively.  This is not the case.  These num-
+       ber registers are not used in groff ms.
+
+       Macros that cause a reset set  the  indent.   Macros  that
+       change  the  indent  do  not  increment  or  decrement the
+       indent, but rather set  it  absolutely.   This  can  cause
+       problems  for  documents  that define additional macros of
+       their own.  The solution is to use not the iinn request  but
+       instead the RRSS and RREE macros.
+
+       The number register GGSS is set to 1 by the groff ms macros,
+
+
+
+Groff Version 1.08        6 August 1992                         1
+
+
+
+
+
+GROFF_MS(7)                                           GROFF_MS(7)
+
+
+       but is not used by the Unix ms  macros.   It  is  intended
+       that  documents  that  need  to determine whether they are
+       being formatted with Unix ms or groff ms make use of  this
+       number register.
+
+       Footnotes  are implemented so that they can safely be used
+       within keeps and displays.  Automatically  numbered  foot-
+       notes  within  floating  keeps are not recommended.  It is
+       safe to have another \\**** between a \\**** and the correspond-
+       ing ..FFSS; it is required only that each ..FFSS occur after the
+       corresponding \\**** and that the occurrences of ..FFSS  are  in
+       the same order as the corresponding occurrences of \\****.
+
+       The  strings  \\**{{  and  \\**}} can be used to begin and end a
+       superscript.
+
+       Some Unix V10 ms features are implemented.  The BB,  II  and
+       BBII  macros  can have an optional third argument which will
+       be printed in the current font before the first  argument.
+       There  is  a  macro  CCWW like BB that changes to a constant-
+       width font.
+
+       The following strings can be redefined to adapt the  groff
+       ms macros to languages other than English:
+
+       String      Default Value
+       REFERENCES  References
+       ABSTRACT    ABSTRACT
+       TOC         Table of Contents
+       MONTH1      January
+       MONTH2      February
+       MONTH3      March
+       MONTH4      April
+       MONTH5      May
+       MONTH6      June
+       MONTH7      July
+       MONTH8      August
+       MONTH9      September
+       MONTH10     October
+       MONTH11     November
+       MONTH12     December
+
+       The  font family is reset from the string FFAAMM; at initial-
+       ization if this string is undefined it is set to the  cur-
+       rent  font  family.  The point size, vertical spacing, and
+       inter-paragraph spacing for footnotes are taken  from  the
+       number  registers  FFPPSS,  FFVVSS,  and  FFPPDD; at initialization
+       these are set to \\nn((PPSS--22, \\nn[[FFPPSS]]++22, and  \\nn((PPDD//22  respec-
+       tively;  however,  if  any  of  these  registers  has been
+       defined before initialization, it will not be set.
+
+       Right-aligned displays are available with ..DDSS RR and ..RRDD.
+
+       The following conventions are used for  names  of  macros,
+
+
+
+Groff Version 1.08        6 August 1992                         2
+
+
+
+
+
+GROFF_MS(7)                                           GROFF_MS(7)
+
+
+       strings and number registers.  External names available to
+       documents that use the groff ms macros contain only upper-
+       case  letters  and  digits.   Internally  the  macros  are
+       divided into modules.  Names used only within  one  module
+       are  of the form _m_o_d_u_l_e**_n_a_m_e.  Names used outside the mod-
+       ule in which they are defined are of the form _m_o_d_u_l_e@@_n_a_m_e.
+       Names  associated with a particular environment are of the
+       form _e_n_v_i_r_o_n_m_e_n_t::_n_a_m_e_; these are used only within the  ppaarr
+       module,  and  _n_a_m_e  does  not  have a module prefix.  Con-
+       structed names used to implement arrays are  of  the  form
+       _a_r_r_a_y!!_i_n_d_e_x.  Thus the groff ms macros reserve the follow-
+       ing names:
+
+       +o      names containing **;
+
+       +o      names containing @@;
+
+       +o      names containing ::;
+
+       +o      names containing only uppercase letters and digits.
+
+FFIILLEESS
+       //uu11//ggnnuu//lliibb//ggrrooffff//ttmmaacc//ttmmaacc..ggss
+
+SSEEEE AALLSSOO
+       ggrrooffff(1), ggttrrooffff(1), ggttbbll(1), ggppiicc(1), ggeeqqnn(1)
+       mmss(7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Groff Version 1.08        6 August 1992                         3
+
+

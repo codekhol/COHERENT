@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>COHERENT programming</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX, C language compilers">
+</head>
+
+<body>
+
+<div id="navigation">
+<nav>
+<ul>
+<li><a href="coh_prog.html#intro">Introduction</a></li>
+<li><a href="coh_prog.html#gnu">GNU compilers</a></li>
+<li><a href="coh_prog.html#comeau">Comeau C++ compiler</a></li>
+<li><a href="coh_prog.html#floatingpoint">Floating point support</a></li>
+<li><a href="coh_prog.html#features">Feature Tests</a></li>
+<li><a href="index.html">Previous Page</a></li>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</ul>
+</nav>
+</div>
+
+<div id="content">
+
+<a name="intro"></a>
+<p><b><font size="5">Introduction:</font></b></p>
+<br>
+<br>
+COHERENT comes with a good K&R C compiler, that also supports some ANSI
+standard features. What it does not support are ANSI prototypes, which
+was usual for UNIX C compilers in the early 90th. This wasn't really
+a problem, because one always can formulate:
+<p>
+<pre>
+	#ifndef __STDC__
+	  int main(argc, argv)
+	  int argc;
+	  char **argv;
+	#else
+	  int main(int argc, char **argv)
+	#endif
+</pre>
+<p>
+With this sources would compile with K&R as well as with ANSI C compilers,
+of course it often wasn't done, and modifying large C projects can become
+tedious.
+<p>
+Fortunatly this process can be easily automated, Wietse Venema wrote an
+unprotoize filter for this in 1993. With a traditional AT&amp;T UNIX compiler
+the program can be embedded between the cpp and the syntax parser phase of the
+compiler. With the MWC compilers this is not possible, in the 3.x
+compilers cpp and the syntax parser are not separate programs connected
+with pipes, and for the 4.x releases a monolithic compiler was distributed,
+not using pipes at all.
+<p>
+In 1994 I build a package 'ansicc' from unproto, GNU cpp and a shell script
+driver, feeding MWC cc with the filtered source. GNU cpp was needed
+because unproto generated directives not understood by MWC cpp.
+This package still is available in old archives, but should not be
+used anymore.
+<p>
+In 2020 I improved unproto 1.6 from 1993 together with Nils M. Holm,
+so that it works on any COHERENT system with either MWC cpp or GNU cpp.
+This improved version 1.7 is maintained at
+<a href="https://github.com/udo-munk/unproto">GitHub</a>, because it is useful
+for any system with only a traditional K&R compiler available.
+<p>
+So instead of invoking cc one uses acc to compile C89 ANSI C source with
+the MWC compiler.
+<br>
+<br>
+<br>
+
+<a name="gnu"></a>
+<p><b><font size="5">GNU compilers:</font></b></p>
+In 1992 the GNU C compilers already supported the i386 target and MWC began
+with porting the compiler to COHERENT 4.0. First a port of a 1.x
+release was necessary, these can be build with the K&R
+compilers available on UNIX systems. Releases 2.x and later of the
+GNU compilers only can be build with it self, support for building
+with native UNIX development tools was removed.
+<p>
+Then the ported 1.4 GNU C compiler was used to build the 2.3 C and C++
+GNU compilers for COHERENT, the current available release at this time.
+Also ports of the GNU assembler and linker became necessary for support
+of source code debugging, the MWC development tools at this time removed
+the .stabs debugging records from COFF object files.
+<p>
+In 1993 I used MWC's port of GNU C 2.3 to build the GNU 2.5 stable
+C, C++ and Objective C compilers, binary tools, C++ library and source
+code debugger for COHERENT 4.2. These alternative development tools
+allowed easier porting of GNUish software to COHERENT. At MWC we used
+the GNU development tools to improve the system include files and
+overall code quality. However, no MWC production bits were build
+with GNU compilers, this always was done with MWC's development tools.
+<br>
+<br>
+<br>
+
+<a name="comeau"></a>
+<p><b><font size="5">Comeau C++ compiler:</font></b></p>
+In 1994 Comeau Computing contacted MWC about providing Comeau C++ 3.0
+for COHERENT 4.2. There were various difficulties with the MWC development
+tools, header files and libraries, which interfered with this compiler.
+Because of my experiences with integration of the GNU development tools
+into COHERENT I was assigned the task to work on solutions with
+Greg Comeau and Steve Ness. I was very interested in getting this
+working, Comeau licensed Cfront 3.0 from AT&T and their compiler
+was based on Cfront, so the real full C++ implementation with templates.
+We got all problems solved and eventually Comeau C++ 3.0 was made
+available for COHERENT 4.2 by Comeau Computing.
+<p>
+This compiler is not just a C++ compiler, it uses the native UNIX C
+compiler as backend and also unprotoizes ANSI C before feeding the
+compiler backend. It also includes a very strict code analyzer, which
+won't just check the prototypes, but generates much more warnings
+about questionable programming similiar to lint.
+<p>
+IMHO this compiler was the best avaliable option at the time, not
+only for COHERENT, but for other such systems as well. On systems
+with this compiler installed you'll have:
+<ul>
+<li>A traditional K&R C compiler</li>
+<li>A C89 ANSI C compiler</li>
+<li>A AT&T compatible C++ compiler with templates</li>
+<li>Strict syntax checking similar to lint</li>
+</ul>
+On many systems, including COHERENT, lint was an additional
+product, not included in the base system.
+<br>
+<br>
+<br>
+
+<a name="floatingpoint"></a>
+<p><b><font size="5">Floating point support:</font></b></p>
+The Intel 8086, 80186, 80286 and 80386 do not contain a FPU for
+floating point calculations, the 80486DX was Intel's first
+processor with CPU and FPU on a single die. For CPU's before
+an additional FPU 8087, 80287, 80387 was available and many
+PC motherboards had a socket for it. Unfortunately
+such a FPU, working with the same clock frequency as the CPU,
+was even more expensive than the CPU. Many private users
+did not get a FPU for their system because of this, they
+would be used only in automatization projects, when the
+additional costs for the FPU were justified with much faster
+floating point processing.
+<p>
+The early COHERENT 8086 and 80286 distributions intended for
+end users don't require a FPU, the C compiler generates code
+that computes floating point with the CPU. For Intel and other
+OEM's a compiler and runtime libraries can be generated that use FPU
+instructions to accelerate floating point calculations.
+<p>
+This changed with COHERENT release 4.0 because it also was targeted
+for small business usage, so it had to support a FPU if available.
+For this the compiler got an option -VNDP to generate code using
+the 8087 FPU, without the option it generates code processing
+floating point calculations with the CPU, same as releases before.
+Also runtime libraries using floating point calculations were build
+in two versions. The ones in /lib and /usr/lib use software floating
+point, the ones in /lib/ndp and /usr/lib/ndp were compiled with
+the option -VNDP using FPU instructions. This also enabled any
+third party to build libraries with support for a FPU, and another
+one doing floating point calculations with software.
+<p>
+For whatever reason the GNU compilers did not support software floating
+point, for the 386 target (and others as well) it generates code that
+requires a FPU. Instead of fixing this people used a feature in the
+386 CPU, if the FPU is absent it generates an interrupt which can be
+trapped, and then the floating point calculation the FPU was asked to
+do is done with software. This solution is inferior because it needs
+context switches from the user program into the kernel FPU emulation,
+and then back to the user program, which is much slower than have the
+compiler directly generate code doing software floating point math.
+Anyway, MWC also implemented such an FPU emulation as optional kernel
+module, so that anyone without FPU was able to use the GNU compilers
+on such a system.
+<p>
+Mixing object modules that include FPU instructions with software floating
+point code will not work of course. The MWC/RTR X11 libraries for some
+reason include references to the software floating point routines, which
+is unnecessary because X11R5 doesn't do any floating point math. The result
+of this are link errors, if one compiles X11 applications with the GNU
+compilers. If the application won't do floating point calculations one
+can temporarily move /usr/lib/libc.a into /usr/lib/ndp to resolve the
+linking errors, but this won't work with applications doing floating
+point math. This is why I wrote that you cannot build ghostscript
+your self just from sources, this requires additional manual work at the
+object level, which cannot be automated well with make.
+<p>
+Problems like this likely are caused by usage of the compiler/linker
+option -f, which forces linkage of printf() functions with support
+for floating point. If any library really needs to be build with the -f option
+two versions should be build and not just only one.
+<br>
+<br>
+<br>
+
+<a name="features"></a>
+<p><b><font size="5">Compilation Environments and Feature Tests:</font></b></p>
+The following was written by MWC documentation guru Fred Butzen.
+I can't write it any better, so I'm using Fred's text here. Please note
+that this describes the latest MWC compiler version as distributed with
+the 4.2.x systems, earlier versions of the C language compiler environment
+won't have all of these features implemented.
+<p>
+The COHERENT  header files are  designed to let  you invoke any  of several
+``compilation environments''.  Each environment offers its own features; in
+this way,  you can easily  import code that  conforms to the  POSIX or ANSI
+standards, compile device drivers, or otherwise fine tune how your programs
+are compiled.   To invoke a  given compilation environment, you  must set a
+feature test.
+<p>
+As discussed  in the Lexicon article name space,  the ISO Standard reserves
+for  the  implementation   every  identifier  that  begins  with  a  single
+underscore followed  by an upper-case  letter.  The POSIX  Standards define
+several  symbols in  this name  space  that the  implementation can  use as
+``feature tests''  -- that is, as  symbols that you can  use in your source
+code  to determine  the  presence or  absence  of a  particular feature  or
+combination  of  features.   Note   that  a  feature  test  applies  to  an
+implementation of  C, rather than  to an operating system.   A feature test
+combines aspects of the host system and the language translator: some tests
+apply to the operating system, some purely to the C translator.
+<p>
+The  operating  system's   header  files  can  define  them  (for  example,
+_POSIX_SAVED_IDS)  to control  compilation  of user  code or  to deal  with
+optional  features,  or  you can  define  them  (e.g., _POSIX_C_SOURCE)  to
+control how  the system's header files declare  or define constants, types,
+structures, and macros.
+<p>
+In general,  a feature  test must  either be undefined  or have  an integer
+value.  It must not be defined  as having no expansion text, or expand into
+a string.  For example,
+<pre>
+	# CORRECT
+	cc -D_POSIX_C_SOURCE=1 foo.c
+</pre>
+is correct, as is:
+<pre>
+	# CORRECT
+	cc -U_POSIX_C_SOURCE foo.c
+</pre>
+However,
+<pre>
+	# WRONG
+	cc -D_POSIX_C_SOURCE foo.c
+</pre>
+is incorrect, as is:
+<pre>
+	# WRONG
+	cc -D_POSIX_C_SOURCE="yes" foo.c
+</pre>
+This is to permit the constants to be tested with expressions like
+<pre>
+	#if _POSIX_C_SOURCE > 1
+</pre>
+where an integer  value is required.  (If the symbol  is used in a #if test
+and is  undefined, cpp  replaces it  with zero, which  is still  an integer
+value).  This  permits the  implementation to  use different values  of the
+feature test  to invoke different  feature sets; and  it simplifies testing
+for complex combinations of feature tests.
+<p>
+Although nearly  all feature tests behave  as shown above, there  are a few
+exceptions, namely _POSIX_SOURCE and _KERNEL. These symbols are not defined
+as having a  specific value, so many users do  not supply a value.  To deal
+with this,  the COHERENT  header files  check whether these  constants have
+expansion text.  If they do  not, the header files redefine these constants
+with value  1, so that they  can be used like the  other feature tests that
+the COHERENT header files define.
+<p>
+The  following describes  the  feature tests  used in  the COHERENT  header
+files,  and briefly  describes  the compilation  environment each  invokes.
+Because we are continually adding new  features to the kernel, this list is
+not guaranteed to be complete.
+<p>
+<b><font size="4">_DDI_DKI</font></b><br>
+Invoke the environment for compiling device drivers.  This environment
+makes visible  all DDI/DKI  function prototypes and  data definitions,
+and defines  all fundamental data types and  structures as mandated by
+UNIX System V, Release 4.
+<br>
+Please note  that this feature  test is an COHERENT  extension, and is
+not portable to other operating systems.
+<p>
+<b><font size="4">_KERNEL</font></b><br>
+Invoke the  environment for compiling  the kernel or  a device driver.
+This  environment gives  code full access  to system's  private header
+files.  Under COHERENT, this option is equivalent to defining _DDI_DKI
+to value  1, because COHERENT  only supports compiling  DDI/DKI driver
+source code from System V, Release 4.  This means that the definitions
+of many fundamental data types such as pid_t are changed to the System
+V,  Release  4  definitions  rather  than  the  System  V,  Release  3
+definitions used by user code.  (This is a System V convention.)
+<p>
+<b><font size="4">_POSIX_SOURCE</font></b><br>
+<b><font size="4">_POSIX_C_SOURCE</font></b><br>
+Select  a  ``clean'' compilation  environment,  in  which the  headers
+defined in  the POSIX.1 or  POSIX.2 standards define  no symbols other
+than   the   ones   that   those   environments   require.    Defining
+_POSIX_C_SOURCE  with  value 1  selects  the  POSIX.1 environment,  as
+defined in the  POSIX.1 standard.  Defining _POSIX_C_SOURCE with value
+2 selects the POSIX.2 environment, as defined in the POSIX.2 standard.
+Defining _POSIX_SOURCE has the same effect as defining _POSIX_C_SOURCE
+with value 1.
+<p>
+<b><font size="4">_STDC_SOURCE</font></b><br>
+Select a ``clean''  compilation environment.  In this environment, the
+headers that the ANSI C  standard defines define no symbols other than
+those that  the standard requires.   This feature test  is designed to
+let you compile  conforming Standard C programs that themselves define
+functions or macros that the COHERENT header files defined in addition
+to those described in the ANSI standard.
+<br>
+Please note  that this feature  test is an COHERENT  extension, and is
+not portable to other operating systems.
+<p>
+<b><font size="4">_SUPPRESS_BSD_DEFINITIONS</font></b><br>
+This feature test  invokes a compilation environment that excludes all
+definitions that  are included  for compatibility with  Berkeley UNIX.
+As of  this writing,  this feature test  affects only the  header file
+<string.h>, and prevents it from defining the macros bcopy(), bzero(),
+index(),  and rindex().  Note  that selecting  a POSIX  or Standard  C
+environment also suppresses these definitions.
+<br>
+Please note  that this feature  test is an COHERENT  extension, and is
+not portable to other operating systems.
+<p>
+<b><font size="4">_SYSV3</font></b><br>
+This  feature test  invokes  a compilation  environment  in which  all
+fundamental types and data structures have the definitions mandated by
+UNIX System V, Release 3.
+<p>
+<b><font size="4">_SYSV4</font></b><br>
+This  feature test  invokes  a compilation  environment  in which  all
+fundamental types and data structures have the definitions mandated by
+UNIX  System V,  Release  4.  As  of  this writing,  this facility  is
+incomplete and used mainly to develop device drivers and extensions to
+the kernel.
+<br>
+Please note  that this feature  test is an COHERENT  extension, and is
+not portable to other operating systems.
+<p>
+<p>
+<p>
+
+</div>
+
+</body>
+</html>

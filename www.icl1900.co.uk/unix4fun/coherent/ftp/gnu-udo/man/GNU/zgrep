@@ -1,0 +1,66 @@
+
+
+
+ZGREP(1)                                                 ZGREP(1)
+
+
+NNAAMMEE
+       zgrep  -  search  possibly  compressed files for a regular
+       expression
+
+SSYYNNOOPPSSIISS
+       zzggrreepp [ grep_options ] [[ --ee ]] _p_a_t_t_e_r_n _f_i_l_e_n_a_m_e...
+
+DDEESSCCRRIIPPTTIIOONN
+       _Z_g_r_e_p is used to invoke the _g_r_e_p on compress'ed or gzip'ed
+       files.  All options specified are passed directly to _g_r_e_p_.
+       If no file is specified, then the standard input is decom-
+       pressed if necessary and fed to grep.  Otherwise the given
+       files are uncompressed if necessary and fed to _g_r_e_p_.
+
+       If _z_g_r_e_p is invoked as _z_e_g_r_e_p  or  _z_f_g_r_e_p  then  _e_g_r_e_p  or
+       _f_g_r_e_p  is  used  instead of _g_r_e_p_.  If the GREP environment
+       variable is set, _z_g_r_e_p uses it as the _g_r_e_p program  to  be
+       invoked. For example:
+
+           for sh:  GREP=fgrep  zgrep string files
+           for csh: (setenv GREP fgrep; zgrep string files)
+
+AAUUTTHHOORR
+       Charles Levert (charles@comm.polymtl.ca)
+
+SSEEEE AALLSSOO
+       grep(1),  egrep(1), fgrep(1), zdiff(1), zmore(1), znew(1),
+       zforce(1), gzip(1), gzexe(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                1
+
+

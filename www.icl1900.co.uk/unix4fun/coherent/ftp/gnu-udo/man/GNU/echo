@@ -1,0 +1,66 @@
+
+
+
+ECHO(1L)                                                 ECHO(1L)
+
+
+NNAAMMEE
+       echo - display a line of text
+
+SSYYNNOOPPSSIISS
+       eecchhoo [--nnee] [_s_t_r_i_n_g ...]
+       eecchhoo {--help,--version}
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual page documents the GNU version of eecchhoo.  Note
+       that most shells have a built-in command by the same  name
+       and with similar functionality.
+
+       eecchhoo writes each given _s_t_r_i_n_g to the standard output, with
+       a space between them and a newline after the last one.
+
+   OOPPTTIIOONNSS
+       _-_n     Do not output the trailing newline.
+
+       _-_e     Enable interpretation of the  following  backslash-
+              escaped characters in the strings:
+              \\aa     alert (bell)
+              \\bb     backspace
+              \\cc     suppress trailing newline
+              \\ff     form feed
+              \\nn     new line
+              \\rr     carriage return
+              \\tt     horizontal tab
+              \\vv     vertical tab
+              \\\\     backslash
+              \\nnnnnn   the   character  whose  ASCII  code  is  _n_n_n
+                     (octal)
+
+   OOPPTTIIOONNSS
+       When GNU eecchhoo is invoked with exactly  one  argument,  the
+       following options are recognized:
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

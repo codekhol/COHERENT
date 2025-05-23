@@ -1,0 +1,142 @@
+GNU/a2p	a2p	Awk to Perl translator
+GNU/ar	ar	create, modify, and extract from archives
+GNU/as	as	the portable GNU assembler
+GNU/addftinfo	addftinfo	add information to troff font files for use with groff
+GNU/afmtodit	afmtodit	create font files for use with groff -Tps
+GNU/basename	basename	strip directory and suffix from filenames
+GNU/bash	bash	GNU Bourne-Again SHell
+GNU/bc	bc	An arbitrary precision calculator language
+GNU/bison	bison	GNU Project parser generator (yacc replacement)
+GNU/c++filt	c++filt	demangle C++ symbols
+GNU/cat		cat	concatenate files and print on the standard output
+GNU/cccp	cccp	The GNU C-Compatible Compiler Preprocessor
+GNU/chgrp	chgrp	change the group ownership of files
+GNU/chmod	chmod	change the access permissions of files
+GNU/comm	comm	compare two sorted files line by line
+GNU/chown	chown	change the user and group ownership of files
+GNU/cksum	cksum	checksum and count the bytes in a file
+GNU/configure	configure	prepare source code to be built
+GNU/cp	cp	copy files
+GNU/cpio	cpio	copy files to and from archives
+GNU/cpp	cpp	The GNU C-Compatible Compiler Preprocessor
+GNU/csplit	csplit	split a file into sections determined by context lines
+GNU/cut	cut	remove sections from each line of files
+GNU/date	date	print or set the system date and time
+GNU/dd	dd	convert a file while copying it
+GNU/df	df	summarize free disk space
+GNU/dirname	dirname	strip filename suffix from pathname
+GNU/du	du	summarize disk usage
+GNU/echo	echo	display a line of text
+GNU/emacs	emacs	GNU project Emacs
+GNU/env	env	run a program in a modified environment
+GNU/expand	expand	convert tabs to spaces
+GNU/expr	expr	evaluate expressions
+GNU/false	false	do nothing, unsuccessfully
+GNU/find	find	search for files in a directory hierarchy
+GNU/flex	flex	fast lexical analyzer generator
+GNU/flexdoc	flexdoc	documentation for flex, fast lexical analyzer generator
+GNU/fold	fold	wrap each input line to fit in specified width
+GNU/g++	g++	GNU project C++ Compiler (v2.4)
+GNU/gawk	gawk	pattern scanning and processing language
+GNU/gcc	gcc	GNU project C and C++ Compiler (v2.4)
+GNU/gdb	gdb	The GNU Debugger
+GNU/gdbm	gdbm	the  GNU database manager
+GNU/geqn	geqn	format equations for troff
+GNU/ghostview	ghostview	View PostScript documents using ghostscript
+GNU/gindxbib	gindxbib	make inverted index for bibliographic databases
+GNU/glookbib	glookbib	search bibliographic databases
+GNU/gnroff	gnroff	emulate nroff command with groff
+GNU/gnuchess	gnuchess	Chess
+GNU/gperf	gperf	generate a perfect hash function from a key set
+GNU/gpic	gpic	gpic - compile pictures for troff or TeX
+GNU/gprof	gprof	display call graph profile data
+GNU/grefer	grefer	preprocess bibliographic references for groff
+GNU/grep	grep	grep, egrep, fgrep - print lines matching a pattern
+GNU/grodvi	grodvi	convert groff output to TeX dvi format
+GNU/groff	groff	front end for the groff document formatting system
+GNU/groff_char	groff_char	groff character names
+GNU/groff_font	groff_font	format of groff device and font description files
+GNU/groff_me	groff_me	troff macros for formatting papers
+GNU/groff_mm	groff_mm	groff mm macros
+GNU/groff_mmse	groff_mmse	swedish mm macros for groff
+GNU/groff_ms	groff_ms	groff ms macros
+GNU/groff_out	groff_out	groff intermediate output format
+GNU/grog	grog	guess options for groff command
+GNU/grops	grops	PostScript driver for groff
+GNU/grotty	grotty	groff driver for typewriter-like devices
+GNU/groups	groups	print the groups a user is in
+GNU/gs	gs	Ghostscript version 2.6 interpreter/previewer
+GNU/gsoelim	gsoelim	interpret .so requests in groff input
+GNU/gtbl	gtbl	format tables for troff
+GNU/gtroff	gtroff	format documents
+GNU/gzexe	gzexe	compress executable files in place
+GNU/gzip	gzip	gzip, gunzip, zcat - compress or expand files
+GNU/head	head	output the first part of files
+GNU/id	id	print real and effective UIDs and GIDs
+GNU/indent	indent	changes the appearance of a C program by inserting or deleting whitespace
+GNU/info	info	GNU's hypertext system
+GNU/install	install	copy files and set their attributes
+GNU/ispell	ispell	Correct spelling for a file
+GNU/join	join	join lines of two files on a common field
+GNU/ld	ld	the GNU linker
+GNU/less	less	opposite of more
+GNU/lesskey	lesskey	specify key bindings for less
+GNU/lkbib	lkbib	search bibliographic databases
+GNU/ln	ln	make links between files
+GNU/locate	locate	list files in databases that match a pattern
+GNU/logname	logname	print user's login name
+GNU/ls	ls	ls, dir, vdir - list contents of directories
+GNU/make	make	GNU make utility to maintain groups of programs
+GNU/mkdir	mkdir	make directories
+GNU/mkfifo	mkfifo	make FIFOs (named pipes)
+GNU/mknod	mknod	make special files
+GNU/mv	mv	rename files
+GNU/nl	nl	number lines of files
+GNU/nm	nm	list symbols from object files
+GNU/objcopy	objcopy	copy and translate object files
+GNU/objdump	objdump	display information from object files
+GNU/od	od	dump files in octal and other formats
+GNU/paste	paste	merge lines of files
+GNU/patch	patch	apply a diff file to an original
+GNU/pathchk	pathchk	check whether pathnames are valid or portable
+GNU/perl	perl	Practical Extraction and Report Language
+GNU/pfbtops	pfbtops	translate  a PostScript font in .pfb format to ASCII
+GNU/pr	pr	convert text files for printing
+GNU/printenv	printenv	print all or part of environment
+GNU/printf	printf	format and print data
+GNU/psbb	psbb	extract bounding box from PostScript document
+GNU/ranlib	ranlib	generate index to archive
+GNU/rm	rm	remove files
+GNU/rmdir	rmdir	remove empty directories
+GNU/screen	screen	screen manager with VT100/ANSI terminal emulation
+GNU/s2p	s2p	Sed to Perl translator
+GNU/size	size	list section sizes and total size
+GNU/sleep	sleep	delay for a specified amount of time
+GNU/sort	sort	sort lines of text files
+GNU/split	split	split a file into pieces
+GNU/strings	strings	print  the  strings  of  printable  characters in files
+GNU/strip	strip	discard symbols from object files
+GNU/su	su	run a shell with substitute user and group IDs
+GNU/sum	sum	checksum and count the blocks in a file
+GNU/tac	tac	concatenate and print files in reverse
+GNU/tail	tail	output the last part of files
+GNU/tee	tee	read from standard input and write to standard output and files
+GNU/test	test	check file types and compare values
+GNU/tfmtodit	tfmtodit	create font files for use with groff -Tdvi
+GNU/touch	touch	change file timestamps
+GNU/tr	tr	translate or delete characters
+GNU/true	true	do nothing, successfully
+GNU/tty	tty	print the path of the terminal connected to standard input
+GNU/uname	uname	print system information
+GNU/unexpand	unexpand	convert spaces to tabs
+GNU/uniq	uniq	remove duplicate lines from a sorted file
+GNU/wc	wc	print the number of bytes, words, and lines in files
+GNU/who	who	show who is logged on
+GNU/whoami	whoami	print effective userid
+GNU/xargs	xargs	build and execute command lines from standard input
+GNU/yes	yes	output a string repeatedly until killed
+GNU/zdiff	zdiff	zcmp, zdiff - compare compressed files
+GNU/zforce	zforce	force a '.gz' extension on all gzip files
+GNU/zgrep	zgrep	search possibly compressed files for a regular expression
+GNU/zmore	zmore	file perusal filter for crt viewing of compressed text
+GNU/znew	znew	recompress .Z files to .gz files

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>COHERENT Third-party Software</title>
+<link rel="stylesheet" type="text/css" href="../unix4fun.css">
+<meta name="keywords" content="COHERENT, Mark Williams Company, MWC, UNIX, Third-party Software, GNU, xtree, OSF Motif, Answer Software & Consulting, ASC">
+</head>
+
+<body>
+
+<div id="navigation">
+<nav>
+<ul>
+<li><a href="third_party.html#intro">Introduction</a></li>
+<li><a href="third_party.html#gnu">GNU tools</a></li>
+<li><a href="third_party.html#xtree">Xtree</a></li>
+<li><a href="third_party.html#asc-x">ASC X11R5</a></li>
+<li><a href="third_party.html#motif">OSF Motif</a>
+<li><a href="index.html">Previous Page</a></li>
+</ul>
+</nav>
+</div>
+
+<div id="content">
+
+<a name="intro"></a>
+<p><b><font size="5">Introduction:</font></b></p>
+In 1994 there were like 150 third party applications available
+for COHERENT 4.2. Most were commercial, copyrighted products and
+can't be made available, but I can write a bit about the history,
+as far as I was involved.
+<p>
+MWC had copies of all this products available, tech support
+used them to help customers to install and configure the stuff.
+In development we used the applications to improve the binary
+compatibility of COHERENT and as regression tests, if improved
+versions of the operating system would break anything.
+<p>
+At this time I was reading Intel's iBCS2 manual forth and back
+to improve kernel calls and library functions for compatibility,
+so that stuff running on Interactive UNIX would work the same
+on COHERENT.
+<br>
+<br>
+<br>
+
+<a name="gnu"></a>
+<p><b><font size="5">GNU tools:</font></b></p>
+In 1993 there was an increasing demand for running GNU software on
+COHERENT. Besides the GNU compilers users mostly asked for emacs,
+perl, bash, so I just got many of the GNU tools from prep.ai.mit.edu
+available at this time.
+Building was pretty much straightforward with the newly ported
+and complete GNU development toolchain.
+<p>
+Right from the beginning I decided to build all the GNUish stuff
+on an own filesystem, to avoid any conflicts with other existing
+software. Fortunately GNU configure already supported this with
+an option ./configure --prefix=/some/directory.
+<p>
+Interestingly you'll find similar mechanisms on modern systems.
+Several Linux systems provide a command <b>alternatives</b>, that
+allows to install and switch between software from different
+vendors with same functionality. Also the <b>brew</b> package
+management for OSX builds applications in the Cellar and
+sets symbolic links to the builds in /usr/local.
+<p>
+On COHERENT we had no symbolic links, so I implemented this
+by using different paths, which can be setup and switched as needed.
+On the 4.2 systems /etc/profile has shell functions <b>MWC</b> and
+<b>GNU</b> that are used to switch environments.
+<br>
+<br>
+<br>
+
+<a name="xtree"></a>
+<p><b><font size="5">Xtree:</font></b></p>
+You might know that I wrote a visual shell for UNIX systems
+named <b>vsh</b>, if not you can mess with it under COHERENT 4.2.
+My colleagues at MWC liked the program and so it was included with
+the 4.2 distributions. Here also a screenshot how it looks like:
+<p>
+
+<center>
+<img src="vsh.png" alt="VisualShell for COHERENT"
+title="VisualShell for COHERENT"
+style="width:600px;height:400px;">
+</center>
+
+<p>
+You have no idea how many request I got to make it working more
+like the famous <b>xtree</b> DOS program ;-) Sorry folks, I was not
+interested in programming a <b>xtree</b> clone, I wanted to implement my own
+ideas about how a visual shell for UNIX systems should work.
+Also <b>xtree</b> was available for UNIX systems, so no point in cloning
+it.
+<p>
+If you bought a COHERENT 4.2 OS in 1994 from MWC you got a free
+copy of <b>xtree</b> in a bundle. At MWC we also got it, of course I
+was curious about it and installed it on my systems to have a look.
+I still have my copy, so I installed it again on a COHERENT VM,
+here is a screenshot how it looks like:
+<p>
+
+<center>
+<img src="xtree.png" alt="Xtree for COHERENT" title="Xtree for COHERENT"
+style="width:600px;height:400px;">
+</center>
+
+<p>
+Of course <b>xtree</b> was a copyrighted commercial third party product,
+so I can't make it available here. However, the product was continued
+under the new name <b>UnixTree</b> as Open Source, you can grab it
+<a href="http://www.unixtree.org">here</a>.
+<br>
+<br>
+<br>
+
+<a name="asc-x"></a>
+<p><b><font size="5">Answer Software & Consulting X11R5:</font></b></p>
+
+<p>
+
+<center>
+<img src="ASC-boot.png" alt="ASC Xkernel" title="ASC Xkernel"
+style="width:600px;height:400px;">
+</center>
+
+<p>
+
+<center>
+<img src="ASC-twm.png" alt="ASC X11R5 TWM" title="ASC X11R5 TWM"
+style="width:800px;height:600px;">
+</center>
+
+<p>
+
+<center>
+<img src="ASC-olwm.png" alt="ASC X11R5 Open Look" title="ASC X11R5 Open Look"
+style="width:800px;height:600px;">
+</center>
+
+<p>
+
+<br>
+<br>
+<br>
+
+<a name="motif"></a>
+<p><b><font size="5">OSF Motif:</font></b></p>
+In 1993 Sun Microsystems and AT&T announced that they would drop Open Look and
+move to OSF Motif. What followed was a rush to get Motif implemented on
+all the X11 workstations available at that time. I was contacted by
+Sequoia International, Inc., if I could help with a good working GNU
+development toolchain for COHERENT. Of course I could, I send them a tape
+with /u1/gnu, and eventually OSF Motif was
+<a href="http://www.geomview.org/docs/sgarchive/msg01649.shtml">announced</a>.
+In return they send me a copy of their Motif implementation for COHERENT,
+which I still have. In 2017 I installed it again on a Virtualbox VM
+running COHERENT 4.2 + RTR/MWC X11R5, here a screenshot how it looks like:
+<p>
+
+<center>
+<img src="motif.png" alt="OSF Motif" title="OSF Motif"
+style="width:800px;height:600px;">
+</center>
+
+<p>
+The screenshot shows one of the example programs included in Motif
+distributions, animated GUI widgets was one of the interesting new
+features to play with. The look and feel of the Motif GUI was copied
+by many others and we basically still use it on nowadays modern systems.
+Of course this is a commercial product, so I cannot make it available,
+but nowadays OSF Motif is Open Source and it could be build from the
+released sources.
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+
+
+MKFIFO(1L)                                             MKFIFO(1L)
+
+
+NNAAMMEE
+       mkfifo - make FIFOs (named pipes)
+
+SSYYNNOOPPSSIISS
+       mmkkffiiffoo   [-m   mode]  [--mode=mode]  [--help]  [--version]
+       path...
+
+DDEESSCCRRIIPPTTIIOONN
+       This manual page documents  the  GNU  version  of  mmkkffiiffoo.
+       mmkkffiiffoo  creates  a FIFO with each given name.  By default,
+       the mode of created FIFOs is 0666 minus the  bits  set  in
+       the umask.
+
+   OOPPTTIIOONNSS
+       _-_m_, _-_-_m_o_d_e _m_o_d_e
+              Set  the  mode  of  created FIFOs to _m_o_d_e, which is
+              symbolic as in chmod and uses the default  mode  as
+              the point of departure.
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU File Utilities                      1
+
+

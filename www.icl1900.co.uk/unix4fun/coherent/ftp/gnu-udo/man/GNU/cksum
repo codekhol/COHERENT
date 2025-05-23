@@ -1,0 +1,66 @@
+
+
+
+CKSUM(1L)                                               CKSUM(1L)
+
+
+NNAAMMEE
+       cksum - checksum and count the bytes in a file
+
+SSYYNNOOPPSSIISS
+       cckkssuumm [--help] [--version] [file...]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU  version of cckkssuumm.
+       cckkssuumm computes a cyclic redundancy check  (CRC)  for  each
+       named  file,  or  the  standard input if none are given or
+       when a file named `-' is given.  It  prints  the  CRC  for
+       each  file along with the number of bytes in the file, and
+       the file name unless no arguments were given.
+
+       cckkssuumm is typically used to make sure that files have  been
+       transferred by unreliable means (such as netnews) have not
+       been corrupted, by comparing  the  cckkssuumm  output  for  the
+       received  files  with  the  cckkssuumm  output for the original
+       files.  The CRC algorithm  is  specified  by  the  POSIX.2
+       standard.   It  is not compatible with the BSD or System V
+       ssuumm programs; it is more robust.
+
+       _-_-_h_e_l_p Print a usage message and exit with a non-zero sta-
+              tus.
+
+       _-_-_v_e_r_s_i_o_n
+              Print  version  information on standard output then
+              exit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                     GNU Text Utilities                      1
+
+

@@ -1,0 +1,16 @@
+
+program : String.o test.o
+#	gcc -o test  test.o String.o -lieee -lobjc 
+	gcc -o test  test.o String.o -lobjc 
+
+test.o : test.m
+	gcc -c -g test.m
+
+
+String.o : String.m
+	gcc -c -g String.m
+
+
+
+clean :
+	rm *.o *~ test

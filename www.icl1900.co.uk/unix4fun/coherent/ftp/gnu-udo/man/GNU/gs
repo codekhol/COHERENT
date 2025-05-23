@@ -1,0 +1,396 @@
+
+
+
+GS(1)                                                       GS(1)
+
+
+NNAAMMEE
+       gs - Ghostscript version 2.6 interpreter/previewer
+
+SSYYNNOOPPSSIISS
+       ggss [ _o_p_t_i_o_n_s ] [ _f_i_l_e_s ] ...
+
+DDEESSCCRRIIPPTTIIOONN
+       Ghostscript  is  a  programming  language similar to Adobe
+       Systems' PostScript (tm) language, which is in turn  simi-
+       lar  to  Forth.   _G_s  reads _f_i_l_e_s in sequence and executes
+       them as Ghostscript programs.  After doing this, it  reads
+       further input from the standard input stream (normally the
+       keyboard).  Each line is interpreted separately.  To  exit
+       from  the  interpreter,  enter  the  `quit'  command.  The
+       interpreter also exits gracefully if it encounters end-of-
+       file.   Typing the interrupt character (e.g. Control-C) is
+       also safe.
+
+       The  interpreter  recognizes  several  switches  described
+       below,  which  may appear anywhere in the command line and
+       apply to all files thereafter.
+
+       You can get a help message by  invoking  Ghostscript  with
+       the  --hh or --??  option.  This message also lists the avail-
+       able devices.
+
+       Ghostscript may be built  with  multiple  output  devices.
+       Ghostscript  normally opens the first one and directs out-
+       put to it.  To  use  device  xyz  as  the  initial  output
+       device, include the switch
+            -sDEVICE=xyz
+       in  the  command line.  Note that this switch must precede
+       the first .ps file, and only its first invocation has  any
+       effect.   For example, for printer output in a normal con-
+       figuration that includes  an  Epson  printer  driver,  you
+       might use the shell command
+            gs -sDEVICE=epson myfile.ps
+       instead of just
+            gs myfile.ps
+       Alternatively, you can type
+            (epson) selectdevice
+            (myfile.ps) run
+       All output then goes to the printer instead of the display
+       until further notice.  You can switch devices at any  time
+       by using the selectdevice procedure, e.g.,
+            (vga) selectdevice
+       or
+            (epson) selectdevice
+       As  yet a third alternative, you can define an environment
+       variable GS_DEVICE as the  desired  default  device  name.
+       The order of precedence for these alternatives, highest to
+       lowest, is:
+            selectdevice
+            (command line)
+
+
+
+                           10 May 1993                          1
+
+
+
+
+
+GS(1)                                                       GS(1)
+
+
+            GS_DEVICE
+            (first device in build list)
+
+       To select the density on a printer, use
+            gs -sDEVICE=<device> -r<xres>x<yres>
+       For example, on a 9-pin Epson-compatible printer, you  can
+       get the lowest-density (fastest) mode with
+            gs -sDEVICE=epson -r60x72
+       and the highest-density mode with
+            gs -sDEVICE=epson -r240x72.
+
+       If  you select a printer as the output device, Ghostscript
+       also allows you to control where the device sends its out-
+       put.   Normally, output goes directly to a scratch file on
+       Unix systems.  To send the output to  a  series  of  files
+       foo1.xyz, foo2.xyz, ..., use the switch
+            -sOutputFile=foo%d.xyz
+       The %d is a printf format specification; you can use other
+       formats like %02d.  Each file will  receive  one  page  of
+       output.   Alternatively,  to  send  the output to a single
+       file foo.xyz, with all the  pages  concatenated,  use  the
+       switch
+            -sOutputFile=foo.xyz
+
+       On  Unix  systems,  you  can send the output directly to a
+       pipe.  For example, to pipe  the  output  to  the  command
+       `lpr'  (which,  on  many Unix systems, is the command that
+       spools output for a printer), use the switch
+            -sOutputFile=lpr
+       You can also send output to stdout  for  piping  with  the
+       switch
+            -sOutputFile=-
+       In  this  case you must also use the -q switch, to prevent
+       Ghostscript from writing messages to stdout.
+
+       To find out what devices are available, type
+            devicenames ==
+       after starting up Ghostscript.  Alternatively, you can use
+       the  -h or -? switch in the command line; the help message
+       also lists the available devices.
+
+       When looking for the initialization files  (gs_*.ps),  the
+       files  related  to fonts, or the file for the `run' opera-
+       tor, Ghostscript first tries opening  the  file  with  the
+       name  as  given (i.e., using the current working directory
+       if none is specified).  If this fails, and the  file  name
+       doesn't  specify  an  explicit  directory  or drive (i.e.,
+       doesn't begin with `/' on Unix systems), Ghostscript  will
+       try directories in the following order:
+
+       1.     The directory/ies specified by the -I switch(es) in
+              the command line (see below), if any;
+
+       2.     The   directory/ies   specified   by   the   GS_LIB
+
+
+
+                           10 May 1993                          2
+
+
+
+
+
+GS(1)                                                       GS(1)
+
+
+              environment variable, if any;
+
+       3.     The  directory/ies  specified by the GS_LIB_DEFAULT
+              macro in the Ghostscript makefile (which  has  been
+              set                                              to
+              "/usr/local/lib/ghostscript:/usr/local/lib/ghostscript/fonts").
+
+       Each  of  these (GS_LIB_DEFAULT, GS_LIB, and -I parameter)
+       may be either a single directory, or a list of directories
+       separated by a `:'.
+
+XX RREESSOOUURRCCEESS
+       Ghostscript  looks  for  the following resources under the
+       program name `Ghostscript':
+
+       bboorrddeerrWWiiddtthh
+              The border width in pixels (default = 1).
+
+       bboorrddeerrCCoolloorr
+              The name of the border color (default = black).
+
+       ggeeoommeettrryy
+              The window size and placement, WxH+X+Y (default  is
+              NULL).
+
+       xxRReessoolluuttiioonn
+              The  number  of  x pixels per inch (default is com-
+              puted from WidthOfScreen and WidthMMOfScreen).
+
+       yyRReessoolluuttiioonn
+              The number of y pixels per inch  (default  is  com-
+              puted from HeightOfScreen and HeightMMOfScreen).
+
+       uusseeBBaacckkiinnggPPiixxmmaapp
+              Determines  whether backing store is to be used for
+              saving display window (default = true).
+
+       See the  file  `use.doc'  for  a  more  complete  list  of
+       resources.
+
+       To  set  these  resources,  put  them  in  a file (such as
+       ~/.Xresources) in the following form:
+
+            Ghostscript*geometry:    612x792-0+0
+            Ghostscript*xResolution: 72
+            Ghostscript*yResolution: 72
+
+       Then load the defaults into the X server:
+
+            % xrdb -merge ~/.Xresources
+
+OOPPTTIIOONNSS
+       ---- _f_i_l_e_n_a_m_e _a_r_g_1 _._._.
+              Takes the next argument as a file  name  as  usual,
+
+
+
+                           10 May 1993                          3
+
+
+
+
+
+GS(1)                                                       GS(1)
+
+
+              but  takes  all  remaining  arguments (even if they
+              have the syntactic form of  switches)  and  defines
+              the  name ARGUMENTS in userdict (not systemdict) as
+              an array of those strings, _b_e_f_o_r_e running the file.
+              When  Ghostscript  finishes  executing the file, it
+              exits back to the shell.
+
+       --DD_n_a_m_e==_t_o_k_e_n
+       --dd_n_a_m_e==_t_o_k_e_n
+              Define a name in systemdict with the given  defini-
+              tion.   The  token  must  be  exactly one token (as
+              defined by the `token' operator) and must not  con-
+              tain any whitespace.
+
+       --DD_n_a_m_e
+       --dd_n_a_m_e Define a name in systemdict with value=null.
+
+       --SS_n_a_m_e==_s_t_r_i_n_g
+       --ss_n_a_m_e==_s_t_r_i_n_g
+              Define  a name in systemdict with a given string as
+              value.  This is different from  -d.   For  example,
+              -dname=35 is equivalent to the program fragment
+                             /name 35 def
+              whereas -s name=35 is equivalent to
+                             /name (35) def
+
+       --qq     Quiet  startup  - suppress normal startup messages,
+              and also do the equivalent of -dQUIET.
+
+       --gg_n_u_m_b_e_r_1xx_n_u_m_b_e_r_2
+              Equivalent to --ddDDEEVVIICCEEWWIIDDTTHH==_n_u_m_b_e_r_1  and  --ddDDEEVVIICCEE--
+              HHEEIIGGHHTT==_n_u_m_b_e_r_2..  This is for the benefit of devices
+              (such as X11 windows) that require (or allow) width
+              and height to be specified.
+
+       --rr_n_u_m_b_e_r
+       --rr_n_u_m_b_e_r_1xx_n_u_m_b_e_r_2
+              Equivalent to --ddDDEEVVIICCEEXXRREESSOOLLUUTTIIOONN==_n_u_m_b_e_r_1 and --ddDDEE--
+              VVIICCEEYYRREESSOOLLUUTTIIOONN==_n_u_m_b_e_r_2..  This is for  the  benefit
+              of devices (such as printers) that support multiple
+              X and Y resolutions.  (If only one number is given,
+              it is used for both X and Y resolutions.)
+
+       --II_d_i_r_e_c_t_o_r_i_e_s
+              Adds the designated list of directories at the head
+              of the search path for library files.
+
+       --      This is not  really  a  switch.   It  indicates  to
+              Ghostscript  that the standard input is coming from
+              a file or a pipe.   Ghostscript  reads  from  stdin
+              until  reaching  end-of-file, executing it like any
+              other file, and then continues processing the  com-
+              mand  line.   At  the  end  of  the  command  line,
+              Ghostscript  exits  rather  than  going  into   its
+
+
+
+                           10 May 1993                          4
+
+
+
+
+
+GS(1)                                                       GS(1)
+
+
+              interactive mode.
+
+       Note  that  gs_init.ps  makes systemdict read-only, so the
+       values of names defined with -D/d/S/s  cannot  be  changed
+       (although,  of  course,  they can be superseded by defini-
+       tions in userdict or other dictionaries.)
+
+SSPPEECCIIAALL NNAAMMEESS
+       --ddDDIISSKKFFOONNTTSS
+              Causes individual character outlines to  be  loaded
+              from  the disk the first time they are encountered.
+              (Normally Ghostscript loads all the character  out-
+              lines  when it loads a font.)  This may allow load-
+              ing more fonts into RAM, at the expense  of  slower
+              rendering.
+
+       --ddNNOOCCAACCHHEE
+              Disables character caching.  Only useful for debug-
+              ging.
+
+       --ddNNOOBBIINNDD
+              Disables the  `bind'  operator.   Only  useful  for
+              debugging.
+
+       --ddNNOODDIISSPPLLAAYY
+              Suppresses  the normal initialization of the output
+              device.  This may be useful when debugging.
+
+       --ddNNOOPPAAUUSSEE
+              Disables the prompt and pause at the  end  of  each
+              page.  This may be desirable for applications where
+              another program is `driving' Ghostscript.
+
+       --ddNNOOPPLLAATTFFOONNTTSS
+              Disables the use of fonts supplied by the  underly-
+              ing  platform (e.g. X Windows).  This may be needed
+              if the platform fonts  look  undesirably  different
+              from the scalable fonts.
+
+       --ddSSAAFFEERR
+              Disables  the  deletefile and renamefile operators,
+              and the ability to open files  in  any  mode  other
+              than read-only.  This may be desirable for spoolers
+              or other sensitive environments.
+
+       --ddWWRRIITTEESSYYSSTTEEMMDDIICCTT
+              Leaves systemdict writable.  This is necessary when
+              running special utility programs such as font2c and
+              pcharstr,  which  must  bypass  normal   PostScript
+              access protection.
+
+       --ssDDEEVVIICCEE==_d_e_v_i_c_e
+              Selects  an  alternate  initial  output  device, as
+              described above.
+
+
+
+                           10 May 1993                          5
+
+
+
+
+
+GS(1)                                                       GS(1)
+
+
+       --ssOOuuttppuuttFFiillee==_f_i_l_e_n_a_m_e
+              Selects an alternate output file (or pipe) for  the
+              initial output device, as described above.
+
+FFIILLEESS
+       //uussrr//llooccaall//lliibb//gghhoossttssccrriipptt//**
+              Startup-files,  utilities,  and  basic font defini-
+              tions.
+
+       //uussrr//llooccaall//lliibb//gghhoossttssccrriipptt//ffoonnttss//**
+              Additional font definitions.
+
+       //uussrr//llooccaall//lliibb//gghhoossttssccrriipptt//eexxaammpplleess//**
+              Demo Ghostscript files.
+
+       //uussrr//llooccaall//lliibb//ddoocc//gghhoossttssccrriipptt//ddoocc//**
+              Assorted document files.
+
+SSEEEE AALLSSOO
+       The various Ghostscript document files (above).
+
+BBUUGGSS
+       See the network news group `gnu.ghostscript.bug'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                           10 May 1993                          6
+
+

@@ -1,0 +1,64 @@
+-*- Text -*-
+This is the file .../info/dir, which contains the topmost node of the
+Info hierarchy.  The first time you invoke Info you start off
+looking at that node, which is (dir)Top.
+
+File: dir	Node: Top	This is the top of the INFO tree
+  This (the Directory node) gives a menu of major topics. 
+  Typing "d" returns here, "q" exits, "?" lists all INFO commands, "h" 
+  gives a primer for first-timers, "mTexinfo<Return>" visits Texinfo topic,
+  etc.
+  --- PLEASE ADD DOCUMENTATION TO THIS TREE. (See INFO topic first.) ---
+
+* Menu: The list of major topics begins on the next line.
+
+* Info: (info.info).	Documentation browsing system.
+* Infopro: (info-stnd.info). The Info Program
+* Texinfo: (texi.info). Texinfo Documentation System
+* Makeinfo: (makeinfo.info). Convert "Texinfo" files to "Info" files
+
+* Cpp: (cpp.info). The C Preprocessor
+* Gcc: (gcc.info). Compiler version 2.5
+* As: (as.info). The assembler
+* Ld: (ld.info). The linker
+* Binutils: (binutils.info). Binary utilities ar, ld, objcopy, objdump, nm,
+			     size, strings strip and ranlib
+* Gdb: (gdb.info). The GNU debugger
+* Gprof: (gprof.info). Profiling program's execution
+* Gperf: (gperf.info). Perfect Hash Function Generator
+* Bison: (bison.info). Bison parser generator
+* Flex: (flex.info). Fast lexical analyzer generator
+* M4: (m4.info). m4 simple macroprocessor
+* Indent: (indent.info). Indent and Format C Program Source
+* Make: (make.info). Program building tool
+
+* Diff: (diff.info). Commands for showing the differences between text files
+* Gawk: (gawk.info). Pattern scanning and processing language
+* Dc: (dc.info). Reverse-polish desk calculator
+* Gzip: (gzip.info). Command to compress files
+* Tput: (tput.info). Portable Terminal Control for Shell Scripts
+* Ispell: (ispell.info). Correct spelling for a file
+* Screen: (screen.info). Virtual terminal manager
+* UUCP: (uucp.info). Taylor UUCP 1.04
+
+* Info: (info).	Documentation browsing system.
+* Emacs: (emacs).  The extensible self-documenting text editor.
+* Regexp: (regexp). GNU regular expression
+* VIP: (vip).   A VI-emulation for Emacs.
+* Texinfo: (texinfo).
+		With one source file, make either a printed manual
+		(through TeX) or an Info file (through texinfo).
+		Full documentation in this menu item.
+
+* Termcap: (termcap).
+		The termcap library, which enables application programs
+		to handle all types of character-display terminals.
+* Libg++: (libg++.info). The g++ class library
+* Regex: (regex.info). Regular Expression Library
+* Gdbm: (gdbm.info). Database library functions using hashing
+* BFD: (bfd.info). Binary File Descriptor library
+
+* Atc: (atc). Air Traffic Control
+
+* Configuration: (cfg-paper.info). The configuartion utility
+* Standards: (standards.info). The GNU programming standards

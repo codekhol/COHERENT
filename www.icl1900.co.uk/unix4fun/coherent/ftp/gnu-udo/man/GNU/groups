@@ -1,0 +1,66 @@
+
+
+
+GROUPS(1L)                                             GROUPS(1L)
+
+
+NNAAMMEE
+       groups - print the groups a user is in
+
+SSYYNNOOPPSSIISS
+       ggrroouuppss [username...]
+       ggrroouuppss {--help,--version}
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the  GNU version of ggrroouuppss.
+       ggrroouuppss prints the names of the supplementary  groups  that
+       each  given  _u_s_e_r_n_a_m_e,  or the current process if none are
+       given, is in.  If user names are given, the name  of  each
+       user is printed before the list of that user's groups.
+
+       The  group  lists are equivalent to the output of the com-
+       mand `id -Gn'.
+
+   OOPPTTIIOONNSS
+       When GNU ggrroouuppss is invoked with exactly one argument,  the
+       following options are recognized:
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+

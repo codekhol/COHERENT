@@ -1,0 +1,132 @@
+
+
+
+WHO(1L)                                                   WHO(1L)
+
+
+NNAAMMEE
+       who - show who is logged on
+
+SSYYNNOOPPSSIISS
+       wwhhoo  [-imqsuwHT]  [--count]  [--idle] [--heading] [--help]
+       [--message] [--mesg] [--version] [--writable]  [file]  [am
+       i]
+
+DDEESSCCRRIIPPTTIIOONN
+       This  manual  page  documents  the GNU version of wwhhoo.  If
+       given no non-option arguments, wwhhoo  prints  the  following
+       information for each user currently logged on:
+
+              login name
+              terminal line
+              login time
+              remote hostname or X display
+
+       If given one non-option argument, wwhhoo uses that instead of
+       /etc/utmp as the name of the file containing the record of
+       users  logged on.  /etc/wtmp is commonly given as an argu-
+       ment to wwhhoo to look at who has previously logged on.
+
+       If given two non-option arguments,  wwhhoo  prints  only  the
+       entry  for  the user running it (determined from its stan-
+       dard input), preceded by the hostname.  Traditionally, the
+       two arguments given are `am i', as in `who am i'.
+
+   OOPPTTIIOONNSS
+       _-_m     Same as `who am i'.
+
+       _-_q_, _-_-_c_o_u_n_t
+              Print  only the login names and the number of users
+              logged on.  Overrides all other options.
+
+       _-_s     Ignored; for compatibility with other  versions  of
+              wwhhoo.
+
+       _-_i_, _-_u_, _-_-_i_d_l_e
+              After the login time, print the number of hours and
+              minutes that the user has been idle.  `.' means the
+              user  was  active  in last minute.  `old' means the
+              user was idle for more than 24 hours.
+
+       _-_H_, _-_-_h_e_a_d_i_n_g
+              Print a line of column headings.
+
+       _-_w_, _-_T_, _-_-_m_e_s_g_, _-_-_m_e_s_s_a_g_e_, _-_-_w_r_i_t_a_b_l_e
+              Like _-_s, plus after the login name print a  charac-
+              ter indicating the user's message status:
+
+              +      allowing wwrriittee messages
+
+              -      disallowing wwrriittee messages
+
+
+
+FSF                    GNU Shell Utilities                      1
+
+
+
+
+
+WHO(1L)                                                   WHO(1L)
+
+
+              ?      cannot find terminal device
+
+       _-_-_h_e_l_p Print  a  usage message on standard output and exit
+              successfully.
+
+       _-_-_v_e_r_s_i_o_n
+              Print version information on standard  output  then
+              exit successfully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSF                    GNU Shell Utilities                      2
+
+

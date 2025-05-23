@@ -1,0 +1,66 @@
+
+
+
+GPERF(1)                                                 GPERF(1)
+
+
+NNAAMMEE
+       gperf - generate a perfect hash function from a key set
+
+SSYYNNOOPPSSIISS
+       ggppeerrff [ --aaddgghhiijjkkllnnoopprrssSSttvv ] [ _k_e_y_f_i_l_e ]
+
+DDEESSCCRRIIPPTTIIOONN
+       _g_p_e_r_f  reads  a  set  of  ``keys''  from  _k_e_y_f_i_l_e  (or, by
+       default, from the standard input) and attempts to  find  a
+       non-minimal  perfect  hashing  function  that recognizes a
+       member of the key set in constant, i.e., O(1),  time.   If
+       such a function is found the program generates a pair of _C
+       source code routines that perform the  hashing  and  table
+       lookup.   All  generated  code is directed to the standard
+       output.
+
+       Please refer to the _g_p_e_r_f_._t_e_x_i_n_f_o file for  more  informa-
+       tion.  This file is distributed with _g_p_e_r_f release.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        December 16, 1988                       1
+
+
